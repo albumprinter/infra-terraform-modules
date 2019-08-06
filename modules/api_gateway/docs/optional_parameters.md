@@ -45,10 +45,18 @@ api_gateway_rest_api_endpoint_configuration = [
 
 ------
 
+#### API Gateway Resource
+
+* [api_gateway_resource_path_part](https://www.terraform.io/docs/providers/aws/r/api_gateway_resource.html#path_part)
+  * Note: if not specified, all other resources will be linked to the path `/`
+------
+
 #### API Gateway Integration
 
+* [api_gateway_integration_type](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#type)
+  * Note: by default, uses the value `AWS_PROXY` if not specified
 * [api_gateway_integration_integration_http_method](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#integration_http_method)
-  * Note: by default, uses the value `POST` if not specified
+  * Note: by default, uses the value `ANY` if not specified
 * [api_gateway_integration_connection_type](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#connection_type)
 * [api_gateway_integration_connection_id](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#connection_id)
 * [api_gateway_integration_uri](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#uri)
