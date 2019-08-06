@@ -1,4 +1,4 @@
-# Infra Terraform Module
+# Infra Terraform Modules
 
 A set of **Terraform 0.12** compatible modules for standardized infrastructure provisioning.
 

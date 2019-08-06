@@ -17,7 +17,7 @@ variable "task_container_definitions" {}
 variable "task_role_arn" {
   default = null
 }
-variable "execution_role_arn" {
+variable "task_execution_role_arn" {
   default = null
 }
 variable "task_network_mode" {

@@ -1,0 +1,100 @@
+# Module: ECS Task
+
+This module provisions a ECS Task Definition along with the following resources:
+
+* IAM Role for task execution with minimum permissions required
+* IAM Role for containers created by the task
+* CloudWatch Log Group with a default retention period of 30 days
+
+## Examples 
+
+These are some examples of how this module can be used. For more, please check this [examples file](../../examples/ecs_task/main.tf).
+
+#### Minimal configuration
+```
+module "ecs_task" {
+  source = "../../modules/ecs_task"
+
+  task_family                = "eops_tf_modules_example_ecs_task"
+  task_container_definitions = <<EOF
+    [
+      {
+        "name": "eops_tf_modules_example_ecs_task",
+        "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-region": "eu-west-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "environment": []
+      }
+    ]
+  EOF
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain = var.tag_domain
+}
+```
+
+#### Using Placement Constraints
+```
+module "ecs_task_placement_constraints" {
+  source = "../../modules/ecs_task"
+
+  task_family                = "eops_tf_modules_example_ecs_task_placement_constraints"
+  task_container_definitions = <<EOF
+    [
+      {
+        "name": "eops_tf_modules_example_ecs_task",
+        "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-region": "eu-west-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "environment": []
+      }
+    ]
+  EOF
+
+  task_placement_constraints = [
+    {
+      type       = "memberOf"
+      expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+    }
+  ]
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain = var.tag_domain
+}
+```
+
+## Required parameters
+
+The following parameters are considered required.
+
+* [task_family](https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#family)
+* [task_container_definitions](https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#container_definitions)
+
+#### Tags
+Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
+
+* **tag_environment**
+* **tag_cost_center**
+* **tag_domain**
+
+## Optional Parameters
+
+All parameters supported by Terraform are also available for use and can be combine in any way **accepted by AWS**.
+
+For more details, please check the [optional parameters documentation](docs/optional_parameters.md)

@@ -9,8 +9,14 @@ This module provisions a CloudWatch Event Rule along with it's target.
 module "event_rule" {
   source = "../event_rule"
 
-  event_rule_event_pattern = var.event_rule_event_pattern
-  event_target_arn         = module.lambda_function.resource.arn
+  event_rule_event_pattern = <<PATTERN
+{
+  "detail-type": [
+    "AWS Console Sign In via CloudTrail"
+  ]
+}
+PATTERN
+  event_target_arn         = aws_lambda_function.function.arn
 
   tag_environment = var.tag_environment
   tag_cost_center = var.tag_cost_center
@@ -23,8 +29,8 @@ module "event_rule" {
 module "event_rule" {
   source = "../event_rule"
 
-  event_rule_schedule_expression = var.event_rule_schedule_expression
-  event_target_arn               = module.lambda_function.resource.arn
+  event_rule_schedule_expression = "cron(0 2 * * ? *)"
+  event_target_arn               = aws_lambda_function.function.arn
 
   tag_environment = var.tag_environment
   tag_cost_center = var.tag_cost_center
@@ -37,8 +43,8 @@ module "event_rule" {
 module "event_rule" {
   source = "../event_rule"
 
-  event_rule_event_pattern = var.event_rule_event_pattern
-  event_target_arn         = module.lambda_function.resource.arn
+  event_rule_event_pattern = "cron(0 2 * * ? *)"
+  event_target_arn         = aws_lambda_function.function.arn
 
   tag_environment = var.tag_environment
   tag_cost_center = var.tag_cost_center
@@ -47,7 +53,7 @@ module "event_rule" {
   event_target_ecs_target = [
     {
       task_count          = 1
-      task_definition_arn = "${aws_ecs_task_definition.task_name.arn}"
+      task_definition_arn = aws_ecs_task_definition.task_name.arn
     }
   ]
   event_target_input = <<EOF

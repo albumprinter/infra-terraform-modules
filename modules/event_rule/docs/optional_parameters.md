@@ -1,8 +1,8 @@
-# Module: Lambda Function - Optional Parameters
+# Module: Event Rule - Optional Parameters
 
 In order to make this module as flexbile as possible, the following parameters are also exposed and can be combine in any way **accepted by AWS**.
 
-They follow the same name as in the offical Terraform documentation with the addition of a prefix (e.g. *function_*) to identify to which resource does the parameter belong to.
+They follow the same name as in the offical Terraform documentation with the addition of a prefix (e.g. *event_rule_*) to identify to which resource does the parameter belong to.
 
 #### Tags
 

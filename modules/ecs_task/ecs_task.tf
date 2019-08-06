@@ -7,7 +7,7 @@ module "task" {
 
   # Optional
   task_role_arn = var.task_role_arn != null ? var.task_role_arn : module.task_role.resource.arn
-  execution_role_arn = var.execution_role_arn != null ? var.execution_role_arn : module.execution_role.resource.arn
+  execution_role_arn = var.task_execution_role_arn != null ? var.task_execution_role_arn : module.execution_role.resource.arn
   network_mode = var.task_network_mode
   ipc_mode = var.task_ipc_mode
   pid_mode = var.task_pid_mode 
