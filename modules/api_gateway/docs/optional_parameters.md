@@ -14,8 +14,18 @@ They follow the same name as in the offical Terraform documentation with the add
 #### API Gateway REST API
 
 * [api_gateway_rest_api_description](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#description)
-* [api_gateway_rest_api_endpoint_configuration_types](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#endpoint_configuration) ***
-  * Note
+* [api_gateway_rest_api_endpoint_configuration](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#endpoint_configuration) ***
+  * Note: by default, uses the value `EDGE` if not specified
+  * Note[2]: This attribute should be passed as an array containing one or more objects with the following parameters:
+    * [types](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#types)
+  * Example:
+```
+api_gateway_rest_api_endpoint_configuration = [
+  {
+      types = ["..."]
+    }
+]
+```
 * [api_gateway_rest_api_binary_media_types](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#binary_media_types)
 * [api_gateway_rest_api_minimum_compression_size](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#minimum_compression_size)
 * [api_gateway_rest_api_body](https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#body)

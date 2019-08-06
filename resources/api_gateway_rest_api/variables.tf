@@ -5,8 +5,8 @@ variable "name" {}
 variable "description" {
   default = null
 }
-variable "endpoint_configuration_types" {
-  default = null
+variable "endpoint_configuration" {
+  default = []
 }
 variable "binary_media_types" {
   default = null

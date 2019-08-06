@@ -9,9 +9,7 @@ This module provisions a complete REST API using API Gateway.
 module "api_gateway" {
   source = "../api_gateway"
 
-  api_gateway_rest_api_name = var.api_gateway_rest_api_name
-  api_gateway_resource_path_part = var.api_gateway_resource_path_part
-  api_gateway_integration_type = var.api_gateway_integration_type
+  api_gateway_rest_api_name = "my_api"
   
   tag_environment = var.tag_environment
   tag_cost_center = var.tag_cost_center

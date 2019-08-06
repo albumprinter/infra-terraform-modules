@@ -7,7 +7,7 @@ module "api_gateway_rest_api" {
 
   #Optional
   description = var.api_gateway_rest_api_description
-  endpoint_configuration_types = var.api_gateway_rest_api_endpoint_configuration_types
+  endpoint_configuration = var.api_gateway_rest_api_endpoint_configuration
   binary_media_types = var.api_gateway_rest_api_binary_media_types
   minimum_compression_size = var.api_gateway_rest_api_minimum_compression_size
   body = var.api_gateway_rest_api_body

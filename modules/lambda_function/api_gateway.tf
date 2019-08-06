@@ -6,7 +6,7 @@ module "api_gateway" {
   api_gateway_rest_api_name = var.api_gateway_rest_api_name
    #Optional
   api_gateway_rest_api_description = var.api_gateway_rest_api_description
-  api_gateway_rest_api_endpoint_configuration_types = var.api_gateway_rest_api_endpoint_configuration_types
+  api_gateway_rest_api_endpoint_configuration = var.api_gateway_rest_api_endpoint_configuration
   api_gateway_rest_api_binary_media_types = var.api_gateway_rest_api_binary_media_types
   api_gateway_rest_api_minimum_compression_size = var.api_gateway_rest_api_minimum_compression_size
   api_gateway_rest_api_body = var.api_gateway_rest_api_body

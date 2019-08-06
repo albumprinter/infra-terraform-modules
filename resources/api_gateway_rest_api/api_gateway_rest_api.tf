@@ -6,8 +6,14 @@ resource "aws_api_gateway_rest_api" "api" {
 
   # Optional
   description = var.description 
-  endpoint_configuration {
-    types = var.endpoint_configuration_types
+  dynamic "endpoint_configuration" {
+    for_each = [for configuration in var.endpoint_configuration: {
+      types = configuration.types
+    }]
+
+    content {
+      types = endpoint_configuration.value.types     
+    }
   }
   binary_media_types = var.binary_media_types
   minimum_compression_size = var.minimum_compression_size
