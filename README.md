@@ -16,3 +16,4 @@ The directories in this repository are organized in the following way:
 * [**ECS Task Definition**](modules/ecs_task)
 * [**CloudWatch Event Rule**](modules/event_rule)
 * [**Lambda Function**](modules/lambda_function)
+* [**Route 53 Zone**](modules/route53_zone)
