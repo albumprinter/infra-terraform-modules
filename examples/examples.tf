@@ -2,7 +2,7 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-module "lambda_function" {
+/*module "lambda_function" {
   source = "./lambda_function"  
 }
 
@@ -12,4 +12,8 @@ module "ecs_task" {
 
 module "route53_zone" {
   source = "./route53_zone"  
+}*/
+
+module "acm_certificate" {
+  source = "./acm_certificate"  
 }

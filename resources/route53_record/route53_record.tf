@@ -1,5 +1,6 @@
 locals {
   records = [for record in var.records: {
+    zone_id = var.zone_id != null ? var.zone_id : record.zone_id
     name = record.name 
     type = record.type
     ttl = lookup(record, "alias", null) != null ? record.ttl : lookup(record, "ttl", null)
@@ -20,7 +21,7 @@ locals {
 resource "aws_route53_record" "record" {
   count = length(local.records)
 
-  zone_id = var.zone_id
+  zone_id = local.records[count.index].zone_id
   name = local.records[count.index].name
   type = local.records[count.index].type
   ttl = local.records[count.index].ttl
