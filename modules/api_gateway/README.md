@@ -7,7 +7,7 @@ This module provisions a complete REST API using API Gateway.
 #### Minimal configuration
 ```
 module "api_gateway" {
-  source = "../api_gateway"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/api_gateway"
 
   api_gateway_rest_api_name = "my_api"
   

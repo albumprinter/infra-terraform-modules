@@ -14,7 +14,7 @@ module "event_rule" {
   event_rule_is_enabled = var.event_rule_is_enabled
 
   # Required
-  event_target_arn = module.lambda_function.resource.arn
+  event_target_arn = aws_lambda_function.function.arn
 
   # Optional
   event_target_target_id = var.event_target_target_id
@@ -32,20 +32,18 @@ module "event_rule" {
   tag_others = var.tag_others
 }
 
-
-module "event_rule_lambda_permission" {
-  source  = "../../resources/lambda_permission"
-  provision = var.event_rule_event_pattern != null  || var.event_rule_schedule_expression != null ? true : false
+resource "aws_lambda_permission" "event_rule_lambda_permission" {
+  count = var.event_rule_event_pattern != null  || var.event_rule_schedule_expression != null ? 1 : 0
 
   # Required
   action = var.lambda_permission_action
-  function_name = "${var.function_name}"
+  function_name = aws_lambda_function.function.function_name
   principal = "events.amazonaws.com"
 
   # Optional
   event_source_token = var.lambda_permission_event_source_token
   qualifier = var.lambda_permission_qualifier
-  source_account = var.lambda_permission_source_account
+  source_account  = var.lambda_permission_source_account
   source_arn = var.lambda_permission_source_arn
   statement_id = var.lambda_permission_statement_id
   statement_id_prefix = var.lambda_permission_statement_id_prefix
