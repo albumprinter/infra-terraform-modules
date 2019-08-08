@@ -1,3 +1,3 @@
 output "certificate" {
-  value = module.certificate.resource
+  value = aws_acm_certificate.certificate
 }

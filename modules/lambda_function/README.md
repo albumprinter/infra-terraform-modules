@@ -13,7 +13,7 @@ These are some examples of how this module can be used. For more, please check t
 #### Minimal configuration
 ```
 module "lambda_function" {
-  source = "../../modules/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
   function_name    = "example"
   function_handler = var.function_handler
@@ -31,7 +31,7 @@ module "lambda_function" {
 #### Additional IAM permissions
 ```
 module "lambda_function" {
-  source = "../../modules/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
   function_name    = "example"
   function_handler = var.function_handler
@@ -59,7 +59,7 @@ module "lambda_function" {
 #### VPC access
 ```
 module "lambda_function_vpc" {
-  source = "../../modules/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
   function_name    = "eops_tf_modules_example_lambda_function_vpc"
   function_handler = var.function_handler
@@ -80,7 +80,7 @@ module "lambda_function_vpc" {
 #### SNS Topic as Dead Letter mechanism
 ```
 module "lambda_function_sns" {
-  source = "../../modules/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
   function_name    = "eops_tf_modules_example_lambda_function_sns"
   function_handler = var.function_handler

@@ -13,7 +13,7 @@ These are some examples of how this module can be used. For more, please check t
 #### Minimal configuration
 ```
 module "ecs_task" {
-  source = "../../modules/ecs_task"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/ecs_task"
 
   task_family                = "eops_tf_modules_example_ecs_task"
   task_container_definitions = <<EOF
@@ -44,7 +44,7 @@ module "ecs_task" {
 #### Using Placement Constraints
 ```
 module "ecs_task_placement_constraints" {
-  source = "../../modules/ecs_task"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/ecs_task"
 
   task_family                = "eops_tf_modules_example_ecs_task_placement_constraints"
   task_container_definitions = <<EOF

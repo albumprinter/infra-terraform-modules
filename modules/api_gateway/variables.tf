@@ -19,11 +19,8 @@ variable "api_gateway_rest_api_description" {
   default = null
 }
 variable "api_gateway_rest_api_endpoint_configuration" {
-  default = [
-    {
-      types = ["EDGE"]
-    }
-  ]
+  type = "list"
+  default = []
 }
 variable "api_gateway_rest_api_binary_media_types" {
   default = null
@@ -50,10 +47,10 @@ variable "api_gateway_resource_path_part" {
 ## ---------------- API Gateway Method ----------------
 # Required
 variable "api_gateway_method_http_method" {
-  default = "ANY"
+  default = null
 }
 variable "api_gateway_method_authorization" {
-  default = "NONE"
+  default = null
 }
 
 # Optional
@@ -76,18 +73,35 @@ variable "api_gateway_method_request_parameters" {
   default = null
 }
 
+## ---------------- API Gateway Method Response ----------------
+# Required
+variable "api_gateway_method_response_http_method" {
+  default = null
+}
+variable "api_gateway_method_response_status_code" {
+  default = null
+}
+
+# Optional
+variable "api_gateway_method_response_response_models" {
+  default = null
+}
+variable "api_gateway_method_response_response_parameters" {
+  default = null
+}
+
 ## ---------------- API Gateway Integration ----------------
 # Required
 variable "api_gateway_integration_http_method" {
-  default = "ANY"
+  default = null
 }
 variable "api_gateway_integration_type" {
-  default = "AWS_PROXY"
+  default = null
 }
 
 # Optional
 variable "api_gateway_integration_integration_http_method" {
-  default = "POST"
+  default = null
 }
 variable "api_gateway_integration_connection_type" {
   default = null
@@ -123,6 +137,29 @@ variable "api_gateway_integration_timeout_milliseconds" {
   default = null
 }
 
+## ---------------- API Gateway Integration Response----------------
+# Required
+variable "api_gateway_integration_response_http_method" {
+  default = null
+}
+variable "api_gateway_integration_response_status_code" {
+  default = null
+}
+
+# Optional
+variable "api_gateway_integration_response_selection_pattern" {
+  default = null
+}
+variable "api_gateway_integration_response_response_templates" {
+  default = null
+}
+variable "api_gateway_integration_response_response_parameters" {
+  default = null
+}
+variable "api_gateway_integration_response_content_handling" {
+  default = null
+}
+
 ## ---------------- API Gateway Deployment ----------------
 # Optional
 variable "api_gateway_deployment_stage_name" {
@@ -136,5 +173,45 @@ variable "api_gateway_deployment_stage_description" {
 }
 variable "api_gateway_deployment_variables" {
   type = "map"
+  default = null
+}
+
+## ---------------- API Gateway API Key ----------------
+# Required
+variable "api_gateway_api_key_name" {
+  default = null
+}
+
+# Optional
+variable "api_gateway_api_key_description" {
+  default = null
+}
+variable "api_gateway_api_key_enabled" {
+  default = null
+}
+variable "api_gateway_api_key_value" {
+  default = null
+}
+
+## ---------------- API Gateway Usage Plan ----------------
+# Required
+variable "api_gateway_usage_plan_name" {
+  default = null
+}
+
+# Optional
+variable "api_gateway_usage_plan_description" {
+  default = null
+}
+variable "api_gateway_usage_plan_api_stages" {
+  default = null
+}
+variable "api_gateway_usage_plan_quota_settings" {
+  default = null
+}
+variable "api_gateway_usage_plan_throttle_settings" {
+  default = null
+}
+variable "api_gateway_usage_plan_product_code" {
   default = null
 }

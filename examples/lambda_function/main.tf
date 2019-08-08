@@ -31,8 +31,12 @@ module "lambda_function_vpc" {
 
   iam_role_policy_statements = var.iam_role_policy_statements
 
-  function_vpc_config_subnet_ids         = data.aws_subnet_ids.private.ids
-  function_vpc_config_security_group_ids = [module.security_group.resource.id]
+  function_vpc_config = [
+    {
+      subnet_ids         = data.aws_subnet_ids.private.ids,
+      security_group_ids = [module.security_group.resource.id]
+    }
+  ]
 }
 
 module "lambda_function_sns" {
@@ -68,8 +72,12 @@ module "lambda_function_sns_vpc" {
 
   function_dead_letter_target_type = "SNS"
 
-  function_vpc_config_subnet_ids         = data.aws_subnet_ids.private.ids
-  function_vpc_config_security_group_ids = [module.security_group.resource.id]
+  function_vpc_config = [
+    {
+      subnet_ids         = data.aws_subnet_ids.private.ids,
+      security_group_ids = [module.security_group.resource.id]
+    }
+  ]
 }
 
 module "lambda_function_scheduled" {
@@ -105,8 +113,12 @@ module "lambda_function_scheduled_vpc" {
 
   event_rule_schedule_expression = "cron(0 2 * * ? *)"
 
-  function_vpc_config_subnet_ids         = data.aws_subnet_ids.private.ids
-  function_vpc_config_security_group_ids = [module.security_group.resource.id]
+  function_vpc_config = [
+    {
+      subnet_ids         = data.aws_subnet_ids.private.ids,
+      security_group_ids = [module.security_group.resource.id]
+    }
+  ]
 }
 
 module "lambda_function_event_pattern" {
@@ -154,8 +166,12 @@ module "lambda_function_event_pattern_vpc" {
 }
 PATTERN
 
-  function_vpc_config_subnet_ids         = data.aws_subnet_ids.private.ids
-  function_vpc_config_security_group_ids = [module.security_group.resource.id]
+  function_vpc_config = [
+    {
+      subnet_ids         = data.aws_subnet_ids.private.ids,
+      security_group_ids = [module.security_group.resource.id]
+    }
+  ]
 }
 
 module "lambda_function_api_gateway" {

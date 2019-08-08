@@ -41,7 +41,7 @@ variable "function_s3_object_version" {
 }
 
 # Optional
-variable "function_environment_variables" {
+variable "function_environment" {
   type    = "map"
   default = {}
 }
@@ -78,11 +78,8 @@ variable "function_timeout" {
   default = null
 }
 
-variable "function_vpc_config_subnet_ids" {
-  default = []
-}
-
-variable "function_vpc_config_security_group_ids" {
+variable "function_vpc_config" {
+  type = "list"
   default = []
 }
 

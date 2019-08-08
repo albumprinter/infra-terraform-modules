@@ -1,5 +1,5 @@
 module "security_group" {
-  source = "../../resources/security_group"
+  source = "../../modules/security_group"
   
   name = "eops_tf_modules_example_lambda_function"
   vpc_id = data.aws_vpc.main.id
@@ -12,9 +12,7 @@ module "security_group" {
     }
   ]
 
-  tags = {
-    Domain = "ci-cd platform"
-    "Cost Center" = "303100"
-    Environment = "test"
-  }
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain      = var.tag_domain
 }

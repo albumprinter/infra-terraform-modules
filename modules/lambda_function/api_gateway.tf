@@ -33,7 +33,7 @@ module "api_gateway" {
   api_gateway_integration_integration_http_method = var.api_gateway_integration_integration_http_method
   api_gateway_integration_connection_type = var.api_gateway_integration_connection_type
   api_gateway_integration_connection_id = var.api_gateway_integration_connection_id
-  api_gateway_integration_uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${module.lambda_function.resource.arn}/invocations"
+  api_gateway_integration_uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function.arn}/invocations"
   api_gateway_integration_credentials = var.api_gateway_integration_credentials
   api_gateway_integration_request_templates = var.api_gateway_integration_request_templates
   api_gateway_integration_request_parameters = var.api_gateway_integration_request_parameters
@@ -54,21 +54,18 @@ module "api_gateway" {
   tag_domain = var.tag_domain
 }
 
-
-
-module "api_gateway_lambda_permission" {
-  source  = "../../resources/lambda_permission"
-  provision = var.api_gateway_rest_api_name != null ? true : false
+resource "aws_lambda_permission" "api_gateway_lambda_permission" {
+  count = var.api_gateway_rest_api_name != null ? 1 : 0
 
   # Required
   action = var.lambda_permission_action
-  function_name = "${var.function_name}"
+  function_name = aws_lambda_function.function.function_name
   principal = "apigateway.amazonaws.com"
 
   # Optional
   event_source_token = var.lambda_permission_event_source_token
   qualifier = var.lambda_permission_qualifier
-  source_account = var.lambda_permission_source_account
+  source_account  = var.lambda_permission_source_account
   source_arn = var.lambda_permission_source_arn
   statement_id = var.lambda_permission_statement_id
   statement_id_prefix = var.lambda_permission_statement_id_prefix
