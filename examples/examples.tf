@@ -14,7 +14,3 @@ module "ecs_task" {
 module "route53_hosted_zone" {
   source = "./route53_hosted_zone"  
 }
-
-module "acm_certificate" {
-  source = "./acm_certificate"  
-}
