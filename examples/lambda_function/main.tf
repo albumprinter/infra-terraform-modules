@@ -34,7 +34,7 @@ module "lambda_function_vpc" {
   function_vpc_config = [
     {
       subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.resource.id]
+      security_group_ids = [module.security_group.group.id]
     }
   ]
 }
@@ -75,7 +75,7 @@ module "lambda_function_sns_vpc" {
   function_vpc_config = [
     {
       subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.resource.id]
+      security_group_ids = [module.security_group.group.id]
     }
   ]
 }
@@ -116,7 +116,7 @@ module "lambda_function_scheduled_vpc" {
   function_vpc_config = [
     {
       subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.resource.id]
+      security_group_ids = [module.security_group.group.id]
     }
   ]
 }
@@ -169,7 +169,7 @@ PATTERN
   function_vpc_config = [
     {
       subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.resource.id]
+      security_group_ids = [module.security_group.group.id]
     }
   ]
 }

@@ -92,3 +92,7 @@ All parameters supported by Terraform are also available for use and can be comb
 
 For more details, please check the [optional parameters documentation](docs/optional_parameters.md)
 
+## Outputs
+
+* **rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
+* **target**: contains all attributes available in Terraform for CloudWatch Event Target resources

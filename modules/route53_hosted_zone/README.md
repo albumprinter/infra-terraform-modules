@@ -56,3 +56,7 @@ Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_A
 All parameters supported by Terraform are also available for use and can be combine in any way **accepted by AWS**.
 
 For more details, please check the [optional parameters documentation](docs/optional_parameters.md)
+
+## Outputs
+
+* **zone**: contains all attributes available in Terraform for Route53 Hosted Zone resources

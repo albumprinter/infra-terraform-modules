@@ -2,7 +2,7 @@ resource "aws_lambda_function" "function" {
   # Required
   function_name = var.function_name
   handler       = var.function_handler
-  role          = module.role.resource.arn
+  role          = module.role.role.arn
   runtime       = var.function_runtime
 
   # Conditionally Required
@@ -21,7 +21,7 @@ resource "aws_lambda_function" "function" {
   }
 
   dead_letter_config {
-    target_arn = var.function_dead_letter_target_type == "SQS" ? module.dead_letter_queue.resource.arn : module.dead_letter_topic.resource.arn
+    target_arn = var.function_dead_letter_target_type == "SQS" ? module.dead_letter_queue.queue.arn : module.dead_letter_topic.topic.arn
   }
 
   description                    = var.function_description

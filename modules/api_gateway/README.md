@@ -37,3 +37,15 @@ All parameters supported by Terraform are also available for use and can be comb
 
 For more details, please check the [optional parameters documentation](docs/optional_parameters.md)
 
+## Outputs
+
+* **rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
+* **resource**: contains all attributes available in Terraform for API Gateway Resource resources
+* **method**: contains all attributes available in Terraform for API Gateway Method resources
+* **method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
+* **integration**: contains all attributes available in Terraform for API Gateway Integration resources
+* **integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
+* **deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
+* **api_key**: contains all attributes available in Terraform for API Gateway API Key resources
+* **usage_plan**: contains all attributes available in Terraform for API Gateway Usage Plan resources
+* **usage_plan_key**: contains all attributes available in Terraform for API Gateway Usage Plan Key resources

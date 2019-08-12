@@ -187,3 +187,22 @@ module "lambda_function_api_gateway" {
 The patterns can be further customized by passing any of the parameters supported by Terraform.
 
 For more details, please check the [patterns documentation](docs/patterns.md)
+
+## Outputs
+
+* **function**: contains all attributes available in Terraform for Lambda function resources
+* **role**: contains all attributes available in Terraform for IAM Role resources
+* **log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
+* **dead_letter_queue**: contains all attributes available in Terraform for SQS Queue resources (in case `function_dead_letter_target_type` equals `SQS`)
+* **dead_letter_topic**: contains all attributes available in Terraform for SNS Topic resources (in case `function_dead_letter_target_type` equals `SNS`)
+* **event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
+* **rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
+* **resource**: contains all attributes available in Terraform for API Gateway Resource resources
+* **method**: contains all attributes available in Terraform for API Gateway Method resources
+* **method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
+* **integration**: contains all attributes available in Terraform for API Gateway Integration resources
+* **integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
+* **deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
+* **api_key**: contains all attributes available in Terraform for API Gateway API Key resources
+* **usage_plan**: contains all attributes available in Terraform for API Gateway Usage Plan resources
+* **usage_plan_key**: contains all attributes available in Terraform for API Gateway Usage Plan Key resources
