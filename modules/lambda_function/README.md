@@ -61,7 +61,7 @@ module "lambda_function" {
 module "lambda_function_vpc" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_vpc"
+  function_name    = "infra_tf_modules_example_lambda_function_vpc"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -82,7 +82,7 @@ module "lambda_function_vpc" {
 module "lambda_function_sns" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_sns"
+  function_name    = "infra_tf_modules_example_lambda_function_sns"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -148,7 +148,7 @@ To make use of these patterns, just pass one of the required parameters below:
 module "lambda_function_scheduled" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_scheduled"
+  function_name    = "infra_tf_modules_example_lambda_function_scheduled"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -169,7 +169,7 @@ module "lambda_function_scheduled" {
 module "lambda_function_api_gateway" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_api_gateway"
+  function_name    = "infra_tf_modules_example_lambda_function_api_gateway"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 

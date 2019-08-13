@@ -11,7 +11,7 @@ resource "aws_iam_role" "role" {
   description           = var.role_description
   force_detach_policies = var.role_force_detach_policies
   max_session_duration  = var.role_max_session_duration
-  name                  = var.role_name
+  name                  = substr(var.role_name, 0, 64)
   name_prefix           = var.role_name_prefix
   path                  = var.role_path
   permissions_boundary  = var.role_permissions_boundary

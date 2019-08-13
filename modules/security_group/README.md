@@ -20,7 +20,7 @@ module "security_group" {
 module "security_group" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/security_group"  
 
-  name = "eops_tf_modules_example_lambda_function"
+  name = "infra_tf_modules_example_lambda_function"
   vpc_id = data.aws_vpc.main.id
   egress_rules = [
     {

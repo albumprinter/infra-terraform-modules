@@ -1,7 +1,7 @@
 module "security_group" {
   source = "../../modules/security_group"
   
-  name = "eops_tf_modules_example_lambda_function"
+  name = "infra_tf_modules_example_lambda_function"
   vpc_id = data.aws_vpc.main.id
   egress_rules = [
     {

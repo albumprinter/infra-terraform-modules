@@ -1,17 +1,17 @@
 module "ecs_task" {
   source = "../../modules/ecs_task"
 
-  task_family                = "eops_tf_modules_example_ecs_task"
+  task_family                = "infra_tf_modules_example_ecs_task"
   task_container_definitions = <<EOF
     [
       {
-        "name": "eops_tf_modules_example_ecs_task",
+        "name": "infra_tf_modules_example_ecs_task",
         "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
         "essential": true,
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {
-            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-group": "/ecs/infra_tf_modules_example_ecs_task",
             "awslogs-region": "eu-west-1",
             "awslogs-stream-prefix": "ecs"
           }
@@ -29,17 +29,17 @@ module "ecs_task" {
 module "ecs_task_placement_constraints" {
   source = "../../modules/ecs_task"
 
-  task_family                = "eops_tf_modules_example_ecs_task_placement_constraints"
+  task_family                = "infra_tf_modules_example_ecs_task_placement_constraints"
   task_container_definitions = <<EOF
     [
       {
-        "name": "eops_tf_modules_example_ecs_task",
+        "name": "infra_tf_modules_example_ecs_task",
         "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
         "essential": true,
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {
-            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-group": "/ecs/infra_tf_modules_example_ecs_task",
             "awslogs-region": "eu-west-1",
             "awslogs-stream-prefix": "ecs"
           }
@@ -64,17 +64,17 @@ module "ecs_task_placement_constraints" {
 module "ecs_task_scheduled" {
   source = "../../modules/ecs_task"
 
-  task_family                = "eops_tf_modules_example_ecs_task_scheduled"
+  task_family                = "infra_tf_modules_example_ecs_task_scheduled"
   task_container_definitions = <<EOF
     [
       {
-        "name": "eops_tf_modules_example_ecs_task",
+        "name": "infra_tf_modules_example_ecs_task",
         "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
         "essential": true,
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {
-            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-group": "/ecs/infra_tf_modules_example_ecs_task",
             "awslogs-region": "eu-west-1",
             "awslogs-stream-prefix": "ecs"
           }

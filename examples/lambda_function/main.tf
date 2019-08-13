@@ -1,7 +1,7 @@
 module "lambda_function" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function"
+  function_name    = "infra_tf_modules_example_lambda_function"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -18,7 +18,7 @@ module "lambda_function" {
 module "lambda_function_vpc" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_vpc"
+  function_name    = "infra_tf_modules_example_lambda_function_vpc"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -42,7 +42,7 @@ module "lambda_function_vpc" {
 module "lambda_function_sns" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_sns"
+  function_name    = "infra_tf_modules_example_lambda_function_sns"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -59,7 +59,7 @@ module "lambda_function_sns" {
 module "lambda_function_sns_vpc" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_sns_vpc"
+  function_name    = "infra_tf_modules_example_lambda_function_sns_vpc"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -83,7 +83,7 @@ module "lambda_function_sns_vpc" {
 module "lambda_function_scheduled" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_scheduled"
+  function_name    = "infra_tf_modules_example_lambda_function_scheduled"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -100,7 +100,7 @@ module "lambda_function_scheduled" {
 module "lambda_function_scheduled_vpc" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_scheduled_vpc"
+  function_name    = "infra_tf_modules_example_lambda_function_scheduled_vpc"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -124,7 +124,7 @@ module "lambda_function_scheduled_vpc" {
 module "lambda_function_event_pattern" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_event_pattern"
+  function_name    = "infra_tf_modules_example_lambda_function_event_pattern"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -147,7 +147,7 @@ PATTERN
 module "lambda_function_event_pattern_vpc" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_event_pattern_vpc"
+  function_name    = "infra_tf_modules_example_lambda_function_event_pattern_vpc"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -177,7 +177,7 @@ PATTERN
 module "lambda_function_api_gateway" {
   source = "../../modules/lambda_function"
 
-  function_name    = "eops_tf_modules_example_lambda_function_api_gateway"
+  function_name    = "infra_tf_modules_example_lambda_function_api_gateway"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 

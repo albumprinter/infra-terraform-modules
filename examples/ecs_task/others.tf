@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "example" {
-  name = "eops_tf_modules_example_ecs_task"
+  name = "infra_tf_modules_example_ecs_task"
 
   tags = {
     Domain        = var.tag_domain
@@ -11,7 +11,7 @@ resource "aws_ecs_cluster" "example" {
 module "security_group" {
   source = "../../modules/security_group"
   
-  name = "eops_tf_modules_example_ecs_task"
+  name = "infra_tf_modules_example_ecs_task"
   vpc_id = data.aws_vpc.main.id
   egress_rules = [
     {
