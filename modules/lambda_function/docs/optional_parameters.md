@@ -15,7 +15,7 @@ They follow the same name as in the offical Terraform documentation with the add
 
 * **function_dead_letter_target_type**: this a custom string parameter that indicates which type of dead letter mechanism should be used. Valid values are `SNS` or `SQS`, being `SQS` the default one.
 * **function_dead_letter_target_name**: this a custom string parameter that indicates the name for the dead letter mechanism (either a topic or a queue). If not passed, the default name will be either `"${var.function_name}_dead_letter_queue"` or `"${var.function_name}_dead_letter_topic"`
-* [function_environment_variables](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#variables)
+* [function_environment](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#variables)
 * [function_description](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#description)
 * [function_kms_key_arn](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#kms_key_arn)
 * [function_layers](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#layers)
