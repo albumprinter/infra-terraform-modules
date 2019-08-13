@@ -14,6 +14,7 @@ The directories in this repository are organized in the following way:
 * [**API Gateway**](modules/api_gateway)
 * [**CloudWatch Log Group**](modules/cloudwatch_log_group)
 * [**CloudWatch Event Rule**](modules/event_rule)
+* [**ECR Repository**](modules/ecr_repository)
 * [**ECS Task Definition**](modules/ecs_task)
 * [**IAM Role**](modules/iam_role)
 * [**Lambda Function**](modules/lambda_function)

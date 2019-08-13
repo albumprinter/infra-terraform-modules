@@ -14,3 +14,7 @@ module "ecs_task" {
 module "route53_hosted_zone" {
   source = "./route53_hosted_zone"  
 }
+
+module "ecr_repository" {
+  source = "./ecr_repository"  
+}
