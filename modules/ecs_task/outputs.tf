@@ -10,3 +10,9 @@ output "task_role" {
 output "execution_role" {
   value = module.execution_role.role
 }
+output "event_rule" {
+  value = module.event_rule.rule
+}
+output "event_target" {
+  value = module.event_rule.target
+}

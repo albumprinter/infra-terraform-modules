@@ -8,7 +8,7 @@ module "event_rule" {
 
   # Optional
   event_rule_description = var.event_rule_description
-  event_rule_name = var.event_rule_name != null ? var.event_rule_name : "${var.function_name}"
+  event_rule_name = var.event_rule_name != null ? var.event_rule_name : var.function_name
   event_rule_name_prefix = var.event_rule_name_prefix
   event_rule_role_arn = var.event_rule_role_arn
   event_rule_is_enabled = var.event_rule_is_enabled

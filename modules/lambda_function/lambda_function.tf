@@ -86,15 +86,15 @@ module "role" {
   role_description           = var.iam_role_description
   role_force_detach_policies = var.iam_role_force_detach_policies
   role_max_session_duration  = var.iam_role_max_session_duration
-  role_name                  = var.iam_role_name != null ? var.iam_role_name : "${var.function_name}"
+  role_name                  = var.iam_role_name != null ? var.iam_role_name : var.function_name
   role_name_prefix           = var.iam_role_name_prefix
   role_path                  = var.iam_role_path
   role_permissions_boundary  = var.iam_role_permissions_boundary
-  policy_description    = var.iam_role_policy_description
-  policy_name           = var.iam_role_policy_name != null ? var.iam_role_policy_name : "${var.function_name}"
-  policy_name_prefix    = var.iam_role_policy_name_prefix
-  policy_path           = var.iam_role_policy_path
-  tag_others            = var.tag_others
+  policy_description         = var.iam_role_policy_description
+  policy_name                = var.iam_role_policy_name != null ? var.iam_role_policy_name : var.function_name
+  policy_name_prefix         = var.iam_role_policy_name_prefix
+  policy_path                = var.iam_role_policy_path
+  tag_others                 = var.tag_others
 }
 
 module "log_group" {

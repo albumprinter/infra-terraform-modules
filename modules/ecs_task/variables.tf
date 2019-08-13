@@ -132,3 +132,96 @@ variable "execution_role_policy_name_prefix" {
 variable "execution_role_policy_path" {
   default = null
 }
+
+## ---------------- CloudWatch Event Rule ----------------
+variable "event_rule_event_pattern" {
+  default = null
+}
+variable "event_rule_schedule_expression" {
+  default = null
+}
+variable "event_rule_description" {
+  default = null
+}
+variable "event_rule_name" {
+  default = null
+}
+variable "event_rule_name_prefix" {
+  default = null
+}
+variable "event_rule_role_arn" {
+  default = null
+}
+variable "event_rule_is_enabled" {
+  default = null
+}
+
+## ---------------- CloudWatch Event Target ----------------
+variable "event_target_arn" {
+  default = null
+}
+variable "event_target_group" {
+  default = null
+}
+variable "event_target_launch_type" {
+  default = null
+}
+variable "event_target_network_configuration_subnets" {
+  default = null
+}
+variable "event_target_network_configuration_security_groups" {
+  default = null
+}
+variable "event_target_network_configuration_assign_public_ip" {
+  default = false
+}
+variable "event_target_platform_version" {
+  default = null
+}
+variable "event_target_task_count" {
+  default = 1
+}
+variable "event_target_target_id" {
+  default = null
+}
+variable "event_target_input" {
+  default = null
+}
+variable "event_target_input_path" {
+  default = null
+}
+
+## ---------------- CloudWatch Event Rule IAM Role ----------------
+variable "event_rule_iam_role_description" {
+  default = null
+}
+variable "event_rule_iam_role_force_detach_policies" {
+  default = null
+}
+variable "event_rule_iam_role_max_session_duration" {
+  default = null
+}
+variable "event_rule_iam_role_name" {
+  default = null
+}
+variable "event_rule_iam_role_name_prefix" {
+  default = null
+}
+variable "event_rule_iam_role_path" {
+  default = null
+}
+variable "event_rule_iam_role_permissions_boundary" {
+  default = null
+}
+variable "event_rule_iam_role_policy_description" {
+  default = null
+}
+variable "event_rule_iam_role_policy_name" {
+  default = null
+}
+variable "event_rule_iam_role_policy_name_prefix" {
+  default = null
+}
+variable "event_rule_iam_role_policy_path" {
+  default = null
+}

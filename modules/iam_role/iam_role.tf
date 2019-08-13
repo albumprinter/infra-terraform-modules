@@ -1,4 +1,6 @@
 resource "aws_iam_role" "role" {
+  count = var.provision == true ? 1 : 0
+
   # Required
   assume_role_policy = templatefile("${path.module}/templates/assume_role_policy.tpl", {
     principal_type   = var.assume_role_principal_type,
@@ -17,7 +19,7 @@ resource "aws_iam_role" "role" {
 }
 
 resource "aws_iam_policy" "policy" {
-  count = length(var.policy_statements) > 0 ? 1 : 0
+  count = var.provision == true && length(var.policy_statements) > 0 ? 1 : 0
 
   # Required
   policy = templatefile("${path.module}/templates/permissions_policy.tpl", {
@@ -32,8 +34,8 @@ resource "aws_iam_policy" "policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
-  count = length(var.policy_statements) > 0 ? 1 : 0
+  count = var.provision == true && length(var.policy_statements) > 0 ? 1 : 0
 
-  role       = "${aws_iam_role.role.name}"
+  role       = "${aws_iam_role.role[0].name}"
   policy_arn = "${aws_iam_policy.policy[0].arn}"
 }

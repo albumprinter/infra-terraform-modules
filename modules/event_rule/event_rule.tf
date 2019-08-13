@@ -53,22 +53,22 @@ resource "aws_cloudwatch_event_target" "target" {
       launch_type  = lookup(target, "launch_type", null)
       network_configuration_subnets  = lookup(target, "network_configuration_subnets", null)
       network_configuration_security_groups  = lookup(target, "network_configuration_security_groups", null)
-      network_configuration_assign_public_ip  = lookup(target, "network_configuration_assign_public_ip", null)
+      network_configuration_assign_public_ip  = lookup(target, "network_configuration_assign_public_ip", false)
       platform_version  = lookup(target, "platform_version", null)
-      task_count  = lookup(target, "task_count", null)
+      task_count  = lookup(target, "task_count", 1)
     }]
 
     content {
-      group       = ecs_target.value.task_definition_arn
-      launch_type = ecs_target.value.group
+      group       = ecs_target.value.group
+      launch_type = ecs_target.value.launch_type
       network_configuration {
-        subnets          = ecs_target.value.launch_type
-        security_groups  = ecs_target.value.network_configuration_subnets
-        assign_public_ip = ecs_target.value.network_configuration_security_groups
+        subnets          = ecs_target.value.network_configuration_subnets
+        security_groups  = ecs_target.value.network_configuration_security_groups
+        assign_public_ip = ecs_target.value.network_configuration_assign_public_ip
       }
-      platform_version    = ecs_target.value.network_configuration_assign_public_ip
-      task_count          = ecs_target.value.platform_version
-      task_definition_arn = ecs_target.value.task_count
+      platform_version    = ecs_target.value.platform_version
+      task_count          = ecs_target.value.task_count
+      task_definition_arn = ecs_target.value.task_definition_arn
     }
   }
 

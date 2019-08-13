@@ -99,6 +99,65 @@ All parameters supported by Terraform are also available for use and can be comb
 
 For more details, please check the [optional parameters documentation](docs/optional_parameters.md)
 
+## Supported Patterns 
+
+This module also supports the following pattern:
+
+* CloudWatch Rule (scheduled or event pattern) + ECS Task
+
+To make use of this pattern, just pass one of the required parameters for the CloudWatch Rule:
+
+* **event_rule_schedule_expression**: for scheduled CloudWatch Rules
+* **event_rule_event_pattern**: for pattern based CloudWatch Rules
+
+Along with the ECS required paramaters
+* **event_target_ecs_cluster_arn**: ARN of the ECS Cluster where the task should be executed
+* **event_target_network_configuration_subnets**: ID of the subnets where the task should be launched
+* **event_target_network_configuration_security_groups**: ID of the security groups the task should be part of
+ 
+
+### Example
+
+#### Scheduled Event Rule
+```
+module "ecs_task" {
+  source = "../../modules/ecs_task"
+
+  task_family                = "eops_tf_modules_example_ecs_task_scheduled"
+  task_container_definitions = <<EOF
+    [
+      {
+        "name": "eops_tf_modules_example_ecs_task",
+        "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/eops_tf_modules_example_ecs_task",
+            "awslogs-region": "eu-west-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "environment": []
+      }
+    ]
+  EOF
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain = var.tag_domain
+
+  event_rule_schedule_expression = "cron(0 2 * * ? *)"
+  event_target_arn = "arn:aws:ecs:eu-west-1:123456789012:cluster/default"
+  event_target_network_configuration_subnets = ["vpc-0d670e7766333aca0"]
+  event_target_network_configuration_security_groups = ["sg-05c4a13b628e7c243"]
+}
+```
+
+This pattern can be further customized by passing any of the parameters supported by Terraform.
+
+For more details, please check the [patterns documentation](docs/patterns.md)
+
 ## Outputs
 
 * **aws_ecs_task_definition**: contains all attributes available in Terraform for ECS Task Definition resources

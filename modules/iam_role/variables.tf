@@ -62,3 +62,7 @@ variable "policy_path" {
 variable "tag_others" {
   default = {}
 }
+
+variable "provision" {
+  default = true
+}
