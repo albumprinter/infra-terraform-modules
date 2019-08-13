@@ -42,8 +42,8 @@ variable "function_s3_object_version" {
 
 # Optional
 variable "function_environment" {
-  type    = "map"
-  default = {}
+  type    = "list"
+  default = []
 }
 
 variable "function_description" {
