@@ -53,7 +53,7 @@ variable "log_group_name" {
   default = null
 }
 variable "log_group_retention_in_days" {
-  default = null
+  default = 30
 }
 variable "log_group_kms_key_id" {
   default = null
