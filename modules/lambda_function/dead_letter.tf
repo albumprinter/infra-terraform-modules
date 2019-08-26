@@ -11,10 +11,21 @@ module "dead_letter_queue" {
   kms_master_key_id                 = var.sqs_queue_kms_master_key_id
   message_retention_seconds         = var.sqs_queue_message_retention_seconds
   max_message_size                  = var.sqs_queue_max_message_size
-  policy                            = var.sqs_queue_policy
   receive_wait_time_seconds         = var.sqs_queue_receive_wait_time_seconds
   redrive_policy                    = var.sqs_queue_redrive_policy
   visibility_timeout_seconds        = var.sqs_queue_visibility_timeout_seconds
+
+  policy_statements = [
+    {
+      "Effect": "Allow",
+      "Action": ["sqs:SendMessage"],
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "${aws_lambda_function.function.arn}"
+        }
+      }
+    }
+  ]
 
   #Required
   tag_environment = var.tag_environment

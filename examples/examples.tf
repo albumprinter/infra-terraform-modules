@@ -18,3 +18,7 @@ module "route53_hosted_zone" {
 module "ecr_repository" {
   source = "./ecr_repository"  
 }
+
+module "sqs_queue" {
+  source = "./sqs_queue"  
+}

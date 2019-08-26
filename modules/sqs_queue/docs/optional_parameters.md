@@ -22,3 +22,21 @@ In order to make this module as flexbile as possible, the following parameters a
 * [receive_wait_time_seconds](https://www.terraform.io/docs/providers/aws/r/sqs_queue.html#receive_wait_time_seconds)
 * [redrive_policy](https://www.terraform.io/docs/providers/aws/r/sqs_queue.html#redrive_policy)
 * [visibility_timeout_seconds](https://www.terraform.io/docs/providers/aws/r/sqs_queue.html#visibility_timeout_seconds)
+
+#### SQS Queue Policy
+* policy_statements
+  * Note: This attribute should be passed as an array containing policy statements:
+  * Example:
+```
+policy_statements = [
+  {
+    "Effect": "Allow",
+    "Action": ["sqs:SendMessage"],
+    "Condition": {
+      "ArnEquals": {
+        "aws:SourceArn": "arn:aws:lambda:eu-west-1:055974010211:function:EXAMPLE"
+      }
+    }
+  }
+]
+```

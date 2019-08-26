@@ -31,8 +31,8 @@ variable "name" {
 variable "name_prefix" {
   default = null
 }
-variable "policy" {
-  default = null
+variable "policy_statements" {
+  default = []
 }
 variable "receive_wait_time_seconds" {
   default = null

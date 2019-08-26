@@ -1,6 +1,6 @@
 # Module: SQS Queue
 
-This module provisions a SQS Queue.
+This module provisions a SQS Queue with an optional queue policy.
 
 ## Examples 
 
@@ -15,12 +15,24 @@ module "sqs_queue" {
 }
 ```
 
-#### Including a custom queue name
+#### Including queue policy
 ```
 module "sqs_queue" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/sqs_queue"
 
   name = "my_queue"
+
+  policy_statements = [
+    {
+      "Effect": "Allow",
+      "Action": ["sqs:SendMessage"],
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:lambda:eu-west-1:*:function:EXAMPLE"
+        }
+      }
+    }
+  ]
 
   tag_domain = var.tag_domain
   tag_environment = var.tag_environment
