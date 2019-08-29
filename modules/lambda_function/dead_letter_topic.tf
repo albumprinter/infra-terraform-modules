@@ -26,7 +26,7 @@ module "dead_letter_topic" {
   sns_topic_sqs_success_feedback_role_arn            = var.dead_letter_topic_sqs_success_feedback_role_arn
   sns_topic_sqs_success_feedback_sample_rate         = var.dead_letter_topic_sqs_success_feedback_sample_rate
   sns_topic_sqs_failure_feedback_role_arn            = var.dead_letter_topic_sqs_failure_feedback_role_arn
-  
+
   tag_others = var.tag_others
 }
 

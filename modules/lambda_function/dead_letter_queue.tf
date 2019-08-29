@@ -32,8 +32,8 @@ module "dead_letter_queue" {
   receive_wait_time_seconds         = var.dead_letter_queue_receive_wait_time_seconds
   redrive_policy                    = var.dead_letter_queue_redrive_policy
   visibility_timeout_seconds        = var.dead_letter_queue_visibility_timeout_seconds
-  
-  tag_others                        = var.tag_others
+
+  tag_others = var.tag_others
 }
 
 # ----------------------- Variables -----------------------

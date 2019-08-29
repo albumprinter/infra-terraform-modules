@@ -26,6 +26,7 @@ resource "aws_sns_topic" "topic" {
 
 }
 
+# -------------------- Variables --------------------
 variable "sns_topic_name" {
   default = null
 }

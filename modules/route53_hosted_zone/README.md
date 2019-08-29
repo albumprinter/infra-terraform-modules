@@ -59,4 +59,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **zone**: contains all attributes available in Terraform for Route53 Hosted Zone resources
+* **route53_zone**: contains all attributes available in Terraform for Route53 Hosted Zone resources
+* **route53_records**: *list* containing elements with all attributes available in Terraform for Route53 Record resources

@@ -57,4 +57,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **queue**: contains all attributes available in Terraform for SQS Queue resources
+* **sqs_queue**: contains all attributes available in Terraform for SQS Queue resources

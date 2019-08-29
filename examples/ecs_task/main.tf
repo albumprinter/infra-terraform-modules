@@ -23,7 +23,7 @@ module "ecs_task" {
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
-  tag_domain = var.tag_domain
+  tag_domain      = var.tag_domain
 }
 
 module "ecs_task_placement_constraints" {
@@ -58,7 +58,7 @@ module "ecs_task_placement_constraints" {
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
-  tag_domain = var.tag_domain
+  tag_domain      = var.tag_domain
 }
 
 module "ecs_task_scheduled" {
@@ -86,10 +86,10 @@ module "ecs_task_scheduled" {
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
-  tag_domain = var.tag_domain
+  tag_domain      = var.tag_domain
 
-  event_rule_schedule_expression = "cron(0 2 * * ? *)"
-  event_target_arn = aws_ecs_cluster.example.arn
-  event_target_network_configuration_subnets = data.aws_subnet_ids.private.ids
-  event_target_network_configuration_security_groups = [module.security_group.group.id]
+  event_rule_schedule_expression                     = "cron(0 2 * * ? *)"
+  event_target_arn                                   = aws_ecs_cluster.example.arn
+  event_target_network_configuration_subnets         = data.aws_subnet_ids.private.ids
+  event_target_network_configuration_security_groups = [module.security_group.security_group.id]
 }

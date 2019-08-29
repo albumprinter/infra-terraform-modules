@@ -23,8 +23,8 @@ module "api_gateway" {
 
   api_gateway_resource_path_part = var.api_gateway_resource_path_part
 
-  api_gateway_method_http_method   = var.api_gateway_method_http_method
-  api_gateway_method_authorization = var.api_gateway_method_authorization
+  api_gateway_method_http_method          = var.api_gateway_method_http_method
+  api_gateway_method_authorization        = var.api_gateway_method_authorization
   api_gateway_method_authorizer_id        = var.api_gateway_method_authorizer_id
   api_gateway_method_authorization_scopes = var.api_gateway_method_authorization_scopes
   api_gateway_method_api_key_required     = var.api_gateway_method_api_key_required
@@ -32,10 +32,10 @@ module "api_gateway" {
   api_gateway_method_request_validator_id = var.api_gateway_method_request_validator_id
   api_gateway_method_request_parameters   = var.api_gateway_method_request_parameters
 
-  api_gateway_integration_type = var.api_gateway_integration_type
+  api_gateway_integration_type                    = var.api_gateway_integration_type
   api_gateway_integration_integration_http_method = var.api_gateway_integration_integration_http_method
   api_gateway_integration_connection_type         = var.api_gateway_integration_connection_type
-  api_gateway_integration_connection_id           = var.api_gateway_integration_connection_id  
+  api_gateway_integration_connection_id           = var.api_gateway_integration_connection_id
   api_gateway_integration_credentials             = var.api_gateway_integration_credentials
   api_gateway_integration_request_templates       = var.api_gateway_integration_request_templates
   api_gateway_integration_request_parameters      = var.api_gateway_integration_request_parameters
@@ -61,7 +61,7 @@ resource "aws_lambda_permission" "api_gateway_lambda_permission" {
   # Optional
   event_source_token  = var.api_gateway_lambda_permission_event_source_token
   qualifier           = var.api_gateway_lambda_permission_qualifier
-  source_account      = var.api_gateway_lambda_permission_source_account  
+  source_account      = var.api_gateway_lambda_permission_source_account
   statement_id        = var.api_gateway_lambda_permission_statement_id
   statement_id_prefix = var.api_gateway_lambda_permission_statement_id_prefix
 }
@@ -179,19 +179,19 @@ variable "api_gateway_deployment_variables" {
 }
 variable "api_gateway_lambda_permission_action" {
   default = "lambda:InvokeFunction"
-} 
+}
 variable "api_gateway_lambda_permission_event_source_token" {
   default = null
-} 
+}
 variable "api_gateway_lambda_permission_qualifier" {
   default = null
-} 
+}
 variable "api_gateway_lambda_permission_source_account" {
   default = null
-} 
+}
 variable "api_gateway_lambda_permission_statement_id" {
   default = null
-} 
+}
 variable "api_gateway_lambda_permission_statement_id_prefix" {
   default = null
 }

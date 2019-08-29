@@ -7,15 +7,17 @@ module "log_group" {
   tag_domain      = var.tag_domain
 
   # Optional
-  name              = "/aws/lambda/${var.function_name}"
+  name              = var.log_group_name != null ? var.log_group_name : "/ecs/${var.task_family}"
   retention_in_days = var.log_group_retention_in_days
   kms_key_id        = var.log_group_kms_key_id
-
-  tag_others = var.tag_others
+  tag_others        = var.tag_others
 }
 
-# ----------------------- Variables -----------------------
+# -------------------- Variables --------------------
 
+variable "log_group_name" {
+  default = null
+}
 variable "log_group_retention_in_days" {
   default = 30
 }

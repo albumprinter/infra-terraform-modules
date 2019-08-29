@@ -14,7 +14,7 @@ module "event_rule" {
   event_target_arn = aws_lambda_function.function.arn
 
   # Optional
-  event_rule_description = var.event_rule_description  
+  event_rule_description = var.event_rule_description
   event_rule_name_prefix = var.event_rule_name_prefix
   event_rule_role_arn    = var.event_rule_role_arn
   event_rule_is_enabled  = var.event_rule_is_enabled
@@ -85,22 +85,22 @@ variable "event_target_input_transformer" {
 }
 variable "event_rule_lambda_permission_action" {
   default = "lambda:InvokeFunction"
-} 
+}
 variable "event_rule_lambda_permission_event_source_token" {
   default = null
-} 
+}
 variable "event_rule_lambda_permission_qualifier" {
   default = null
-} 
+}
 variable "event_rule_lambda_permission_source_account" {
   default = null
-} 
+}
 variable "event_rule_lambda_permission_source_arn" {
   default = null
-} 
+}
 variable "event_rule_lambda_permission_statement_id" {
   default = null
-} 
+}
 variable "event_rule_lambda_permission_statement_id_prefix" {
   default = null
 }

@@ -64,5 +64,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **role**: contains all attributes available in Terraform for IAM Role resources
-* **policy**: contains all attributes available in Terraform for IAM Policy resources
+* **iam_role**: contains all attributes available in Terraform for IAM Role resources
+* **iam_policy**: contains all attributes available in Terraform for IAM Policy resources

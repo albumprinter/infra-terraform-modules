@@ -130,19 +130,19 @@ variable "sns_trigger_lambda_permission_action" {
 }
 variable "sns_trigger_lambda_permission_event_source_token" {
   default = null
-} 
+}
 variable "sns_trigger_lambda_permission_qualifier" {
   default = null
-} 
+}
 variable "sns_trigger_lambda_permission_source_account" {
   default = null
-} 
+}
 variable "sns_trigger_lambda_permission_source_arn" {
   default = null
-} 
+}
 variable "sns_trigger_lambda_permission_statement_id" {
   default = null
-} 
+}
 variable "sns_trigger_lambda_permission_statement_id_prefix" {
   default = null
 }

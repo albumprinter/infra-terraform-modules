@@ -1,30 +1,30 @@
-output "rest_api" {
+output "api_gateway_rest_api" {
   value = aws_api_gateway_rest_api.api
 }
-output "resource" {
+output "api_gateway_resource" {
   value = aws_api_gateway_resource.resource
 }
-output "method" {
+output "api_gateway_method" {
   value = aws_api_gateway_method.method
 }
-output "method_response" {
+output "api_gateway_method_response" {
   value = aws_api_gateway_method_response.method_response
 }
-output "integration" {
+output "api_gateway_integration" {
   value = aws_api_gateway_integration.integration
 }
-output "integration_response" {
+output "api_gateway_integration_response" {
   value = aws_api_gateway_integration_response.integration_response
 }
-output "deployment" {
+output "api_gateway_deployment" {
   value = aws_api_gateway_deployment.deployment
 }
-output "api_key" {
+output "api_gateway_api_key" {
   value = aws_api_gateway_api_key.key
 }
-output "usage_plan" {
+output "api_gateway_usage_plan" {
   value = aws_api_gateway_usage_plan.plan
 }
-output "usage_plan_key" {
+output "api_gateway_usage_plan_key" {
   value = aws_api_gateway_usage_plan_key.key
 }

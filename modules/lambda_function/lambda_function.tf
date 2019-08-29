@@ -1,16 +1,16 @@
 resource "aws_lambda_function" "function" {
   # Required
-  function_name     = var.function_name
-  handler           = var.function_handler
-  role              = module.role.role.arn
-  runtime           = var.function_runtime
-  filename          = var.function_filename
-  s3_bucket         = var.function_s3_bucket
-  s3_key            = var.function_s3_key
-  
+  function_name = var.function_name
+  handler       = var.function_handler
+  role          = module.role.iam_role.arn
+  runtime       = var.function_runtime
+  filename      = var.function_filename
+  s3_bucket     = var.function_s3_bucket
+  s3_key        = var.function_s3_key
+
   # Internally handled
   dead_letter_config {
-    target_arn = var.function_dead_letter_target_type == "SQS" ? module.dead_letter_queue.queue.arn : module.dead_letter_topic.sns_topic.arn
+    target_arn = var.function_dead_letter_target_type == "SQS" ? module.dead_letter_queue.sqs_queue.arn : module.dead_letter_topic.sns_topic.arn
   }
 
   #Optional
@@ -30,8 +30,10 @@ resource "aws_lambda_function" "function" {
   publish                        = var.function_publish
   reserved_concurrent_executions = var.function_reserved_concurrent_executions
   source_code_hash               = var.function_source_code_hash
-  tags                           = local.tags
-  timeout                        = var.function_timeout
+  tags = merge(local.tags, {
+    Name = var.function_name
+  })
+  timeout = var.function_timeout
 
   dynamic "vpc_config" {
     for_each = var.function_vpc_config
@@ -105,7 +107,7 @@ variable "function_timeout" {
 }
 
 variable "function_vpc_config" {
-  type = "list"
+  type    = "list"
   default = []
 }
 

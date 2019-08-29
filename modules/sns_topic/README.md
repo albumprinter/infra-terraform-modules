@@ -49,4 +49,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **topic**: contains all attributes available in Terraform for SNS Topic resources
+* **sns_topic**: contains all attributes available in Terraform for SNS Topic resources
+* **sns_topic_subscription**: contains all attributes available in Terraform for SNS Topic Subscription resources

@@ -161,6 +161,8 @@ For more details, please check the [patterns documentation](docs/patterns.md)
 ## Outputs
 
 * **aws_ecs_task_definition**: contains all attributes available in Terraform for ECS Task Definition resources
-* **log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
-* **task_role**: contains all attributes available in Terraform for IAM Role resources
-* **execution_role**: contains all attributes available in Terraform for IAM Role resources
+* **cloudwatch_log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
+* **task_iam_role**: contains all attributes available in Terraform for IAM Role resources
+* **execution_iam_role**: contains all attributes available in Terraform for IAM Role resources
+* **cloudwatch_event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
+* **cloudwatch_event_target**: contains all attributes available in Terraform for CloudWatch Event Target resources

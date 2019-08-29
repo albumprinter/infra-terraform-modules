@@ -18,24 +18,36 @@ resource "aws_iam_role" "role" {
   tags                  = local.tags
 }
 
-resource "aws_iam_policy" "policy" {
-  count = var.provision == true && length(var.policy_statements) > 0 ? 1 : 0
-
-  # Required
-  policy = templatefile("${path.module}/templates/permissions_policy.tpl", {
-    policy_statements = var.policy_statements
-  })
-
-  # Optional
-  description = var.policy_description
-  name        = var.policy_name
-  name_prefix = var.policy_name_prefix
-  path        = var.policy_path
+# -------------------- Variables --------------------
+variable "assume_role_principal" {}
+variable "assume_role_principal_type" {
+  default = "Service"
 }
 
-resource "aws_iam_role_policy_attachment" "policy_attachment" {
-  count = var.provision == true && length(var.policy_statements) > 0 ? 1 : 0
+variable "role_description" {
+  default = null
+}
 
-  role       = "${aws_iam_role.role[0].name}"
-  policy_arn = "${aws_iam_policy.policy[0].arn}"
+variable "role_force_detach_policies" {
+  default = null
+}
+
+variable "role_max_session_duration" {
+  default = null
+}
+
+variable "role_name" {
+  default = null
+}
+
+variable "role_name_prefix" {
+  default = null
+}
+
+variable "role_path" {
+  default = null
+}
+
+variable "role_permissions_boundary" {
+  default = null
 }

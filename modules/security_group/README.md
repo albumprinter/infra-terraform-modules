@@ -54,4 +54,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **group**: contains all attributes available in Terraform for Security Group resources
+* **security_group**: contains all attributes available in Terraform for Security Group resources

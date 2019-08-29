@@ -1,18 +1,18 @@
 output "aws_ecs_task_definition" {
   value = aws_ecs_task_definition.task
 }
-output "log_group" {
-  value = module.log_group.group
+output "cloudwatch_log_group" {
+  value = module.log_group.cloudwatch_log_group
 }
-output "task_role" {
-  value = module.task_role.role
+output "task_iam_role" {
+  value = module.task_role.iam_role
 }
-output "execution_role" {
-  value = module.execution_role.role
+output "execution_iam_role" {
+  value = module.execution_role.iam_role
 }
-output "event_rule" {
-  value = module.event_rule.rule
+output "cloudwatch_event_rule" {
+  value = module.event_rule.cloudwatch_event_rule
 }
-output "event_target" {
-  value = module.event_rule.target
+output "cloudwatch_event_target" {
+  value = module.event_rule.cloudwatch_event_target
 }

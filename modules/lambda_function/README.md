@@ -212,19 +212,18 @@ For more details, please check the [patterns documentation](docs/patterns.md)
 
 ## Outputs
 
-* **function**: contains all attributes available in Terraform for Lambda function resources
-* **role**: contains all attributes available in Terraform for IAM Role resources
-* **log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
-* **dead_letter_queue**: contains all attributes available in Terraform for SQS Queue resources (in case `function_dead_letter_target_type` equals `SQS`)
-* **dead_letter_topic**: contains all attributes available in Terraform for SNS Topic resources (in case `function_dead_letter_target_type` equals `SNS`)
-* **event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
-* **rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
-* **resource**: contains all attributes available in Terraform for API Gateway Resource resources
-* **method**: contains all attributes available in Terraform for API Gateway Method resources
-* **method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
-* **integration**: contains all attributes available in Terraform for API Gateway Integration resources
-* **integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
-* **deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
-* **api_key**: contains all attributes available in Terraform for API Gateway API Key resources
-* **usage_plan**: contains all attributes available in Terraform for API Gateway Usage Plan resources
-* **usage_plan_key**: contains all attributes available in Terraform for API Gateway Usage Plan Key resources
+* **lambda_function**: contains all attributes available in Terraform for Lambda function resources
+* **iam_role**: contains all attributes available in Terraform for IAM Role resources
+* **cloudwatch_log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
+* **dead_letter_topic**: contains all attributes available in Terraform for SQS Queue resources (in case `function_dead_letter_target_type` equals `SQS`)
+* **dead_letter_queue**: contains all attributes available in Terraform for SNS Topic resources (in case `function_dead_letter_target_type` equals `SNS`)
+* **cloudwatch_event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
+* **api_gateway_rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
+* **api_gateway_resource**: contains all attributes available in Terraform for API Gateway Resource resources
+* **api_gateway_method**: contains all attributes available in Terraform for API Gateway Method resources
+* **api_gateway_method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
+* **api_gateway_integration**: contains all attributes available in Terraform for API Gateway Integration resources
+* **api_gateway_integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
+* **api_gateway_deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
+* **sns_trigger_topic**: contains all attributes available in Terraform for SNS Topic resources
+* **sns_trigger_topic_subscription**: contains all attributes available in Terraform for SNS Topic Subscription resources

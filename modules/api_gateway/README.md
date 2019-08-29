@@ -39,13 +39,13 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
-* **resource**: contains all attributes available in Terraform for API Gateway Resource resources
-* **method**: contains all attributes available in Terraform for API Gateway Method resources
-* **method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
-* **integration**: contains all attributes available in Terraform for API Gateway Integration resources
-* **integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
-* **deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
-* **api_key**: contains all attributes available in Terraform for API Gateway API Key resources
-* **usage_plan**: contains all attributes available in Terraform for API Gateway Usage Plan resources
-* **usage_plan_key**: contains all attributes available in Terraform for API Gateway Usage Plan Key resources
+* **api_gateway_rest_api**: contains all attributes available in Terraform for API Gateway REST API resources
+* **api_gateway_resource**: contains all attributes available in Terraform for API Gateway Resource resources
+* **api_gateway_method**: contains all attributes available in Terraform for API Gateway Method resources
+* **api_gateway_method_response**: contains all attributes available in Terraform for API Gateway Method Response resources
+* **api_gateway_integration**: contains all attributes available in Terraform for API Gateway Integration resources
+* **api_gateway_integration_response**: contains all attributes available in Terraform for API Gateway Integration Response resources
+* **api_gateway_deployment**: contains all attributes available in Terraform for API Gateway Deployment resources
+* **api_gateway_api_key**: contains all attributes available in Terraform for API Gateway API Key resources
+* **api_gateway_usage_plan**: contains all attributes available in Terraform for API Gateway Usage Plan resources
+* **api_gateway_usage_plan_key**: contains all attributes available in Terraform for API Gateway Usage Plan Key resources

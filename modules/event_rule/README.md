@@ -94,5 +94,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
-* **target**: contains all attributes available in Terraform for CloudWatch Event Target resources
+* **cloudwatch_event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources
+* **cloudwatch_event_target**: contains all attributes available in Terraform for CloudWatch Event Target resources

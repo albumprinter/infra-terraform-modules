@@ -7,13 +7,13 @@ module "hosted_zone" {
       name    = "infra.modules.test"
       type    = "A"
       ttl     = "300"
-      records = ["127.0.0.1"]   
+      records = ["127.0.0.1"]
     }
   ]
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
-  tag_domain = var.tag_domain
+  tag_domain      = var.tag_domain
 }
 
 module "hosted_zone_no_records" {
@@ -23,5 +23,5 @@ module "hosted_zone_no_records" {
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
-  tag_domain = var.tag_domain
+  tag_domain      = var.tag_domain
 }

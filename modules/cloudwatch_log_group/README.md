@@ -45,4 +45,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **group**: contains all attributes available in Terraform for CloudWatch Log Group resources
+* **cloudwatch_log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources

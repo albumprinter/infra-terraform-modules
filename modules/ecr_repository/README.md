@@ -69,6 +69,6 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **repository**: contains all attributes available in Terraform for ECR Repository resources
-* **policy**: contains all attributes available in Terraform for ECR Repository Policy resources
-* **lifecycle_policy**: contains all attributes available in Terraform for ECR Repository Lifecycle Policy resources
+* **ecr_repository**: contains all attributes available in Terraform for ECR Repository resources
+* **ecr_repository_policy**: contains all attributes available in Terraform for ECR Repository Policy resources
+* **ecr_lifecycle_policy**: contains all attributes available in Terraform for ECR Repository Lifecycle Policy resources

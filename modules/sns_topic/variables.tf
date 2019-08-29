@@ -8,7 +8,7 @@ variable "tag_others" {
   default = {}
 }
 
-# Custom
+# Internal
 variable "provision" {
   default = true
 }
