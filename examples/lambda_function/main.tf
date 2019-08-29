@@ -213,3 +213,20 @@ module "lambda_function_environment_variables" {
     }
   ]
 }
+
+module "lambda_function_sns_trigger" {
+  source = "../../modules/lambda_function"
+
+  function_name    = "infra_tf_modules_example_lambda_function_sns_trigger"
+  function_handler = var.function_handler
+  function_runtime = var.function_runtime
+
+  function_s3_bucket = var.function_s3_bucket
+  function_s3_key    = var.function_s3_key
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain      = var.tag_domain
+
+  sns_trigger = true
+}

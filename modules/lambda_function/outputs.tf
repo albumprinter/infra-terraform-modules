@@ -9,7 +9,7 @@ output "log_group" {
 }
 
 output "dead_letter_topic" {
-  value = module.dead_letter_topic.topic
+  value = module.dead_letter_topic.sns_topic
 }
 
 output "dead_letter_queue" {
@@ -17,7 +17,7 @@ output "dead_letter_queue" {
 }
 
 output "event_rule" {
-  value = module.event_rule.rule 
+  value = module.event_rule.rule
 }
 
 output "api_gateway_rest_api" {

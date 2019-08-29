@@ -4,7 +4,7 @@ This module supports two patterns:
 
 * CloudWatch Rule (scheduled or event pattern) + Lambda
 * API Gateway + Lambda
-
+* SNS Topic + Lambda
 This page contains all the required and optional parameters that can be used to customized your deployment. 
 
 ## CloudWatch Event Rule + Lambda
@@ -39,6 +39,17 @@ This resource **will be created only if** a `CloudWatch Event Rule` is configure
 * [event_target_role_arn](https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#role_arn)
 * [event_target_input_transformer_input_paths](https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#input_paths)
 * [event_target_input_transformer_input_template](https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#input_template)
+
+------
+
+#### Lambda Permission
+* [event_rule_lambda_permission_action](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#action)
+  * Note: by default, uses the value `lambda:InvokeFunction` if not specified
+* [event_rule_lambda_permission_event_source_token](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#event_source_token)
+* [event_rule_lambda_permission_qualifier](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#qualifier)
+* [event_rule_lambda_permission_source_account](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#source_account)
+* [event_rule_lambda_permission_statement_id](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id)
+* [event_rule_lambda_permission_statement_id_prefix](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id_prefix)
 
 ------
 
@@ -139,3 +150,68 @@ This resource **will be created only if** `api_gateway_rest_api_name` is configu
 * [api_gateway_deployment_description](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html#description)
 * [api_gateway_deployment_stage_description](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html#stage_description)
 * [api_gateway_deployment_variables](https://www.terraform.io/docs/providers/aws/r/api_gateway_deployment.html#variables)
+
+------
+
+#### Lambda Permission
+
+* [api_gateway_lambda_permission_action](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#action)
+  * Note: by default, uses the value `lambda:InvokeFunction` if not specified
+* [api_gateway_lambda_permission_event_source_token](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#event_source_token)
+* [api_gateway_lambda_permission_qualifier](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#qualifier)
+* [api_gateway_lambda_permission_source_account](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#source_account)
+* [api_gateway_lambda_permission_statement_id](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id)
+* [api_gateway_lambda_permission_statement_id_prefix](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id_prefix)
+
+------
+
+## SNS Topic + Lambda
+
+#### SNS Topic
+
+This resource **will be created only if** `sns_trigger` is configured. If so, there are required and optional parameters as described below.
+
+##### Optional
+
+* [sns_trigger_name](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#name)
+* [sns_trigger_name_prefix](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#name_prefix)
+* [sns_trigger_display_name](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#display_name)
+* [sns_trigger_policy](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#policy)
+* [sns_trigger_delivery_policy](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#delivery_policy)
+* [sns_trigger_application_success_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#application_success_feedback_role_arn)
+* [sns_trigger_application_success_feedback_sample_rate](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#application_success_feedback_sample_rate)
+* [sns_trigger_application_failure_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#application_failure_feedback_role_arn)
+* [sns_trigger_http_success_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#http_success_feedback_role_arn)
+* [sns_trigger_http_success_feedback_sample_rate](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#http_success_feedback_sample_rate)
+* [sns_trigger_http_failure_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#http_failure_feedback_role_arn)
+* [sns_trigger_kms_master_key_id](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#kms_master_key_id)
+* [sns_trigger_lambda_success_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#lambda_success_feedback_role_arn)
+* [sns_trigger_lambda_success_feedback_sample_rate](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#lambda_success_feedback_sample_rate)
+* [sns_trigger_lambda_failure_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#lambda_failure_feedback_role_arn)
+* [sns_trigger_sqs_success_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#sqs_success_feedback_role_arn)
+* [sns_trigger_sqs_success_feedback_sample_rate](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#sqs_success_feedback_sample_rate)
+* [sns_trigger_sqs_failure_feedback_role_arn](https://www.terraform.io/docs/providers/aws/r/sns_topic.html#sqs_failure_feedback_role_arn)
+
+------
+
+#### SNS Topic Subscription
+
+This resource **will be created only if** `sns_trigger` is configured. If so, there are required and optional parameters as described below.
+
+* [sns_trigger_subscription_endpoint_auto_confirms](https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#endpoint_auto_confirms)
+* [sns_trigger_subscription_confirmation_timeout_in_minutes](https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#confirmation_timeout_in_minutes)
+* [sns_trigger_subscription_raw_message_delivery](https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#raw_message_delivery)
+* [sns_trigger_subscription_filter_policy](https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#filter_policy)
+* [sns_trigger_subscription_delivery_policy](https://www.terraform.io/docs/providers/aws/r/sns_topic_subscription.html#delivery_policy)
+
+------
+
+#### Lambda Permission
+
+* [sns_trigger_lambda_permission_action](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#action)
+  * Note: by default, uses the value `lambda:InvokeFunction` if not specified
+* [sns_trigger_lambda_permission_event_source_token](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#event_source_token)
+* [sns_trigger_lambda_permission_qualifier](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#qualifier)
+* [sns_trigger_lambda_permission_source_account](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#source_account)
+* [sns_trigger_lambda_permission_statement_id](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id)
+* [sns_trigger_lambda_permission_statement_id_prefix](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html#statement_id_prefix)

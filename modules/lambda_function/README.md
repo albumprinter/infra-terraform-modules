@@ -134,12 +134,14 @@ This module also supports common patterns such as:
 
 * CloudWatch Rule (scheduled or event pattern) + Lambda
 * API Gateway + Lambda
+* SNS Topic + Lambda
 
 To make use of these patterns, just pass one of the required parameters below:
 
 * **event_rule_schedule_expression**: for scheduled CloudWatch Rules
 * **event_rule_event_pattern**: for pattern based CloudWatch Rules
 * **api_gateway_rest_api_name**: for API Gateway integration
+* **sns_trigger**: for SNS Topic
 
 ### Examples
 
@@ -181,6 +183,26 @@ module "lambda_function_api_gateway" {
   tag_domain      = var.tag_domain
 
   api_gateway_rest_api_name = "lambda_function_api_gateway"
+}
+```
+
+#### SNS Topic Trigger
+```
+module "lambda_function_sns_trigger" {
+  source = "../../modules/lambda_function"
+
+  function_name    = "infra_tf_modules_example_lambda_function_sns_trigger"
+  function_handler = var.function_handler
+  function_runtime = var.function_runtime
+
+  function_s3_bucket = var.function_s3_bucket
+  function_s3_key    = var.function_s3_key
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain      = var.tag_domain
+
+  sns_trigger = true
 }
 ```
 

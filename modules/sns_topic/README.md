@@ -1,6 +1,9 @@
 # Module: SNS Topic
 
-This module provisions a SNS Topic.
+This module provisions a SNS Topic with two optional resources:
+
+* SNS Topic Subscription
+* SNS Topic Policy
 
 ## Examples 
 
@@ -15,12 +18,13 @@ module "sns_topic" {
 }
 ```
 
-#### Including a custom topic name
+#### Including a topic subscription
 ```
 module "sns_topic" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/sns_topic"
 
-  name = "my_topic"
+  sns_topic_subscription_protocol = "lambda"
+  sns_topic_subscription_endpoint = "arn:aws:lambda:eu-west-1:*:function:MY_FUNCTION"
 
   tag_domain = var.tag_domain
   tag_environment = var.tag_environment
