@@ -1,15 +1,13 @@
-variable "function_handler" {
-  default = "index.handler"
+variable "function_runtime_nodejs" {
+  default = "nodejs10.x"
 }
-variable "function_runtime" {
-  default = "nodejs8.10"
+variable "function_runtime_dotnetcore" {
+  default = "dotnetcore2.1"
 }
-variable "function_s3_bucket" {
-  default = "eops-prod-builds"
+variable "function_runtime_python" {
+  default = "python3.7"
 }
-variable "function_s3_key" {
-  default = "builds/lambda/boilerplate/node_boilerplate.zip"
-}
+
 variable "iam_role_policy_statements" {
   default = [
     {

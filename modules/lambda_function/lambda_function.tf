@@ -1,12 +1,12 @@
 resource "aws_lambda_function" "function" {
   # Required
   function_name = var.function_name
-  handler       = var.function_handler
+  handler       = local.function_handler
   role          = module.role.iam_role.arn
   runtime       = var.function_runtime
   filename      = var.function_filename
-  s3_bucket     = var.function_s3_bucket
-  s3_key        = var.function_s3_key
+  s3_bucket     = local.function_s3_bucket
+  s3_key        = local.function_s3_key
 
   # Internally handled
   dead_letter_config {
@@ -49,9 +49,11 @@ resource "aws_lambda_function" "function" {
 
 variable "function_name" {}
 
-variable "function_handler" {}
-
 variable "function_runtime" {}
+
+variable "function_handler" {
+  default = null
+}
 
 variable "function_filename" {
   default = null

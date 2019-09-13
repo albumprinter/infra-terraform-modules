@@ -16,6 +16,20 @@ module "lambda_function" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
 
   function_name    = "example"
+  function_runtime = var.function_runtime
+
+  tag_cost_center = var.tag_cost_center
+  tag_environment = var.tag_environment
+  tag_domain      = var.tag_domain
+}
+```
+
+#### Custom deployment package
+```
+module "lambda_function" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/lambda_function"
+
+  function_name    = "example"
   function_handler = var.function_handler
   function_runtime = var.function_runtime
 
@@ -102,16 +116,7 @@ module "lambda_function_sns" {
 The following parameters are considered required.
 
 * [function_name](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#function_name)
-* [function_handler](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#handler)
 * [function_runtime](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#runtime)
-* [function_filename](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#filename)
-  * Note: If defined, The `function_s3_`-prefixed options cannot be used.
-* [function_s3_bucket](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#s3_bucket)
-  * Note: Conflicts with `function_filename`
-* [function_s3_key](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#s3_key)
-  * Note: Conflicts with `function_filename`
-* [function_s3_object_version](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#s3_object_version)
-  * Note: Conflicts with `function_filename`
 
 #### Tags
 Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.

@@ -2,11 +2,7 @@ module "lambda_function" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_nodejs
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -19,11 +15,7 @@ module "lambda_function_vpc" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_vpc"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_dotnetcore
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -43,11 +35,7 @@ module "lambda_function_sns" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_sns"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_python
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -60,11 +48,7 @@ module "lambda_function_sns_vpc" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_sns_vpc"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_nodejs
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -84,11 +68,7 @@ module "lambda_function_scheduled" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_scheduled"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_nodejs
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -101,11 +81,7 @@ module "lambda_function_scheduled_vpc" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_scheduled_vpc"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_python
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -125,11 +101,7 @@ module "lambda_function_event_pattern" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_event_pattern"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_dotnetcore
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -148,11 +120,7 @@ module "lambda_function_event_pattern_vpc" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_event_pattern_vpc"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_python
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -178,11 +146,7 @@ module "lambda_function_api_gateway" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_api_gateway"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_dotnetcore
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -195,11 +159,7 @@ module "lambda_function_environment_variables" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_environment_variables"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_nodejs
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
@@ -218,11 +178,7 @@ module "lambda_function_sns_trigger" {
   source = "../../modules/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_sns_trigger"
-  function_handler = var.function_handler
-  function_runtime = var.function_runtime
-
-  function_s3_bucket = var.function_s3_bucket
-  function_s3_key    = var.function_s3_key
+  function_runtime = var.function_runtime_nodejs
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment
