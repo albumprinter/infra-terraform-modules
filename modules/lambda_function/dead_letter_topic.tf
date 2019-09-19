@@ -1,6 +1,6 @@
 module "dead_letter_topic" {
   source    = "../sns_topic"
-  provision = var.function_dead_letter_target_type == "SNS" ? true : false
+  provision = var.provision == true && var.function_dead_letter_target_type == "SNS" ? true : false
 
   #Required
   tag_environment = var.tag_environment

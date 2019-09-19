@@ -74,6 +74,4 @@ variable "aws_organization_id" {
 variable "max_number_of_images" {
   default = null
 }
-variable "provision" {
-  default = true
-}
+

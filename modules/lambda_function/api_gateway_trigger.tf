@@ -9,7 +9,7 @@ module "api_gateway" {
   tag_domain                = var.tag_domain
 
   # Internally handled
-  api_gateway_integration_uri       = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function.arn}/invocations"
+  api_gateway_integration_uri       = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function[0].arn}/invocations"
   api_gateway_deployment_stage_name = var.api_gateway_deployment_stage_name != null ? var.api_gateway_deployment_stage_name : var.tag_environment
 
   # Optional
@@ -55,7 +55,7 @@ resource "aws_lambda_permission" "api_gateway_lambda_permission" {
 
   # Internally handled
   action        = var.api_gateway_lambda_permission_action
-  function_name = aws_lambda_function.function.function_name
+  function_name = aws_lambda_function.function[0].function_name
   principal     = "apigateway.amazonaws.com"
 
   # Optional

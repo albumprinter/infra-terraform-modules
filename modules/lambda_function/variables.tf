@@ -13,3 +13,7 @@ variable "tag_others" {
 variable "region" {
   default = "eu-west-1"
 }
+
+variable "provision" {
+  default = true
+}

@@ -1,5 +1,6 @@
 module "log_group" {
-  source = "../cloudwatch_log_group"
+  source    = "../cloudwatch_log_group"
+  provision = var.provision == true ? true : false
 
   # Required
   tag_environment = var.tag_environment

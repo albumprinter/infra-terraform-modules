@@ -1,5 +1,5 @@
 output "lambda_function" {
-  value = aws_lambda_function.function
+  value = aws_lambda_function.function[0]
 }
 output "iam_role" {
   value = module.role.iam_role
