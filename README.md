@@ -11,15 +11,21 @@ The directories in this repository are organized in the following way:
 
 ## Available Modules
 
-* [**API Gateway**](modules/api_gateway)
-* [**CloudWatch Log Group**](modules/cloudwatch_log_group)
-* [**CloudWatch Event Rule**](modules/event_rule)
-* [**Config Rule**](modules/config_config_rule)
-* [**ECR Repository**](modules/ecr_repository)
-* [**ECS Task Definition**](modules/ecs_task)
-* [**IAM Role**](modules/iam_role)
-* [**Lambda Function**](modules/lambda_function)
-* [**Route 53 Hosted Zone**](modules/route53_hosted_zone)
-* [**Security Group**](modules/security_group)
-* [**SNS Topic**](modules/sns_topic)
-* [**SQS Queue**](modules/sqs_queue)
+### AWS
+
+* [**API Gateway**](modules/aws/api_gateway)
+* [**CloudWatch Log Group**](modules/aws/cloudwatch_log_group)
+* [**CloudWatch Event Rule**](modules/aws/event_rule)
+* [**Config Rule**](modules/aws/config_config_rule)
+* [**ECR Repository**](modules/aws/ecr_repository)
+* [**ECS Task Definition**](modules/aws/ecs_task)
+* [**IAM Role**](modules/aws/iam_role)
+* [**Lambda Function**](modules/aws/lambda_function)
+* [**Route 53 Hosted Zone**](modules/aws/route53_hosted_zone)
+* [**Security Group**](modules/aws/security_group)
+* [**SNS Topic**](modules/aws/sns_topic)
+* [**SQS Queue**](modules/aws/sqs_queue)
+
+### vSphere
+
+* [**Virtual Machine**](modules/vsphere/virtual_machine)
