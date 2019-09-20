@@ -1,5 +1,6 @@
 module "role" {
-  source = "../iam_role"
+  source    = "../iam_role"
+  provision = var.provision == true ? true : false
 
   # Required
   tag_environment = var.tag_environment

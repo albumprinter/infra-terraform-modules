@@ -9,7 +9,7 @@ module "sqs_queue" {
 module "sqs_queue_name" {
   source = "../../modules/sqs_queue"
 
-  name = "my_queue"
+  name = "infra-tf-modules-examples-named-sqs-queue"
 
   tag_domain      = var.tag_domain
   tag_environment = var.tag_environment

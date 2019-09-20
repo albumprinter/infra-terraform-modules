@@ -1,4 +1,6 @@
 resource "aws_lambda_function" "function" {
+  count = var.provision == true ? 1 : 0
+
   # Required
   function_name = var.function_name
   handler       = local.function_handler
@@ -105,7 +107,7 @@ variable "function_source_code_hash" {
 }
 
 variable "function_timeout" {
-  default = null
+  default = 60
 }
 
 variable "function_vpc_config" {

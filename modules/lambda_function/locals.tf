@@ -15,7 +15,7 @@ locals {
 
   handlers = {
     nodejs     = "index.handler"
-    python     = "lambda_function.handler"
+    python     = "lambda_function.lambda_handler"
     dotnetcore = "LambdaTest::LambdaTest.LambdaHandler::handleRequest"
   }
 }

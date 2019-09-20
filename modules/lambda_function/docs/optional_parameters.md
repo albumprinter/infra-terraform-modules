@@ -33,8 +33,20 @@ They follow the same name as in the offical Terraform documentation with the add
 * [function_reserved_concurrent_executions](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#reserved_concurrent_executions)
 * [function_source_code_hash](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#source_code_hash)
 * [function_timeout](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#timeout)
-* [function_vpc_config_subnet_ids](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#subnet_ids)
-* [function_vpc_config_security_group_ids](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#security_group_ids)
+  * Note: by default, uses the value `60` if not specified
+* [function_vpc_config](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#vpc_config)
+  * Note: This attribute should be passed as an array containing one or more objects with the following parameters:
+      * [subnet_ids](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#subnet_ids)
+      * [security_group_ids](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#security_group_ids)
+    * Example:
+  ```
+  function_vpc_config = [
+    {
+      subnet_ids = "..."
+      security_group_ids = "..."
+    }
+  ]
+  ```
 
 ------
 
