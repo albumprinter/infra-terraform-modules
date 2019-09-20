@@ -40,5 +40,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **aws_sfn_state_machine**: contains all attributes available in Terraform for Step Function State Machine resources
+* **sfn_state_machine**: contains all attributes available in Terraform for Step Function State Machine resources
 * **iam_role**: contains all attributes available in Terraform for IAM Role resources
