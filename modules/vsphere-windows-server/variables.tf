@@ -22,6 +22,8 @@ variable "vm_windows_version" {
 variable "vm_domain" {}
 variable "vm_domain_admin_user" {}
 variable "vm_domain_admin_password" {}
+variable "vm_admin_password" {}
+variable "vm_admin_user" {}
 variable "vm_workgroup" {}
 variable "vm_cpu" {
   default = 2
