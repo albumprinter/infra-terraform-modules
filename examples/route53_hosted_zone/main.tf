@@ -1,7 +1,7 @@
 module "hosted_zone" {
   source = "../../modules/route53_hosted_zone"
 
-  zone_name = "infra.modules.test"
+  zone_name = "infra.tf.modules.examples.test"
   records = [
     {
       name    = "infra.modules.test"
@@ -19,7 +19,7 @@ module "hosted_zone" {
 module "hosted_zone_no_records" {
   source = "../../modules/route53_hosted_zone"
 
-  zone_name = "infra.modules.norecords.test"
+  zone_name = "infra.tf.modules.examples.norecords.test"
 
   tag_cost_center = var.tag_cost_center
   tag_environment = var.tag_environment

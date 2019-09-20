@@ -1,6 +1,6 @@
 module "dead_letter_queue" {
   source    = "../sqs_queue"
-  provision = var.function_dead_letter_target_type == "SQS" ? true : false
+  provision = var.provision == true && var.function_dead_letter_target_type == "SQS" ? true : false
 
   #Required
   tag_environment = var.tag_environment
@@ -15,7 +15,7 @@ module "dead_letter_queue" {
       "Action" : ["sqs:SendMessage"],
       "Condition" : {
         "ArnEquals" : {
-          "aws:SourceArn" : "${aws_lambda_function.function.arn}"
+          "aws:SourceArn" : "${aws_lambda_function.function[0].arn}"
         }
       }
     }

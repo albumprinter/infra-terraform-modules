@@ -1,4 +1,6 @@
 resource "aws_cloudwatch_log_group" "log_group" {
+  count = var.provision == true ? 1 : 0
+
   # Required
   tags = local.tags
 

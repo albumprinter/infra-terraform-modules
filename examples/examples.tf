@@ -22,3 +22,7 @@ module "ecr_repository" {
 module "sqs_queue" {
   source = "./sqs_queue"
 }
+
+module "config_config_rule" {
+  source = "./config_config_rule"
+}

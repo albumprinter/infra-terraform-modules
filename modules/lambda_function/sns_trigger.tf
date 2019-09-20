@@ -5,7 +5,7 @@ module "sns_trigger" {
   # Internally handled
   sns_topic_name                  = var.sns_trigger_name != null ? var.sns_trigger_name : var.function_name
   sns_topic_subscription_protocol = "lambda"
-  sns_topic_subscription_endpoint = aws_lambda_function.function.arn
+  sns_topic_subscription_endpoint = aws_lambda_function.function[0].arn
 
   # Optional 
   sns_topic_policy                                   = var.sns_trigger_policy
@@ -46,7 +46,7 @@ resource "aws_lambda_permission" "sns_trigger_lambda_permission" {
   action = var.sns_trigger_lambda_permission_action
 
   # Internally handled
-  function_name = aws_lambda_function.function.function_name
+  function_name = aws_lambda_function.function[0].function_name
   principal     = "sns.amazonaws.com"
   source_arn    = module.sns_trigger.sns_topic.arn
 
