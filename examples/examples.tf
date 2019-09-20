@@ -26,3 +26,7 @@ module "sqs_queue" {
 module "config_config_rule" {
   source = "./config_config_rule"
 }
+
+module "sfn_state_machine" {
+  source = "./sfn_state_machine"
+}
