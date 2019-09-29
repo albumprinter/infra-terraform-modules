@@ -2,6 +2,9 @@ module "sns_trigger" {
   source    = "../sns_topic"
   provision = var.sns_trigger == true ? true : false
 
+  #Required
+  tags = var.tags
+
   # Internally handled
   sns_topic_name                  = var.sns_trigger_name != null ? var.sns_trigger_name : var.function_name
   sns_topic_subscription_protocol = "lambda"
@@ -29,14 +32,6 @@ module "sns_trigger" {
   sns_topic_subscription_raw_message_delivery            = var.sns_trigger_subscription_raw_message_delivery
   sns_topic_subscription_filter_policy                   = var.sns_trigger_subscription_filter_policy
   sns_topic_subscription_delivery_policy                 = var.sns_trigger_subscription_delivery_policy
-
-  #Required
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
-
-  #Optional
-  tag_others = var.tag_others
 }
 
 resource "aws_lambda_permission" "sns_trigger_lambda_permission" {

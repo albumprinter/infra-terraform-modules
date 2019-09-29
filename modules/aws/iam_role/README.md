@@ -2,22 +2,26 @@
 
 This module provisions an IAM Role along with an optional IAM policy.
 
-## Examples 
+## Examples
 
 #### Minimal configuration
+
 ```
 module "role" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/iam_role"
 
-  assume_role_principal = "lambda.amazonaws.com"  
-  
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain = var.tag_domain
+  assume_role_principal = "lambda.amazonaws.com"
+
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 #### With optional IAM policy
+
 ```
 module "role" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/iam_role"
@@ -34,10 +38,12 @@ module "role" {
       "Resource" : ["arn:aws:logs:*:*:*"]
     }
   ]
-  
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain = var.tag_domain
+
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
@@ -45,14 +51,8 @@ module "role" {
 
 The following parameters are considered required.
 
-* assume_role_principal: specifies who is authorized to assume the role (e.g. lambda.amazonaws.com, events.amazonaws.com, etc)
-
-#### Tags
-Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
-
-* **tag_environment**
-* **tag_cost_center**
-* **tag_domain**
+- **assume_role_principal**: specifies who is authorized to assume the role (e.g. lambda.amazonaws.com, events.amazonaws.com, etc)
+- **tags**: Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
 
 ## Optional Parameters
 
@@ -62,5 +62,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **iam_role**: contains all attributes available in Terraform for IAM Role resources
-* **iam_policy**: contains all attributes available in Terraform for IAM Policy resources
+- **iam_role**: contains all attributes available in Terraform for IAM Role resources
+- **iam_policy**: contains all attributes available in Terraform for IAM Policy resources

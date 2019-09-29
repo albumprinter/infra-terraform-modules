@@ -5,6 +5,7 @@ module "custom_rule" {
   # Required
   function_name    = local.custom_rule_function_name
   function_runtime = local.custom_rule_function_runtime
+  tags             = var.tags
 
   # Optional
   function_handler                        = var.custom_rule_function_handler
@@ -38,14 +39,6 @@ module "custom_rule" {
   iam_role_policy_name           = var.custom_rule_iam_role_policy_name
   iam_role_policy_name_prefix    = var.custom_rule_iam_role_policy_name_prefix
   iam_role_policy_path           = var.custom_rule_iam_role_policy_path
-
-  # Required
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
-
-  # Optional
-  tag_others = var.tag_others
 }
 
 resource "aws_lambda_permission" "custom_rule" {

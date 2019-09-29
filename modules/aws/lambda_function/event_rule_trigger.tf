@@ -5,9 +5,7 @@ module "event_rule" {
   #Required
   event_rule_event_pattern       = var.event_rule_event_pattern
   event_rule_schedule_expression = var.event_rule_schedule_expression
-  tag_environment                = var.tag_environment
-  tag_cost_center                = var.tag_cost_center
-  tag_domain                     = var.tag_domain
+  tags                           = var.tags
 
   # Internally handled
   event_rule_name  = var.event_rule_name != null ? var.event_rule_name : var.function_name
@@ -24,8 +22,6 @@ module "event_rule" {
   event_target_input_path        = var.event_target_input_path
   event_target_role_arn          = var.event_target_role_arn
   event_target_input_transformer = var.event_target_input_transformer
-
-  tag_others = var.tag_others
 }
 
 resource "aws_lambda_permission" "event_rule_lambda_permission" {

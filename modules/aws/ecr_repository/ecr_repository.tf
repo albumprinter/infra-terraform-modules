@@ -3,9 +3,7 @@ resource "aws_ecr_repository" "repo" {
 
   # Required
   name = var.name
-
-  # Optional
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = var.name
   })
 }

@@ -2,23 +2,27 @@
 
 This module provisions a SNS Topic with two optional resources:
 
-* SNS Topic Subscription
-* SNS Topic Policy
+- SNS Topic Subscription
+- SNS Topic Policy
 
-## Examples 
+## Examples
 
 #### Minimal configuration
+
 ```
 module "sns_topic" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sns_topic"
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 #### Including a topic subscription
+
 ```
 module "sns_topic" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sns_topic"
@@ -26,20 +30,17 @@ module "sns_topic" {
   sns_topic_subscription_protocol = "lambda"
   sns_topic_subscription_endpoint = "arn:aws:lambda:eu-west-1:*:function:MY_FUNCTION"
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 ## Required parameters
 
-#### Tags
-Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
-
-* **tag_environment**
-* **tag_cost_center**
-* **tag_domain**
+- **tags**: Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
 
 ## Optional Parameters
 
@@ -49,5 +50,5 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **sns_topic**: contains all attributes available in Terraform for SNS Topic resources
-* **sns_topic_subscription**: contains all attributes available in Terraform for SNS Topic Subscription resources
+- **sns_topic**: contains all attributes available in Terraform for SNS Topic resources
+- **sns_topic_subscription**: contains all attributes available in Terraform for SNS Topic Subscription resources

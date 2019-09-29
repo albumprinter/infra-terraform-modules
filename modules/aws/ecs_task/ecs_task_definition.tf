@@ -66,7 +66,7 @@ resource "aws_ecs_task_definition" "task" {
     }
   }
 
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = var.task_family
   })
 }

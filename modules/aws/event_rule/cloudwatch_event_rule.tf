@@ -4,7 +4,7 @@ resource "aws_cloudwatch_event_rule" "rule" {
   # Required  
   event_pattern       = var.event_rule_event_pattern
   schedule_expression = var.event_rule_schedule_expression
-  tags                = local.tags
+  tags                = var.tags
 
   # Optional
   description = var.event_rule_description

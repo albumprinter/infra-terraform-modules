@@ -2,9 +2,7 @@ module "iam_role" {
   source = "../iam_role"
 
   # Required  
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   # Internally handled
   assume_role_principal = "states.amazonaws.com"
@@ -23,8 +21,6 @@ module "iam_role" {
   policy_name        = var.iam_role_policy_name != null ? var.iam_role_policy_name : var.sfn_state_machine_name
   policy_name_prefix = var.iam_role_policy_name_prefix
   policy_path        = var.iam_role_policy_path
-
-  tag_others = var.tag_others
 }
 
 # -------------------- Variables --------------------

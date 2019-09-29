@@ -1,14 +1,14 @@
 resource "aws_route53_zone" "zone" {
   # Required
   name = var.zone_name
+  tags = merge(var.tags, {
+    Name = var.zone_name
+  })
 
   # Optional
   comment           = var.zone_comment
   delegation_set_id = var.zone_delegation_set_id
   force_destroy     = var.zone_force_destroy
-  tags = merge(local.tags, {
-    Name = var.zone_name
-  })
 
   dynamic "vpc" {
     for_each = [for config in var.zone_vpc : {

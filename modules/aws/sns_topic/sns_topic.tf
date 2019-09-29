@@ -2,7 +2,7 @@ resource "aws_sns_topic" "topic" {
   count = var.provision == true ? 1 : 0
 
   # Required
-  tags = local.tags
+  tags = var.tags
 
   # Optional
   name                                     = var.sns_topic_name

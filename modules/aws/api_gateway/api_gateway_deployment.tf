@@ -1,11 +1,13 @@
 resource "aws_api_gateway_deployment" "deployment" {
   count = var.provision == true && var.api_gateway_integration_type != null ? 1 : 0
 
+  # Required
+  stage_name = var.api_gateway_deployment_stage_name
+
   # Internally handled
   rest_api_id = aws_api_gateway_rest_api.api[0].id
 
   # Optional
-  stage_name        = var.api_gateway_deployment_stage_name != null ? var.api_gateway_deployment_stage_name : var.tag_environment
   description       = var.api_gateway_deployment_description
   stage_description = var.api_gateway_deployment_stage_description
   variables         = var.api_gateway_deployment_variables

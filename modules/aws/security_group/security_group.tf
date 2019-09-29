@@ -1,4 +1,9 @@
 resource "aws_security_group" "group" {
+  # Required
+  tags = merge(var.tags, {
+    Name = var.name != null ? var.name : "Managed by Terraform"
+  })
+
   # Optional
   name        = var.name
   name_prefix = var.name_prefix
@@ -58,9 +63,6 @@ resource "aws_security_group" "group" {
   description            = var.description
   revoke_rules_on_delete = var.revoke_rules_on_delete
   vpc_id                 = var.vpc_id
-  tags = merge(local.tags, {
-    Name = var.name != null ? var.name : "Managed by Terraform"
-  })
 }
 
 # -------------------- Variables --------------------

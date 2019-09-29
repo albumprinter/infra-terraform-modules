@@ -1,11 +1,7 @@
 resource "aws_ecs_cluster" "example" {
   name = "infra_tf_modules_example_ecs_task"
 
-  tags = {
-    Domain        = var.tag_domain
-    Enviroment    = var.tag_environment
-    "Cost Center" = var.tag_cost_center
-  }
+  tags = var.tags
 }
 
 module "security_group" {
@@ -22,7 +18,5 @@ module "security_group" {
     }
   ]
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 }
