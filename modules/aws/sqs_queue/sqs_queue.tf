@@ -1,6 +1,9 @@
 resource "aws_sqs_queue" "queue" {
   count = var.provision == true ? 1 : 0
 
+  # Required
+  tags = var.tags
+
   # Optional
   content_based_deduplication       = var.content_based_deduplication
   delay_seconds                     = var.delay_seconds
@@ -13,7 +16,6 @@ resource "aws_sqs_queue" "queue" {
   name_prefix                       = var.name_prefix
   receive_wait_time_seconds         = var.receive_wait_time_seconds
   redrive_policy                    = var.redrive_policy
-  tags                              = local.tags
   visibility_timeout_seconds        = var.visibility_timeout_seconds
 }
 

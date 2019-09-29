@@ -3,9 +3,7 @@ module "dead_letter_queue" {
   provision = var.provision == true && var.function_dead_letter_target_type == "SQS" ? true : false
 
   #Required
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   # Internally handled
   name = local.function_dead_letter_target_name
@@ -32,8 +30,6 @@ module "dead_letter_queue" {
   receive_wait_time_seconds         = var.dead_letter_queue_receive_wait_time_seconds
   redrive_policy                    = var.dead_letter_queue_redrive_policy
   visibility_timeout_seconds        = var.dead_letter_queue_visibility_timeout_seconds
-
-  tag_others = var.tag_others
 }
 
 # ----------------------- Variables -----------------------

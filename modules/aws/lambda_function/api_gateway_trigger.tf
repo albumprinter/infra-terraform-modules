@@ -3,14 +3,11 @@ module "api_gateway" {
   provision = var.api_gateway_rest_api_name != null ? true : false
 
   # Required
-  api_gateway_rest_api_name = var.api_gateway_rest_api_name
-  tag_environment           = var.tag_environment
-  tag_cost_center           = var.tag_cost_center
-  tag_domain                = var.tag_domain
+  api_gateway_rest_api_name         = var.api_gateway_rest_api_name
+  api_gateway_deployment_stage_name = var.api_gateway_deployment_stage_name
 
   # Internally handled
-  api_gateway_integration_uri       = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function[0].arn}/invocations"
-  api_gateway_deployment_stage_name = var.api_gateway_deployment_stage_name != null ? var.api_gateway_deployment_stage_name : var.tag_environment
+  api_gateway_integration_uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function[0].arn}/invocations"
 
   # Optional
   api_gateway_rest_api_description              = var.api_gateway_rest_api_description

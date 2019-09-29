@@ -1,14 +1,9 @@
 # Required
-variable "tag_domain" {}
-variable "tag_environment" {}
-variable "tag_cost_center" {}
-
-# Optional
-variable "tag_others" {
-  default = {}
+variable "tags" {
+  type = map
 }
 
-# Internal
+# Optional
 variable "provision" {
   default = true
 }

@@ -4,9 +4,7 @@ module "lambda_function" {
   function_name    = "infra-tf-modules-examples-lambda-function"
   function_runtime = var.function_runtime_nodejs
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   iam_role_policy_statements = var.iam_role_policy_statements
 }
@@ -17,9 +15,7 @@ module "lambda_function_vpc" {
   function_name    = "infra-tf-modules-examples-lambda-function-vpc"
   function_runtime = var.function_runtime_dotnetcore
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   iam_role_policy_statements = var.iam_role_policy_statements
 
@@ -37,9 +33,7 @@ module "lambda_function_sns" {
   function_name    = "infra-tf-modules-examples-lambda-function-sns"
   function_runtime = var.function_runtime_python
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   function_dead_letter_target_type = "SNS"
 }
@@ -50,9 +44,7 @@ module "lambda_function_sns_vpc" {
   function_name    = "infra-tf-modules-examples-lambda-function-sns-vpc"
   function_runtime = var.function_runtime_nodejs
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   function_dead_letter_target_type = "SNS"
 
@@ -70,9 +62,7 @@ module "lambda_function_scheduled" {
   function_name    = "infra-tf-modules-examples-lambda-function-scheduled"
   function_runtime = var.function_runtime_nodejs
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   event_rule_schedule_expression = "cron(0 2 * * ? *)"
 }
@@ -83,9 +73,7 @@ module "lambda_function_scheduled_vpc" {
   function_name    = "infra-tf-modules-examples-lambda-function-scheduled-vpc"
   function_runtime = var.function_runtime_python
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   event_rule_schedule_expression = "cron(0 2 * * ? *)"
 
@@ -103,9 +91,7 @@ module "lambda_function_event_pattern" {
   function_name    = "infra-tf-modules-examples-lambda-function-event-pattern"
   function_runtime = var.function_runtime_dotnetcore
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   event_rule_event_pattern = <<PATTERN
 {
@@ -122,9 +108,7 @@ module "lambda_function_event_pattern_vpc" {
   function_name    = "infra-tf-modules-examples-lambda-function-event-pattern-vpc"
   function_runtime = var.function_runtime_python
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   event_rule_event_pattern = <<PATTERN
 {
@@ -148,9 +132,7 @@ module "lambda_function_api_gateway" {
   function_name    = "infra-tf-modules-examples-lambda-function-api-gateway"
   function_runtime = var.function_runtime_dotnetcore
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   api_gateway_rest_api_name = "lambda_function_api_gateway"
 }
@@ -161,9 +143,7 @@ module "lambda_function_environment_variables" {
   function_name    = "infra-tf-modules-examples-lambda-function-environment-variables"
   function_runtime = var.function_runtime_nodejs
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   function_environment = [
     {
@@ -180,9 +160,7 @@ module "lambda_function_sns_trigger" {
   function_name    = "infra-tf-modules-examples-lambda-function-sns-trigger"
   function_runtime = var.function_runtime_nodejs
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   sns_trigger = true
 }

@@ -2,20 +2,24 @@
 
 This module provisions a SQS Queue with an optional queue policy.
 
-## Examples 
+## Examples
 
 #### Minimal configuration
+
 ```
 module "sqs_queue" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sqs_queue"
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 #### Including queue policy
+
 ```
 module "sqs_queue" {
   source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sqs_queue"
@@ -34,20 +38,17 @@ module "sqs_queue" {
     }
   ]
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 ## Required parameters
 
-#### Tags
-Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
-
-* **tag_environment**
-* **tag_cost_center**
-* **tag_domain**
+- **tags**: Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
 
 ## Optional Parameters
 
@@ -57,4 +58,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **sqs_queue**: contains all attributes available in Terraform for SQS Queue resources
+- **sqs_queue**: contains all attributes available in Terraform for SQS Queue resources

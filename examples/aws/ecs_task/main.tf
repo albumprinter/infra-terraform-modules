@@ -21,9 +21,7 @@ module "ecs_task" {
     ]
   EOF
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 }
 
 module "ecs_task_placement_constraints" {
@@ -56,9 +54,7 @@ module "ecs_task_placement_constraints" {
     }
   ]
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 }
 
 module "ecs_task_scheduled" {
@@ -84,9 +80,7 @@ module "ecs_task_scheduled" {
     ]
   EOF
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   event_rule_schedule_expression                     = "cron(0 2 * * ? *)"
   event_target_arn                                   = aws_ecs_cluster.example.arn

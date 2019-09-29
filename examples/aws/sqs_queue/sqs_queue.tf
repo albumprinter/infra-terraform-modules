@@ -1,9 +1,7 @@
 module "sqs_queue" {
   source = "../../../modules/aws/sqs_queue"
 
-  tag_domain      = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = var.tags
 }
 
 module "sqs_queue_name" {
@@ -11,9 +9,7 @@ module "sqs_queue_name" {
 
   name = "infra-tf-modules-examples-named-sqs-queue"
 
-  tag_domain      = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = var.tags
 }
 
 module "sqs_queue_policy" {
@@ -27,9 +23,7 @@ module "sqs_queue_policy" {
     }
   ]
 
-  tag_domain      = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = var.tags
 }
 
 module "sqs_queue_policy_condition" {
@@ -47,9 +41,7 @@ module "sqs_queue_policy_condition" {
     }
   ]
 
-  tag_domain      = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = var.tags
 }
 
 

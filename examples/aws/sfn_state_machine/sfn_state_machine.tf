@@ -26,9 +26,7 @@ EOF
     }
   ]
 
-  tag_domain      = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = var.tags
 }
 
 module "lambda_function" {
@@ -37,7 +35,5 @@ module "lambda_function" {
   function_name    = "infra-tf-modules-examples-sfn-state-machine-step"
   function_runtime = "python3.7"
 
-  tag_cost_center = var.tag_cost_center
-  tag_environment = var.tag_environment
-  tag_domain      = var.tag_domain
+  tags = var.tags
 }

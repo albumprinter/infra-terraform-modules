@@ -32,7 +32,7 @@ resource "aws_lambda_function" "function" {
   publish                        = var.function_publish
   reserved_concurrent_executions = var.function_reserved_concurrent_executions
   source_code_hash               = var.function_source_code_hash
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = var.function_name
   })
   timeout = var.function_timeout

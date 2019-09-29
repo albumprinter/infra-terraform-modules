@@ -15,7 +15,7 @@ resource "aws_iam_role" "role" {
   name_prefix           = var.role_name_prefix
   path                  = var.role_path
   permissions_boundary  = var.role_permissions_boundary
-  tags                  = local.tags
+  tags                  = var.tags
 }
 
 # -------------------- Variables --------------------

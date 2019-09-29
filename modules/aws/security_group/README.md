@@ -2,23 +2,27 @@
 
 This module provisions a Security Group with optional ingress and egress rules.
 
-## Examples 
+## Examples
 
 #### Minimal configuration
+
 ```
 module "security_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"  
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 #### Including Egress rule
+
 ```
 module "security_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"  
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"
 
   name = "infra_tf_modules_example_lambda_function"
   vpc_id = data.aws_vpc.main.id
@@ -31,20 +35,17 @@ module "security_group" {
     }
   ]
 
-  tag_domain = var.tag_domain
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
+  tags = {
+    Environment   = "..."
+    Domain        = "..."
+    "Cost Center" = "..."
+  }
 }
 ```
 
 ## Required parameters
 
-#### Tags
-Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
-
-* **tag_environment**
-* **tag_cost_center**
-* **tag_domain**
+- **tags**: Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
 
 ## Optional Parameters
 
@@ -54,4 +55,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 ## Outputs
 
-* **security_group**: contains all attributes available in Terraform for Security Group resources
+- **security_group**: contains all attributes available in Terraform for Security Group resources

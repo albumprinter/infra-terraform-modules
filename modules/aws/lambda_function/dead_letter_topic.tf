@@ -3,9 +3,7 @@ module "dead_letter_topic" {
   provision = var.provision == true && var.function_dead_letter_target_type == "SNS" ? true : false
 
   #Required
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   # Internally handled
   sns_topic_name = local.function_dead_letter_target_name
@@ -26,8 +24,6 @@ module "dead_letter_topic" {
   sns_topic_sqs_success_feedback_role_arn            = var.dead_letter_topic_sqs_success_feedback_role_arn
   sns_topic_sqs_success_feedback_sample_rate         = var.dead_letter_topic_sqs_success_feedback_sample_rate
   sns_topic_sqs_failure_feedback_role_arn            = var.dead_letter_topic_sqs_failure_feedback_role_arn
-
-  tag_others = var.tag_others
 }
 
 # ----------------------- Variables -----------------------

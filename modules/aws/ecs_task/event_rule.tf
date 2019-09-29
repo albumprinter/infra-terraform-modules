@@ -18,9 +18,7 @@ module "event_rule" {
       task_count                             = var.event_target_task_count
     }
   ]
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   # Interally handled
   event_rule_name       = var.event_rule_name != null ? var.event_rule_name : var.task_family
@@ -35,8 +33,6 @@ module "event_rule" {
   event_target_target_id  = var.event_target_target_id
   event_target_input      = var.event_target_input
   event_target_input_path = var.event_target_input_path
-
-  tag_others = var.tag_others
 }
 
 module "event_rule_role" {
@@ -44,10 +40,7 @@ module "event_rule_role" {
   provision = var.event_rule_event_pattern != null || var.event_rule_schedule_expression != null ? true : false
 
   # Required  
-
-  tag_environment = var.tag_environment
-  tag_cost_center = var.tag_cost_center
-  tag_domain      = var.tag_domain
+  tags = var.tags
 
   # Interally handled
   assume_role_principal = "events.amazonaws.com"
@@ -77,8 +70,6 @@ module "event_rule_role" {
   policy_name        = var.event_rule_iam_role_policy_name != null ? var.event_rule_iam_role_policy_name : var.task_family
   policy_name_prefix = var.event_rule_iam_role_policy_name_prefix
   policy_path        = var.event_rule_iam_role_policy_path
-
-  tag_others = var.tag_others
 }
 
 # -------------------- Variables --------------------
