@@ -15,11 +15,11 @@ resource "aws_ecs_task_definition" "task" {
   dynamic "volume" {
     for_each = [for task_volume in var.task_volumes : {
       name                                      = task_volume.volume_name
-      host_path                                 = lookup(task_volume, "volume_host_path ", null)
+      host_path                                 = lookup(task_volume, "volume_host_path", null)
       docker_volume_configuration_scope         = lookup(task_volume, "docker_volume_configuration_scope", null)
-      docker_volume_configuration_autoprovision = lookup(task_volume, "docker_volume_configuration_autoprovision ", null)
-      docker_volume_configuration_driver        = lookup(task_volume, "docker_volume_configuration_driver ", null)
-      docker_volume_configuration_driver_opts   = lookup(task_volume, "docker_volume_configuration_driver_opts ", null)
+      docker_volume_configuration_autoprovision = lookup(task_volume, "docker_volume_configuration_autoprovision", null)
+      docker_volume_configuration_driver        = lookup(task_volume, "docker_volume_configuration_driver", null)
+      docker_volume_configuration_driver_opts   = lookup(task_volume, "docker_volume_configuration_driver_opts", null)
       docker_volume_configuration_labels        = lookup(task_volume, "docker_volume_configuration_labels", null)
     }]
 
@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "task" {
     for_each = [for configuration in var.task_proxy_configuration : {
       container_name = configuration.container_name
       properties     = lookup(configuration, "properties", null)
-      type           = lookup(configuration, "type ", null)
+      type           = lookup(configuration, "type", null)
     }]
 
     content {
