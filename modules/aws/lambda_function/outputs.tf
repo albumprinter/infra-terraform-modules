@@ -7,6 +7,9 @@ output "iam_role" {
 output "cloudwatch_log_group" {
   value = module.log_group.cloudwatch_log_group
 }
+output "cloudwatch_error_alarm" {
+  value = module.error_alarm.cloudwatch_metric_alarm
+}
 output "dead_letter_topic" {
   value = module.dead_letter_topic.sns_topic
 }

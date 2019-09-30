@@ -69,6 +69,31 @@ They follow the same name as in the offical Terraform documentation with the add
 
 ---
 
+#### CloudWatch Error Alarm
+
+- [cloudwatch_error_alarm_comparison_operator](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#comparison_operator)
+  - Note: by default, uses the value `GreaterThanThreshold` if not specified
+- [cloudwatch_error_alarm_evaluation_periods](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#evaluation_periods)
+  - Note: by default, uses the value `1` if not specified
+- [cloudwatch_error_alarm_threshold](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#threshold)
+  - Note: by default, uses the value `0` if not specified
+- [cloudwatch_error_alarm_period](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#period)
+  - Note: by default, uses the value `60` if not specified
+- [cloudwatch_error_alarm_statistic](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#statistic)
+  - Note: by default, uses the value `Maximum` if not specified
+- [cloudwatch_error_alarm_actions_enabled](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#actions_enabled)
+- [cloudwatch_error_alarm_alarm_actions](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#alarm_actions)
+- [cloudwatch_error_alarm_alarm_description](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#alarm_description)
+- [cloudwatch_error_alarm_datapoints_to_alarm](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#datapoints_to_alarm)
+- [cloudwatch_error_alarm_insufficient_data_actions](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#insufficient_data_actions)
+- [cloudwatch_error_alarm_ok_actions](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#ok_actions)
+- [cloudwatch_error_alarm_unit](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#unit)
+- [cloudwatch_error_alarm_extended_statistic](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#extended_statistic)
+- [cloudwatch_error_alarm_treat_missing_data](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#treat_missing_data)
+- [cloudwatch_error_alarm_evaluate_low_sample_count_percentiles](https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#evaluate_low_sample_count_percentiles)
+
+---
+
 #### Dead Letter SQS Queue
 
 - [dead_letter_queue_content_based_deduplication](https://www.terraform.io/docs/providers/aws/r/sqs_queue.html#content_based_deduplication)

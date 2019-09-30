@@ -44,3 +44,9 @@ module "sfn_state_machine" {
 
   tags = local.tags
 }
+
+module "cloudwatch_metric_alarm" {
+  source = "./cloudwatch_metric_alarm"
+
+  tags = local.tags
+}
