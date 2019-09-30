@@ -3,7 +3,7 @@ provider "aws" {
   version = "~> 2.17"
 }
 
-/*module "lambda_function" {
+module "lambda_function" {
   source = "./lambda_function"
 
   tags = local.tags
@@ -43,7 +43,7 @@ module "sfn_state_machine" {
   source = "./sfn_state_machine"
 
   tags = local.tags
-}*/
+}
 
 module "cloudwatch_metric_alarm" {
   source = "./cloudwatch_metric_alarm"

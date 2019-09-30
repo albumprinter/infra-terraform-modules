@@ -4,6 +4,7 @@ This module provisions a Lambda function along with the following resources:
 
 - IAM Role with minimum permissions required
 - CloudWatch Log Group with a default retention period of 30 days
+- CloudWatch Metric Alarm to track function errors
 - Dead letter mechanism that can be either a SQS Queue (default) or a SNS Topic
 
 ## Examples
@@ -232,6 +233,7 @@ For more details, please check the [patterns documentation](docs/patterns.md)
 - **lambda_function**: contains all attributes available in Terraform for Lambda function resources
 - **iam_role**: contains all attributes available in Terraform for IAM Role resources
 - **cloudwatch_log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
+- **cloudwatch_error_alarm**: contains all attributes available in Terraform for CloudWatch Metric Alarm resources
 - **dead_letter_topic**: contains all attributes available in Terraform for SQS Queue resources (in case `function_dead_letter_target_type` equals `SQS`)
 - **dead_letter_queue**: contains all attributes available in Terraform for SNS Topic resources (in case `function_dead_letter_target_type` equals `SNS`)
 - **cloudwatch_event_rule**: contains all attributes available in Terraform for CloudWatch Event Rule resources

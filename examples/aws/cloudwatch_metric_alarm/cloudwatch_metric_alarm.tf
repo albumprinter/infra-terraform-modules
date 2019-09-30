@@ -29,27 +29,25 @@ module "cloudwatch_metric_alarm_queries" {
       return_data = "true"
     },
     {
-      id = "m1"
-      metric_name = "RequestCount"
-      namespace   = "AWS/ApplicationELB"
-      period      = "120"
-      stat        = "Sum"
-      unit        = "Count"
-      dimensions  = {
-        LoadBalancer = "app/web"
-      }
+      id              = "m1"
+      metric_name     = "RequestCount"
+      namespace       = "AWS/ApplicationELB"
+      period          = "120"
+      stat            = "Sum"
+      unit            = "Count"
+      dimension_key   = "LoadBalancer"
+      dimension_value = "app/web"
 
     },
     {
-      id = "m2"
-      metric_name = "HTTPCode_ELB_5XX_Count"
-      namespace   = "AWS/ApplicationELB"
-      period      = "120"
-      stat        = "Sum"
-      unit        = "Count"
-      dimensions  = {
-        LoadBalancer = "app/web"
-      }
+      id              = "m2"
+      metric_name     = "HTTPCode_ELB_5XX_Count"
+      namespace       = "AWS/ApplicationELB"
+      period          = "120"
+      stat            = "Sum"
+      unit            = "Count"
+      dimension_key   = "LoadBalancer"
+      dimension_value = "app/web"
     }
   ]
 

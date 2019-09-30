@@ -38,7 +38,9 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
           period      = query.period
           stat        = query.stat
           unit        = lookup(query, "unit", null)
-          dimensions  = lookup(query, "dimensions", null)
+          dimensions = {
+            lookup(query, "dimension_key", null) = lookup(query, "dimension_value", null)
+          }
         }
       ]
     }]
