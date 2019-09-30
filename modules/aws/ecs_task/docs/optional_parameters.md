@@ -30,7 +30,7 @@ They follow the same name as in the offical Terraform documentation with the add
 ```
 task_volumes = [
   {
-    name = "..."
+    volume_name = "..."
     host_path = "..."
     docker_volume_configuration_scope = "..."
     docker_volume_configuration_autoprovision = "..."
