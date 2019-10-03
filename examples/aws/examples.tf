@@ -50,3 +50,9 @@ module "cloudwatch_metric_alarm" {
 
   tags = local.tags
 }
+
+module "codebuild_project" {
+  source = "./codebuild_project"
+
+  tags = local.tags
+}
