@@ -201,3 +201,12 @@ They follow the same name as in the offical Terraform documentation with the add
 - [iam_role_policy_name](https://www.terraform.io/docs/providers/aws/r/iam_policy.html#name)
 - [iam_role_policy_name_prefix](https://www.terraform.io/docs/providers/aws/r/iam_policy.html#name_prefix)
 - [iam_role_policy_path](https://www.terraform.io/docs/providers/aws/r/iam_policy.html#path)
+
+---
+
+#### CloudWatch Log Group
+
+- [log_group_name](https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_group.html#name)
+- [log_group_retention_in_days](https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_group.html#retention_in_days)
+  - Note: by default, uses the value `30` if not specified
+- [log_group_kms_key_id](https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_group.html#kms_key_id)
