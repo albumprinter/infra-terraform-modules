@@ -1,5 +1,6 @@
 module "error_alarm" {
-  source = "../../../modules/aws/cloudwatch_metric_alarm"
+  source    = "../../../modules/aws/cloudwatch_metric_alarm"
+  provision = var.provision == true ? true : false
 
   # Required  
   period              = var.cloudwatch_error_alarm_period
