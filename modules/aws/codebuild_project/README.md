@@ -10,7 +10,7 @@ This module provisions a CodeBuild Project along with the following resources:
 #### Minimal configuration
 
 ```
-odule "codebuild_project" {
+module "codebuild_project" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/codebuild_project"
 
   codebuild_project_name = "infra-tf-modules-examples-codebuild-project"
@@ -104,6 +104,7 @@ module "codebuild_project_vpc" {
 The following parameters are considered required.
 
 - [codebuild_project_name](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#name)
+
 - [codebuild_project_artifacts](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#artifacts)
   - Note: This attribute should be passed as an array containing one object with the following parameters:
     - [type](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#type)
@@ -125,9 +126,7 @@ codebuild_project_artifacts = [
   }
 ]
 ```
-
-- [codebuild_project_source]
-
+- [codebuild_project_source](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#source)
   - Note: This attribute should be passed as an array containing one object with the following parameters:
     - [type](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#type-4)
     - [auth](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#auth)
@@ -168,4 +167,4 @@ For more details, please check the [optional parameters documentation](docs/opti
 
 - **cloudwatch_log_group**: contains all attributes available in Terraform for CloudWatch Log Group resources
 - **codebuild_project**: contains all attributes available in Terraform for CodeBuild Project resources
-- **tiam_role**: contains all attributes available in Terraform for IAM Role resources
+- **iam_role**: contains all attributes available in Terraform for IAM Role resources

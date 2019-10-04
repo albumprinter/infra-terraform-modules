@@ -1,12 +1,12 @@
 module "log_group" {
-  source = "../cloudwatch_log_group"
-  provision = length(var.codebuild_project_logs_config) == 0 ? true : false
+  source    = "../cloudwatch_log_group"
+  provision = lookup(var.codebuild_project_logs_config[0], "cloudwatch_logs", null) == null ? true : false
 
   # Required
   tags = var.tags
 
   # Optional
-  name              = var.log_group_name != null ? var.log_group_name : local.log_group_name
+  name              = var.log_group_name != null ? var.log_group_name : "/codebuild/${var.codebuild_project_name}"
   retention_in_days = var.log_group_retention_in_days
   kms_key_id        = var.log_group_kms_key_id
 }

@@ -17,6 +17,7 @@ The directories in this repository are organized in the following way:
 * [**CloudWatch Log Group**](modules/aws/cloudwatch_log_group)
 * [**CloudWatch Event Rule**](modules/aws/event_rule)
 * [**CloudWatch Metric Alarm**](modules/aws/cloudwatch_metric_alarm)
+* [**CodeBuild Project**](modules/aws/codebuild_project)
 * [**Config Rule**](modules/aws/config_config_rule)
 * [**ECR Repository**](modules/aws/ecr_repository)
 * [**ECS Task Definition**](modules/aws/ecs_task)

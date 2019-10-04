@@ -131,9 +131,13 @@ resource "aws_codebuild_project" "project" {
   encryption_key = var.codebuild_project_encryption_key
 
   dynamic "logs_config" {
-    for_each = [for element in local.logs_config : {
-      cloudwatch_logs = lookup(element, "cloudwatch_logs", [])
-      s3_logs         = lookup(element, "s3_logs", [])
+    for_each = [for element in var.codebuild_project_logs_config : {
+      cloudwatch_logs = lookup(element, "cloudwatch_logs", [
+        {
+          group_name = module.log_group.cloudwatch_log_group.name
+        }
+      ])
+      s3_logs = lookup(element, "s3_logs", [])
     }]
 
     content {
@@ -207,7 +211,7 @@ resource "aws_codebuild_project" "project" {
     for_each = [for element in var.codebuild_project_secondary_sources : {
       type                = element.type
       source_identifier   = element.source_identifier
-      auth                = [lookup(element, "auth", null)]
+      auth                = lookup(element, "auth", [])
       buildspec           = lookup(element, "buildspec", null)
       git_clone_depth     = lookup(element, "git_clone_depth", null)
       insecure_ssl        = lookup(element, "insecure_ssl", null)
@@ -269,7 +273,7 @@ variable "codebuild_project_encryption_key" {
 }
 variable "codebuild_project_logs_config" {
   type    = list
-  default = []
+  default = [{}]
 }
 variable "codebuild_project_vpc_config" {
   type    = list
