@@ -1,4 +1,6 @@
 resource "aws_cloudwatch_metric_alarm" "alarm" {
+  count = var.provision == true ? 1 : 0
+  
   # Required
   alarm_name          = var.alarm_name
   metric_name         = var.metric_name

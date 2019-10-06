@@ -1,3 +1,3 @@
 output "cloudwatch_metric_alarm" {
-  value = aws_cloudwatch_metric_alarm.alarm
+  value = aws_cloudwatch_metric_alarm.alarm[0]
 }
