@@ -1,5 +1,5 @@
 variable "aws_region" {
- default = "eu-west-1"
+  default = "eu-west-1"
 }
 variable "aws_shared_services_account_id" {
   default = "973160909116"
@@ -22,8 +22,6 @@ variable "vm_windows_version" {
 variable "vm_domain" {}
 variable "vm_domain_admin_user" {}
 variable "vm_domain_admin_password" {}
-variable "vm_admin_password" {}
-variable "vm_admin_user" {}
 variable "vm_workgroup" {}
 variable "vm_cpu" {
   default = 2
@@ -47,4 +45,8 @@ variable "vm_dns_server_list" {type="list"}
 variable "scsi_type" {
   default = "lsilogic-sas"
 }
+variable "octopus_role" {}
+variable "octopus_environment" {}
+variable "octopus_trust" {}
+variable "octopus_apikey" {}
 

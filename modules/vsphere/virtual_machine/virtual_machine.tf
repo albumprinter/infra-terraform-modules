@@ -25,8 +25,8 @@ resource "vsphere_virtual_machine" "vsphereserver_on_datastore1" {
         join_domain = "${var.vm_domain}"
         domain_admin_user = "${var.vm_domain_admin_user}"
         domain_admin_password = "${var.vm_domain_admin_password}"
-        admin_password = "${var.vm_admin_password}"
-        full_name = "${var.vm_admin_user}"
+        admin_password = "Test123!"
+        full_name = "Administrator"
         organization_name = "Albelli BV"
         auto_logon = "true"
         auto_logon_count = "2"
@@ -41,18 +41,38 @@ resource "vsphere_virtual_machine" "vsphereserver_on_datastore1" {
 
     }
 
+  }
+  disk {
+    label = "disk0"
+    size = "${var.vm_disk_1_size}"
+    thin_provisioned = "${var.vm_thin_provisioned_disk_1}"
 
   }
-    disk {
-      label = "disk0"
-      size = "${var.vm_disk_1_size}"
-      thin_provisioned = "${var.vm_thin_provisioned_disk_1}"
+  disk {
+    label = "disk1"
+    unit_number = 1
+    size = "${var.vm_disk2_size}"
+    thin_provisioned = false
+  }
 
-    }
-    disk {
-      label = "disk1"
-      unit_number = 1
-      size = "${var.vm_disk2_size}"
-      thin_provisioned = false
+  provisioner "file" {
+    content = "${data.template_file.octopus_script.rendered}"
+    destination = "C:\\APShared\\Launch\\Scripts\\InstallOctopus.ps1"
+  }
+
+  provisioner "remote-exec" {
+    command = "C:\\APShared\\Launch\\Scripts\\InstallOctopus.ps1",
+    interpreter = ["PowerShell"]
+  }
+}
+
+data "template_file" "octopus_script" {
+  template = "${file("path.root/files/InstallOctopus.ps1")}"
+
+  vars = {
+    octopus_role = "${var.octopus_role}"
+    octopus_environment = "${var.octopus_environment}"
+    octopus_trust = "${var.octopus_trust}"
+    octopus_apikey = "${var.octopus_apikey}"
   }
 }
