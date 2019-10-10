@@ -2,7 +2,7 @@ locals {
   servername = "${var.application_environment}${var.application_domain}"
 }
 
-resource "vsphere_virtual_machine" "vsphereserver_on_datastore1" {
+resource "vsphere_virtual_machine" "vsphereserver" {
   count = "${var.amount_of_servers}"
   name = "${local.servername}${count.index + 1}"
   resource_pool_id = "${var.vsphere_resource_pool_id}"
@@ -61,13 +61,13 @@ resource "vsphere_virtual_machine" "vsphereserver_on_datastore1" {
   }
 
   provisioner "remote-exec" {
-    command = "C:\\APShared\\Launch\\Scripts\\InstallOctopus.ps1",
-    interpreter = ["PowerShell"]
+    inline = [
+      "powershell.exe -File C:\\APShared\\Launch\\Scripts\\InstallOctopus.ps1"]
   }
 }
 
 data "template_file" "octopus_script" {
-  template = "${file("path.root/files/InstallOctopus.ps1")}"
+  template = "${file("${path.module}\\files\\InstallOctopus.ps1")}"
 
   vars = {
     octopus_role = "${var.octopus_role}"
