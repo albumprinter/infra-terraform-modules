@@ -1,6 +1,5 @@
 module "log_group" {
   source    = "../cloudwatch_log_group"
-  provision = lookup(var.codebuild_project_logs_config[0], "cloudwatch_logs", null) == null ? true : false
 
   # Required
   tags = var.tags

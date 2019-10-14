@@ -21,6 +21,7 @@ The directories in this repository are organized in the following way:
 * [**Config Rule**](modules/aws/config_config_rule)
 * [**ECR Repository**](modules/aws/ecr_repository)
 * [**ECS Task Definition**](modules/aws/ecs_task)
+* [**Glue Crawler**](modules/aws/glue_crawler)
 * [**IAM Role**](modules/aws/iam_role)
 * [**Lambda Function**](modules/aws/lambda_function)
 * [**Route 53 Hosted Zone**](modules/aws/route53_hosted_zone)

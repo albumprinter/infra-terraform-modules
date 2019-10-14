@@ -56,3 +56,9 @@ module "codebuild_project" {
 
   tags = local.tags
 }
+
+module "glue_crawler" {
+  source = "./glue_crawler"
+
+  tags = local.tags
+}
