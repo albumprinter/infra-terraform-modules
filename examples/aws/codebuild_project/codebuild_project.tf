@@ -240,11 +240,6 @@ module "codebuild_project_s3_logs" {
   ]
 
   codebuild_project_logs_config = [{
-    cloudwatch_logs = [
-      {
-        group_name = module.log_group.cloudwatch_log_group.name
-      }
-    ]
     s3_logs = [{
       status   = "ENABLED"
       location = "${aws_s3_bucket.artifacts.id}/build-log"

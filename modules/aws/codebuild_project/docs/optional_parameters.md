@@ -74,13 +74,6 @@ They follow the same name as in the offical Terraform documentation with the add
 
   - Note: This attribute should be passed as an array containing one object with the following parameters:
 
-    - [cloudwatch_logs](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#cloudwatch_logs)
-
-      - Note: This attribute should be passed as an array containing one object with the following parameters:
-        - [status](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#status)
-        - [group_name](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#group_name)
-        - [stream_name](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#stream_name)
-
     - [s3_logs](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#s3_logs)
 
       - Note: This attribute should be passed as an array containing one object with the following parameters:
@@ -93,11 +86,6 @@ They follow the same name as in the offical Terraform documentation with the add
   ```
   codebuild_project_logs_config = [
     {
-      cloudwatch_logs = [
-        {
-          group_name = "..."
-        }
-      ],
       s3_logs = [
         {
           status = "..."

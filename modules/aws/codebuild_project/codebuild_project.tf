@@ -132,11 +132,11 @@ resource "aws_codebuild_project" "project" {
 
   dynamic "logs_config" {
     for_each = [for element in var.codebuild_project_logs_config : {
-      cloudwatch_logs = lookup(element, "cloudwatch_logs", [
+      cloudwatch_logs = [
         {
           group_name = module.log_group.cloudwatch_log_group.name
         }
-      ])
+      ]
       s3_logs = lookup(element, "s3_logs", [])
     }]
 

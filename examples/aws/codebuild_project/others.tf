@@ -20,11 +20,3 @@ module "security_group" {
 
   tags = var.tags
 }
-
-module "log_group" {
-  source = "../../../modules/aws/cloudwatch_log_group"
-
-  tags = var.tags
-
-  name = "infra-tf-modules-examples-codebuild-project-custom-log-group"
-}
