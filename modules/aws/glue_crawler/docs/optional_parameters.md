@@ -4,14 +4,14 @@ In order to make this module as flexbile as possible, the following parameters a
 
 They follow the same name as in the offical Terraform documentation with the addition of a prefix (e.g. _glue_crawler_) to identify to which resource does the parameter belong to.
 
-#### CodeBuild Project
+#### Glue Crawler
 
-- [classifiers](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#classifiers)
-- [configuration](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#configuration)
-- [description](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#description)
-- [schedule](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schedule)
-- [table_prefix](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#table_prefix)
-- [security_configuration](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#security_configuration)
+- [glue_crawler_classifiers](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#classifiers)
+- [glue_crawler_configuration](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#configuration)
+- [glue_crawler_description](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#description)
+- [glue_crawler_schedule](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schedule)
+- [glue_crawler_table_prefix](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#table_prefix)
+- [glue_crawler_security_configuration](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#security_configuration)
 - [glue_crawler_schema_change_policy] (https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schema_change_policy)
   - Note: This attribute should be passed as an array containing one object with the following parameters:
     - [delete_behavior](https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#delete_behavior)
