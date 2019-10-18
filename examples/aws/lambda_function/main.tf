@@ -134,7 +134,9 @@ module "lambda_function_api_gateway" {
 
   tags = var.tags
 
-  api_gateway_rest_api_name = "lambda_function_api_gateway"
+  api_gateway_rest_api_name         = "lambda_function_api_gateway"
+  api_gateway_deployment_stage_name = "test"
+  api_gateway_resource_path_part    = "{proxy+}"
 }
 
 module "lambda_function_environment_variables" {

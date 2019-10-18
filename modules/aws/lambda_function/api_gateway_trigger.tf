@@ -61,6 +61,7 @@ resource "aws_lambda_permission" "api_gateway_lambda_permission" {
   source_account      = var.api_gateway_lambda_permission_source_account
   statement_id        = var.api_gateway_lambda_permission_statement_id
   statement_id_prefix = var.api_gateway_lambda_permission_statement_id_prefix
+  source_arn          = "${module.api_gateway.api_gateway_rest_api[0].execution_arn}/*/*/*"
 }
 
 # ----------------------- Variables -----------------------

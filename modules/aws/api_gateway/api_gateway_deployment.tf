@@ -1,5 +1,5 @@
 resource "aws_api_gateway_deployment" "deployment" {
-  count = var.provision == true && var.api_gateway_integration_type != null ? 1 : 0
+  count = var.provision == true && var.api_gateway_integration_type != null && var.api_gateway_deployment_stage_name != null ? 1 : 0
 
   # Required
   stage_name = var.api_gateway_deployment_stage_name
