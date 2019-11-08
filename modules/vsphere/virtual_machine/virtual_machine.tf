@@ -56,9 +56,23 @@ resource "vsphere_virtual_machine" "vsphereserver" {
     thin_provisioned = false
   }
 
+//  provisioner "file" {
+//    source = "${path.module}/files/Octopus"
+//    destination = "C:/APShared/Launch/Scripts/"
+//    connection {
+//      type = "winrm"
+//      user = "administrator"
+//      password = "${var.vm_admin_password}"
+//      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+//      insecure = "true"
+//      timeout = "25m"
+//      https = "false"
+//    }
+//  }
+
   provisioner "file" {
-    source = "${path.module}/files/Octopus"
-    destination = "C:/APShared/Launch/Scripts/"
+    content = "${data.template_file.octopus_script.rendered}"
+    destination = "C:/APShared/Launch/Scripts/InstallOctopus.ps1"
     connection {
       type = "winrm"
       user = "administrator"
@@ -70,34 +84,20 @@ resource "vsphere_virtual_machine" "vsphereserver" {
     }
   }
 
-  provisioner "file" {
-    content = "${path.module}/files/Octopus/InstallOctopus.ps1"
-    destination = "C:/APShared/Launch/Scripts/"
-    connection {
-      type = "winrm"
-      user = "administrator"
-      password = "${var.vm_admin_password}"
-      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
-      insecure = "true"
-      timeout = "25m"
-      https = "false"
-    }
-  }
 
-
-  provisioner "remote-exec" {
-    inline = [
-      "powershell.exe -Command C:/APShared/Launch/Scripts/InstallOctopus.ps1"]
-    connection {
-      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
-      type = "winrm"
-      https = "false"
-      user = "administrator"
-      password = "${var.vm_admin_password}"
-      agent = "false"
-      insecure = "true"
-      }
-  }
+//  provisioner "remote-exec" {
+//    inline = [
+//      "powershell.exe -Command C:/APShared/Launch/Scripts/InstallOctopus.ps1"]
+//    connection {
+//      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+//      type = "winrm"
+//      https = "false"
+//      user = "administrator"
+//      password = "${var.vm_admin_password}"
+//      agent = "false"
+//      insecure = "true"
+//      }
+//  }
 }
 
   data "template_file" "octopus_script" {
