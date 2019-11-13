@@ -85,19 +85,19 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 
 
-//  provisioner "remote-exec" {
-//    inline = [
-//      "powershell.exe -Command C:/APShared/Launch/Scripts/InstallOctopus.ps1"]
-//    connection {
-//      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
-//      type = "winrm"
-//      https = "false"
-//      user = "administrator"
-//      password = "${var.vm_admin_password}"
-//      agent = "false"
-//      insecure = "true"
-//      }
-//  }
+  provisioner "remote-exec" {
+    inline = [
+      "powershell.exe -Command C:/APShared/Launch/Scripts/InstallOctopus.ps1"]
+    connection {
+      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+      type = "winrm"
+      https = "false"
+      user = "administrator"
+      password = "${var.vm_admin_password}"
+      agent = "false"
+      insecure = "true"
+      }
+  }
 }
 
   data "template_file" "octopus_script" {
