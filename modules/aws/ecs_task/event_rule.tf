@@ -22,7 +22,7 @@ module "event_rule" {
 
   # Interally handled
   event_rule_name       = var.event_rule_name != null ? var.event_rule_name : var.task_family
-  event_target_role_arn = module.event_rule_role.iam_role.arn
+  event_target_role_arn = module.event_rule_role.iam_role != null ? module.event_rule_role.iam_role.arn : null
 
   # Optional
   event_rule_description = var.event_rule_description

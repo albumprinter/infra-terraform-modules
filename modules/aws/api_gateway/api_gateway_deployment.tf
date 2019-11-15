@@ -29,6 +29,6 @@ variable "api_gateway_deployment_stage_description" {
   default = null
 }
 variable "api_gateway_deployment_variables" {
-  type    = "map"
+  type    = map
   default = null
 }

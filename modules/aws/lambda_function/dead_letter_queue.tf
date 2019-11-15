@@ -13,7 +13,7 @@ module "dead_letter_queue" {
       "Action" : ["sqs:SendMessage"],
       "Condition" : {
         "ArnEquals" : {
-          "aws:SourceArn" : "${aws_lambda_function.function[0].arn}"
+          "aws:SourceArn" : length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].arn : null
         }
       }
     }

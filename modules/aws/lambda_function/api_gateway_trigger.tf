@@ -7,7 +7,7 @@ module "api_gateway" {
   api_gateway_deployment_stage_name = var.api_gateway_deployment_stage_name
 
   # Internally handled
-  api_gateway_integration_uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.function[0].arn}/invocations"
+  api_gateway_integration_uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${ length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].arn : ""}/invocations"
 
   # Optional
   api_gateway_rest_api_description              = var.api_gateway_rest_api_description

@@ -88,7 +88,7 @@ variable "custom_rule_function_s3_object_version" {
 }
 
 variable "custom_rule_function_environment" {
-  type    = "list"
+  type    = list
   default = []
 }
 
@@ -125,7 +125,7 @@ variable "custom_rule_function_timeout" {
 }
 
 variable "custom_rule_function_vpc_config" {
-  type    = "list"
+  type    = list
   default = []
 }
 

@@ -13,10 +13,10 @@ module "error_alarm" {
   # Internally handled
   metric_name = "Errors"
   namespace   = "AWS/Lambda"
-  alarm_name  = "${aws_lambda_function.function[0].function_name}-errors"
+  alarm_name  = "${length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].function_name : ""}-errors"
 
   dimensions = {
-    FunctionName = aws_lambda_function.function[0].function_name
+    FunctionName = length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].function_name : null
   }
 
 

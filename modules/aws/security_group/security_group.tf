@@ -82,10 +82,10 @@ variable "vpc_id" {
   default = null
 }
 variable "ingress_rules" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "egress_rules" {
-  type    = "list"
+  type    = list
   default = []
 }

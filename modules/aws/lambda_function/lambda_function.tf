@@ -74,7 +74,7 @@ variable "function_s3_object_version" {
 }
 
 variable "function_environment" {
-  type    = "list"
+  type    = list
   default = []
 }
 
@@ -111,7 +111,7 @@ variable "function_timeout" {
 }
 
 variable "function_vpc_config" {
-  type    = "list"
+  type    = list
   default = []
 }
 

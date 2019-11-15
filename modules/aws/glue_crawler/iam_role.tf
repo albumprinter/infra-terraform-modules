@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "AWSGlueServiceRole" {
 # -------------------- Variables --------------------
 
 variable "iam_role_policy_statements" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "iam_role_description" {

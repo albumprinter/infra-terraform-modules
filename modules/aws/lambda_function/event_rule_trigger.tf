@@ -9,7 +9,7 @@ module "event_rule" {
 
   # Internally handled
   event_rule_name  = var.event_rule_name != null ? var.event_rule_name : var.function_name
-  event_target_arn = aws_lambda_function.function[0].arn
+  event_target_arn = length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].arn : null
 
   # Optional
   event_rule_description = var.event_rule_description
