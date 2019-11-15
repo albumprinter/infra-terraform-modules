@@ -16,13 +16,13 @@ resource "aws_iam_policy" "policy" {
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
   count = var.provision == true && length(var.policy_statements) > 0 ? 1 : 0
 
-  role       = "${aws_iam_role.role[0].name}"
-  policy_arn = "${aws_iam_policy.policy[0].arn}"
+  role       = aws_iam_role.role[0].name
+  policy_arn = aws_iam_policy.policy[0].arn
 }
 
 # -------------------- Variables --------------------
 variable "policy_statements" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "policy_description" {

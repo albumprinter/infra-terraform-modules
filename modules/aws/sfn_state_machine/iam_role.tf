@@ -26,7 +26,7 @@ module "iam_role" {
 # -------------------- Variables --------------------
 
 variable "iam_role_policy_statements" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "iam_role_description" {

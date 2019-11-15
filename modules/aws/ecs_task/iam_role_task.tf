@@ -26,7 +26,7 @@ module "task_role" {
 # -------------------- Variables --------------------
 
 variable "task_role_policy_statements" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "task_role_description" {

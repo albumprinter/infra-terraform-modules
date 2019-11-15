@@ -120,6 +120,6 @@ variable "dimensions" {
   default = null
 }
 variable "metric_queries" {
-  type    = "list"
+  type    = list
   default = []
 }

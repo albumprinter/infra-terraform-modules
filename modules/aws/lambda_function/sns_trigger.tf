@@ -8,7 +8,7 @@ module "sns_trigger" {
   # Internally handled
   sns_topic_name                  = var.sns_trigger_name != null ? var.sns_trigger_name : var.function_name
   sns_topic_subscription_protocol = "lambda"
-  sns_topic_subscription_endpoint = aws_lambda_function.function[0].arn
+  sns_topic_subscription_endpoint = length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0].arn : null
 
   # Optional 
   sns_topic_policy                                   = var.sns_trigger_policy

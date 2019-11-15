@@ -32,7 +32,7 @@ variable "api_gateway_rest_api_description" {
   default = null
 }
 variable "api_gateway_rest_api_endpoint_configuration" {
-  type    = "list"
+  type    = list
   default = []
 }
 variable "api_gateway_rest_api_binary_media_types" {

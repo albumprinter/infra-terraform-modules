@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "eu-west-1"
-  version = "~> 2.17"
+  version = "~> 2.35"
 }
 
 module "lambda_function" {

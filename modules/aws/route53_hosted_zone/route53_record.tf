@@ -90,6 +90,6 @@ resource "aws_route53_record" "record" {
 
 # -------------------- Variables --------------------
 variable "records" {
-  type    = "list"
+  type    = list
   default = []
 }

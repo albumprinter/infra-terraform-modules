@@ -1,3 +1,3 @@
 output "sqs_queue" {
-  value = aws_sqs_queue.queue[0]
+  value = var.provision == true ? aws_sqs_queue.queue[0] : null
 }
