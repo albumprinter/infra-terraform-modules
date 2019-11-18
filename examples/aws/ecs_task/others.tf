@@ -20,3 +20,9 @@ module "security_group" {
 
   tags = var.tags
 }
+
+resource "aws_ssm_parameter" "test_parameter" {
+  name  = "/test-parameter"
+  type  = "String"
+  value = "TEST_VALUE"
+}

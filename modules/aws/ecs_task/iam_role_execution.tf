@@ -6,7 +6,7 @@ module "execution_role" {
 
   # Interally handled
   assume_role_principal = "ecs-tasks.amazonaws.com"
-  policy_statements = [
+  policy_statements = concat(var.execution_role_policy_statements, [
     {
       "Effect" : "Allow",
       "Action" : [
@@ -26,7 +26,7 @@ module "execution_role" {
       ],
       "Resource" : ["*"]
     }
-  ]
+  ])
 
   # Optional
   role_description           = var.execution_role_description
@@ -77,4 +77,8 @@ variable "execution_role_policy_name_prefix" {
 }
 variable "execution_role_policy_path" {
   default = null
+}
+variable "execution_role_policy_statements" {
+  type    = list
+  default = []
 }
