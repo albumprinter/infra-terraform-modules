@@ -77,6 +77,7 @@ event_target_batch_target = [
 
 #### IAM Role (Execution)
 
+- **execution_role_policy_statements**: IAM policy statements granting permissions to the ECS task.
 - [execution_role_description](https://www.terraform.io/docs/providers/aws/r/iam_role.html#description)
 - [execution_role_force_detach_policies](https://www.terraform.io/docs/providers/aws/r/iam_role.html#force_detach_policies)
 - [execution_role_max_session_duration](https://www.terraform.io/docs/providers/aws/r/iam_role.html#max_session_duration)

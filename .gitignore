@@ -5,3 +5,4 @@
 .idea/
 .terraform\*
 .idea/*
+*remotestate.tf

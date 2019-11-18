@@ -24,6 +24,42 @@ module "ecs_task" {
   tags = var.tags
 }
 
+module "ecs_task_extra_execution_permissions" {
+  source = "../../../modules/aws/ecs_task"
+
+  task_family                = "infra-tf-modules-examples-ecs-task"
+  task_container_definitions = <<EOF
+    [
+      {
+        "name": "infra-tf-modules-examples-ecs-task",
+        "image": "973160909116.dkr.ecr.eu-west-1.amazonaws.com/infra_dynamodb_table_to_parquet:latest",
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "/ecs/infra-tf-modules-examples-ecs-task",
+            "awslogs-region": "eu-west-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+        },
+        "environment": []
+      }
+    ]
+  EOF
+
+  execution_role_policy_statements = [
+    {
+      "Effect": "Allow",
+      "Action": [ "ssm:GetParameters" ],
+      "Resource": [
+        aws_ssm_parameter.test_parameter.arn
+      ]
+    }
+  ]
+
+  tags = var.tags
+}
+
 module "ecs_task_placement_constraints" {
   source = "../../../modules/aws/ecs_task"
 
