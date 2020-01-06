@@ -4,9 +4,9 @@ locals {
 
 resource "vsphere_virtual_machine" "vsphereserver" {
   count                      = var.amount_of_servers
-  name                       = "${local.servername}${count.index + 1}"
+  name                       = "${local.servername}${count.index +1}"
   resource_pool_id           = var.vsphere_resource_pool_id
-  datastore_id               = count.index % 2 == 0 ? var.vsphere_datastore_datastore1 : var.vsphere_datastore_datastore2
+  datastore_id               = "${var.vm_datastore[(count.index) % length(var.vm_datastore)]}"
   num_cpus                   = var.vm_cpu
   memory                     = var.vm_memory
   guest_id                   = var.vm_windows_version
@@ -98,7 +98,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
 }
 
 data "template_file" "octopus_script" {
-  template = file("${path.module}/files/Octopus/InstallOctopus.ps1")
+  template = "${file("${path.module}/files/Octopus/InstallOctopus.ps1")}"
   vars = {
     octopus_role        = var.octopus_role
     octopus_environment = var.octopus_environment

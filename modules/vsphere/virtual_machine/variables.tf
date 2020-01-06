@@ -6,6 +6,9 @@ variable "aws_shared_services_account_id" {
   default = "973160909116"
 }
 
+variable "location" {
+  default = "Almere"
+}
 variable "vsphere_vcenter_name" {
 }
 
@@ -18,16 +21,7 @@ variable "vsphere_compute_cluster" {
 variable "vsphere_resource_pool_id" {
 }
 
-variable "vsphere_datastore_datastore1" {
-}
-
-variable "vsphere_datastore_datastore2" {
-}
-
-variable "vsphere_datastore_datastore3" {
-}
-
-variable "vsphere_datastore_datastore4" {
+variable "vm_datastore" {
 }
 
 variable "application_environment" {
