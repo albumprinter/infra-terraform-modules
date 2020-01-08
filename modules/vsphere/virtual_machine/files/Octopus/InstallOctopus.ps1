@@ -6,5 +6,5 @@ Set-Location "C:\Program Files\Octopus Deploy\Tentacle"
 .\Tentacle.exe configure --instance "Tentacle" --reset-trust --console
 .\Tentacle.exe configure --instance "Tentacle" --home "D:\Octopus" --app "D:\Octopus\Applications" --port "10933" --console
 .\Tentacle.exe configure --instance "Tentacle" --trust "${octopus_trust}" --console
-.\Tentacle.exe register-with --instance "Tentacle" --server "https://octopus.deploy.photoconnector.net" --apiKey="${octopus_apikey}" --role "${octopus_role}" --environment "${octopus_environment}" --comms-style TentaclePassive --console
+.\Tentacle.exe register-with --instance "Tentacle" --server "https://octopus.deploy.photoconnector.net" --apiKey="${octopus_apikey}" --role "${octopus_role1}" --role "${octopus_role2}" --role "${octopus_role3}" --environment "${octopus_environment}" --comms-style TentaclePassive --console
 .\Tentacle.exe service --instance "Tentacle" --install --start --console

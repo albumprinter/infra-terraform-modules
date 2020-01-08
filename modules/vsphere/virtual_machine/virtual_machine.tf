@@ -1,5 +1,5 @@
 locals {
-  servername = "${var.application_environment}${var.application_domain}"
+  servername = "${var.application_location}${var.application_environment}${var.application_domain}"
 }
 
 
@@ -69,20 +69,6 @@ resource "vsphere_virtual_machine" "vsphereserver" {
     eagerly_scrub    = var.vm_eagerly_scrub_disk_2
   }
 
-  //  provisioner "file" {
-  //    source = "${path.module}/files/Octopus"
-  //    destination = "C:/APShared/Launch/Scripts/"
-  //    connection {
-  //      type = "winrm"
-  //      user = "administrator"
-  //      password = "${var.vm_admin_password}"
-  //      host = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
-  //      insecure = "true"
-  //      timeout = "25m"
-  //      https = "false"
-  //    }
-  //  }
-
   provisioner "file" {
     content     = data.template_file.octopus_script.rendered
     destination = "C:/APShared/Launch/Scripts/InstallOctopus.ps1"
@@ -113,13 +99,14 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 }
 
-data "template_file" "octopus_script" {
+  data "template_file" "octopus_script" {
   template = "${file("${path.module}/files/Octopus/InstallOctopus.ps1")}"
   vars = {
-    octopus_role        = var.octopus_role
+    octopus_role1       = var.octopus_role1
+    octopus_role2       = var.octopus_role2
+    octopus_role3       = var.octopus_role3
     octopus_environment = var.octopus_environment
     octopus_trust       = var.octopus_trust
     octopus_apikey      = var.octopus_apikey
+    }
   }
-}
-
