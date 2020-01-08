@@ -21,8 +21,10 @@ variable "vsphere_compute_cluster" {
 variable "vsphere_resource_pool_id" {
 }
 
-variable "vm_datastore" {
+variable "vm_datastores" {
+  type = "list"
 }
+
 
 variable "application_environment" {
 }
@@ -73,8 +75,17 @@ variable "vm_disk_1_size" {
 variable "vm_thin_provisioned_disk_1" {
 }
 
+variable "vm_eagerly_scrub_disk_1" {
+}
+
 variable "vm_disk2_size" {
   default = 20
+}
+
+variable "vm_thin_provisioned_disk_2" {
+}
+
+variable "vm_eagerly_scrub_disk_2" {
 }
 
 variable "vm_network_name" {
@@ -93,7 +104,7 @@ variable "vm_ipv4_gateway" {
 }
 
 variable "vm_dns_server_list" {
-  type = list(string)
+  type = list
 }
 
 //variable "vm_dnsserver1" {}

@@ -2,11 +2,25 @@ locals {
   servername = "${var.application_environment}${var.application_domain}"
 }
 
+
+data "vsphere_datastore" "datastore" {
+  count         = var.amount_of_servers
+  name          = "${data.null_data_source.ds_name[count.index].outputs["datastore_name"]}"
+  datacenter_id = var.vsphere_datacenter
+}
+
+data "null_data_source" "ds_name" {
+  count         = var.amount_of_servers
+  inputs = {
+    datastore_name = "${var.vm_datastores[count.index % length(var.vm_datastores)]}"
+  }
+}
+
 resource "vsphere_virtual_machine" "vsphereserver" {
   count                      = var.amount_of_servers
   name                       = "${local.servername}${count.index +1}"
   resource_pool_id           = var.vsphere_resource_pool_id
-  datastore_id               = "${var.vm_datastore[(count.index) % length(var.vm_datastore)]}"
+  datastore_id               = data.vsphere_datastore.datastore[count.index].id
   num_cpus                   = var.vm_cpu
   memory                     = var.vm_memory
   guest_id                   = var.vm_windows_version
@@ -34,7 +48,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
       }
 
       network_interface {
-        ipv4_address    = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+        ipv4_address    = "${var.vm_ipv4_address}${var.vm_ipv4_address_host + count.index}"
         ipv4_netmask    = var.vm_ipv4_subnet_mask
         dns_server_list = var.vm_dns_server_list
       }
@@ -45,12 +59,14 @@ resource "vsphere_virtual_machine" "vsphereserver" {
     label            = "disk0"
     size             = var.vm_disk_1_size
     thin_provisioned = var.vm_thin_provisioned_disk_1
+    eagerly_scrub    = var.vm_eagerly_scrub_disk_1
   }
   disk {
     label            = "disk1"
     unit_number      = 1
     size             = var.vm_disk2_size
-    thin_provisioned = false
+    thin_provisioned = var.vm_thin_provisioned_disk_2
+    eagerly_scrub    = var.vm_eagerly_scrub_disk_2
   }
 
   //  provisioner "file" {
@@ -74,7 +90,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
       type     = "winrm"
       user     = "administrator"
       password = var.vm_admin_password
-      host     = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+      host     = "${var.vm_ipv4_address}${var.vm_ipv4_address_host + count.index}"
       insecure = "true"
       timeout  = "25m"
       https    = "false"
@@ -86,7 +102,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
       "powershell.exe -Command C:/APShared/Launch/Scripts/InstallOctopus.ps1",
     ]
     connection {
-      host     = "${var.vm_ipv4_address}.${var.vm_ipv4_address_host + count.index}"
+      host     = "${var.vm_ipv4_address}${var.vm_ipv4_address_host + count.index}"
       type     = "winrm"
       https    = "false"
       user     = "administrator"
