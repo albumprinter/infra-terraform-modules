@@ -30,7 +30,10 @@ variable "vm_domain_admin_password" {}
 variable "vm_workgroup" {}
 variable "vm_admin_user" {}
 variable "vm_admin_password" {}
-variable "vm_cpu" {
+variable "vm_cpu_sockets" {
+  default = 1
+}
+variable "vm_cpu_cores" {
   default = 2
 }
 variable "vm_memory" {

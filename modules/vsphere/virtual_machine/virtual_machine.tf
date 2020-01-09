@@ -20,8 +20,9 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   count                      = var.amount_of_servers
   name                       = "${local.servername}${count.index +1}"
   resource_pool_id           = var.vsphere_resource_pool_id
-  datastore_id               = data.vsphere_datastore.datastore[count.index].id
-  num_cpus                   = var.vm_cpu
+  datastore_id               = "${data.vsphere_datastore.datastore[count.index].id}"
+  num_cpus                   = var.vm_cpu_sockets
+  num_cores_per_socket       = var.vm_cpu_cores
   memory                     = var.vm_memory
   guest_id                   = var.vm_windows_version
   scsi_type                  = var.scsi_type
@@ -43,7 +44,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
         full_name             = "Administrator"
         organization_name     = "Albelli BV"
         auto_logon            = "true"
-        auto_logon_count      = "2"
+        auto_logon_count      = "1"
         time_zone             = "110"
       }
 
