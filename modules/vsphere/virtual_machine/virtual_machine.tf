@@ -71,7 +71,12 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 
   provisioner "file" {
-    content     = templatefile("${path.module}/files/Octopus/InstallOctopus.ps1", {roles=var.octopus_roles})
+    content     = templatefile("${path.module}/files/Octopus/InstallOctopus.ps1", {
+      roles=var.octopus_roles,
+      octopus_environment = var.octopus_environment,
+      octopus_trust       = var.octopus_trust,
+      octopus_apikey      = var.octopus_apikey
+    })
     destination = "C:/APShared/Launch/Scripts/InstallOctopus.ps1"
     connection {
       type     = "winrm"
