@@ -71,7 +71,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 
   provisioner "file" {
-    content     = data.template_file.octopus_script.rendered
+    content     = templatefile("${path.module}/files/Octopus/InstallOctopus.ps1", {roles=var.octopus_roles})
     destination = "C:/APShared/Launch/Scripts/InstallOctopus.ps1"
     connection {
       type     = "winrm"
@@ -100,14 +100,14 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 }
 
-  data "template_file" "octopus_script" {
-  template = "${file("${path.module}/files/Octopus/InstallOctopus.ps1")}"
-  vars = {
-    octopus_role1       = var.octopus_role1
-    octopus_role2       = var.octopus_role2
-    octopus_role3       = var.octopus_role3
-    octopus_environment = var.octopus_environment
-    octopus_trust       = var.octopus_trust
-    octopus_apikey      = var.octopus_apikey
-    }
-  }
+//  data "template_file" "octopus_script" {
+//  template = "${file("${path.module}/files/Octopus/InstallOctopus.ps1")}"
+//  vars = {
+//    octopus_role1       = var.octopus_role1
+//    octopus_role2       = var.octopus_role2
+//    octopus_role3       = var.octopus_role3
+//    octopus_environment = var.octopus_environment
+//    octopus_trust       = var.octopus_trust
+//    octopus_apikey      = var.octopus_apikey
+//    }
+//  }

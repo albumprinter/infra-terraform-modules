@@ -58,9 +58,9 @@ variable "vm_dns_server_list" {
 variable "scsi_type" {
   default = "lsilogic-sas"
 }
-variable "octopus_role1" {}
-variable "octopus_role2" {}
-variable "octopus_role3" {}
+variable "octopus_roles" {
+  type = "list"
+}
 variable "octopus_environment" {}
 variable "octopus_trust" {}
 variable "octopus_apikey" {}
