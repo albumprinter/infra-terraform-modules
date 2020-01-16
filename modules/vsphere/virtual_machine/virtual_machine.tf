@@ -71,8 +71,7 @@ resource "vsphere_virtual_machine" "vsphereserver" {
   }
 
   provisioner "file" {
-    content = templatefile (
-    "${path.module}/files/Octopus/InstallOctopus.ps1",
+    content = templatefile("${path.module}/files/Octopus/InstallOctopus.ps1",
     {
     roles = var.octopus_roles,
     octopus_environment = var.octopus_environment,
