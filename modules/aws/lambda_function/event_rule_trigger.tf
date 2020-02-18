@@ -1,6 +1,6 @@
 module "event_rule" {
   source    = "../event_rule"
-  provision = var.event_rule_event_pattern != null || var.event_rule_schedule_expression != null ? true : false
+  provision = (var.event_rule_event_pattern != null || var.event_rule_schedule_expression != null) && var.provision == true ? true : false
 
   #Required
   event_rule_event_pattern       = var.event_rule_event_pattern
@@ -25,7 +25,7 @@ module "event_rule" {
 }
 
 resource "aws_lambda_permission" "event_rule_lambda_permission" {
-  count = var.event_rule_event_pattern != null || var.event_rule_schedule_expression != null ? 1 : 0
+  count = (var.event_rule_event_pattern != null || var.event_rule_schedule_expression != null) && var.provision == true ? 1 : 0
 
   # Required
   action        = var.event_rule_lambda_permission_action
