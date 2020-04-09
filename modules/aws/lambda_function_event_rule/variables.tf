@@ -4,6 +4,7 @@ variable "name" {
 variable "source_dir" {
   description = "Local directory containing the source code for the Lambda Function"
 }
+
 variable "handler" {
   description = "The entrypoint that should be called when the Lambda function is invoked"
   default     = "lambda_function.lambda_handler"
@@ -45,4 +46,16 @@ variable "retention_in_days" {
 variable "policy_statements" {
   description = "IAM Policy Statements that should be applied to the Lambda function"
   default     = []
+}
+variable "is_enabled" {
+  description = "Whether the CloudWatch Event Rule should be enabled or not"
+  default     = true
+}
+variable "event_pattern" {
+  description = "Event pattern that should be used to trigger the CloudWatch Event Rule"
+  default     = null
+}
+variable "schedule_expression" {
+  description = "Scheduled expression that should be used to trigger the CloudWatch Event Rule"
+  default     = null
 }

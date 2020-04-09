@@ -2,6 +2,8 @@
 
 This Terraform module provisions:
 
+- CloudWatch Event Rule
+- CloudWatch Event Target
 - Lambda function
 - CloudWatch Log Group
 - IAM Role
@@ -21,66 +23,37 @@ This Terraform module provisions:
 - `tags` - Tags that should be applied to all resources in this module
 - `retention_in_days` - Retention period for log messages in days
 - `policy_statements` - IAM Policy Statements that should be applied to the Lambda function
+- `is_enabled` - Whether the CloudWatch Event Rule should be enabled or not
+- `event_pattern` - Event pattern that should be used to trigger the CloudWatch Event Rule
+- `schedule_expression` - Scheduled expression that should be used to trigger the CloudWatch Event Rule
 
 ## Usage
 
 ```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
+module "event_pattern" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_event_rule?ref="
 
   name       = "${var.project_name}Lambda"
   source_dir = "${path.module}/src"
-
-  tags = var.tags
-}
-```
-
-```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
-
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
-  policy_statements = [
-    {
-      "Effect" : "Deny",
-      "Action" : [
-        "s3:ListBucket"
-      ],
-      "Resource" : ["*"]
-    }
+  event_pattern = <<PATTERN
+{
+  "detail-type": [
+    "AWS Console Sign In via CloudTrail"
   ]
+}
+PATTERN
 
   tags = var.tags
 }
 ```
 
 ```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
+module "schedule_expression" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_event_rule?ref="
 
   name       = "${var.project_name}Lambda"
   source_dir = "${path.module}/src"
-  vpc_config = {
-    subnet_ids         = data.aws_subnet_ids.private.ids,
-    security_group_ids = [aws_security_group.this.id]
-  }
-
-  tags = var.tags
-}
-```
-
-```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
-
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
-  environment = {
-    variables = {
-      TEST = "test"
-    }
-  }
+  schedule_expression = "cron(0 2 * * ? *)"
 
   tags = var.tags
 }
@@ -93,3 +66,6 @@ module "lambda_function" {
 - `aws_cloudwatch_log_group`
 - `aws_iam_role`
 - `aws_iam_policy`
+- `aws_cloudwatch_event_rule`
+- `aws_cloudwatch_event_target`
+- `aws_lambda_permission`

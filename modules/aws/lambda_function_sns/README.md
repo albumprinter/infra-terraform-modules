@@ -2,6 +2,8 @@
 
 This Terraform module provisions:
 
+- SNS Topic
+- SNS Topic Subscription
 - Lambda function
 - CloudWatch Log Group
 - IAM Role
@@ -25,62 +27,11 @@ This Terraform module provisions:
 ## Usage
 
 ```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
+module "lambda_function_sns" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_sns?ref="
 
   name       = "${var.project_name}Lambda"
   source_dir = "${path.module}/src"
-
-  tags = var.tags
-}
-```
-
-```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
-
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
-  policy_statements = [
-    {
-      "Effect" : "Deny",
-      "Action" : [
-        "s3:ListBucket"
-      ],
-      "Resource" : ["*"]
-    }
-  ]
-
-  tags = var.tags
-}
-```
-
-```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
-
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
-  vpc_config = {
-    subnet_ids         = data.aws_subnet_ids.private.ids,
-    security_group_ids = [aws_security_group.this.id]
-  }
-
-  tags = var.tags
-}
-```
-
-```hcl
-module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
-
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
-  environment = {
-    variables = {
-      TEST = "test"
-    }
-  }
 
   tags = var.tags
 }
@@ -93,3 +44,6 @@ module "lambda_function" {
 - `aws_cloudwatch_log_group`
 - `aws_iam_role`
 - `aws_iam_policy`
+- `aws_sns_topic`
+- `aws_sns_topic_subscription`
+- `aws_lambda_permission`

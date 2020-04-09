@@ -4,6 +4,7 @@ variable "name" {
 variable "source_dir" {
   description = "Local directory containing the source code for the Lambda Function"
 }
+
 variable "handler" {
   description = "The entrypoint that should be called when the Lambda function is invoked"
   default     = "lambda_function.lambda_handler"
