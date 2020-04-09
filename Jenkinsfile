@@ -11,14 +11,14 @@ pipeline {
     stage('Apply') {
       steps {
         script {
-          terraform(accountId: params.ACCOUNT_ID, destroy: params.FORCE_DESTROY, rootDir: 'examples/aws')
+          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, destroy: params.FORCE_DESTROY, rootDir: 'examples/aws')
         }        
       }
     }
     stage('Destroy') {
       steps {
         script {
-          terraform(accountId: params.ACCOUNT_ID, destroy: true, rootDir: 'examples/aws')
+          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, destroy: true, rootDir: 'examples/aws')
         }        
       }
     }
