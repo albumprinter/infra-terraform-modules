@@ -2,8 +2,7 @@
 
 This Terraform module provisions:
 
-- SNS Topic
-- SNS Topic Subscription
+- AWS Config Custom Rule
 - Lambda function
 - CloudWatch Log Group
 - IAM Role
@@ -27,11 +26,11 @@ This Terraform module provisions:
 ## Usage
 
 ```hcl
-module "lambda_function_sns" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_sns?ref="
+module "custom_rule" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/config_custom_rule?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name                   = "MyRule"
+  source_dir             = "${path.module}/src"
 
   tags = var.tags
 }
@@ -44,6 +43,6 @@ module "lambda_function_sns" {
 - `aws_cloudwatch_log_group`
 - `aws_iam_role`
 - `aws_iam_policy`
-- `aws_sns_topic`
-- `aws_sns_topic_subscription`
+- `aws_config_config_rule"`
 - `aws_lambda_permission`
+- `aws_iam_role_policy_attachment`

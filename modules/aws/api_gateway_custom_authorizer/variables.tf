@@ -9,7 +9,7 @@ variable "authorizer_result_ttl_in_seconds" {
   default     = 0
 }
 variable "authorizer" {
-  description = "Object representing the Lambda function that should be used as a Custom Authorizer"
+  description = "The Lambda function that should be used as a Custom Authorizer"
   default     = null
 }
 variable "tags" {

@@ -11,5 +11,5 @@ output "aws_iam_role" {
   value = module.iam_role.aws_iam_role
 }
 output "aws_iam_policy" {
-  value = module.iam_role.aws_iam_policy
+  value = module.iam_role.aws_iam_role_policy
 }

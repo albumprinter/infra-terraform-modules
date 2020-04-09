@@ -11,7 +11,7 @@ This Terraform module provisions:
 - `name` - Name that should be used for the API Gateway REST API and related resources
 - `rest_api` - REST API that the method should be associated to
 - `authorizer_result_ttl_in_seconds` - TTL for cached responses from the Authorizer
-- `authorizer` - Object representing the Lambda function that should be used as a Custom Authorizer
+- `authorizer` - The Lambda function that should be used as a Custom Authorizer
 - `tags` - Tags that should be applied to all resources in this module
 
 ## Usage

@@ -16,7 +16,7 @@ variable "authorizer" {
   default     = null
 }
 variable "lambda_function" {
-  description = "Object representing the Lambda function that should be integrated with this method"
+  description = "The Lambda function that should be integrated with this method"
 }
 variable "request_validator_id" {
   description = "Request Validator ID that should be used to validate calls to this method"

@@ -4,12 +4,8 @@ resource "aws_iam_role" "this" {
   tags               = var.tags
 }
 
-resource "aws_iam_policy" "this" {
-  name   = var.name
+resource "aws_iam_role_policy" "this" {
+  name   = substr(var.name, 0, 64)
+  role   = aws_iam_role.this.id
   policy = var.policy
-}
-
-resource "aws_iam_role_policy_attachment" "this" {
-  role       = aws_iam_role.this.name
-  policy_arn = aws_iam_policy.this.arn
 }

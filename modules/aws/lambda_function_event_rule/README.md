@@ -7,7 +7,7 @@ This Terraform module provisions:
 - Lambda function
 - CloudWatch Log Group
 - IAM Role
-- IAM Policy.
+- IAM Policy
 
 ## Module Input Variables
 
@@ -33,8 +33,8 @@ This Terraform module provisions:
 module "event_pattern" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_event_rule?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name          = "${var.project_name}Lambda"
+  source_dir    = "${path.module}/src"
   event_pattern = <<PATTERN
 {
   "detail-type": [
@@ -51,8 +51,8 @@ PATTERN
 module "schedule_expression" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_event_rule?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name                = "${var.project_name}Lambda"
+  source_dir          = "${path.module}/src"
   schedule_expression = "cron(0 2 * * ? *)"
 
   tags = var.tags

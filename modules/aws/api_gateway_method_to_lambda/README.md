@@ -17,7 +17,7 @@ This Terraform module provisions:
 - `http_method` - HTTP method that this method should support
 - `authorization` - Authorization type that should be used for this method
 - `authorizer` - Authorizer that should be used to authorize calls to this method
-- `lambda_function` - Object representing the Lambda function that should be integrated with this method
+- `lambda_function` - The Lambda function that should be integrated with this method
 - `request_validator_id` - Request Validator ID that should be used to validate calls to this method
 - `request_parameters` - Request parameters supported by this method
 - `request_models` - Request models supported by this method

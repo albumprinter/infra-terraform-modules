@@ -2,10 +2,11 @@
 
 This Terraform module provisions:
 
-- Lambda function
+- Lambda Function
+- Lambda Function Event Invoke Config
 - CloudWatch Log Group
 - IAM Role
-- IAM Policy.
+- IAM Policy
 
 ## Module Input Variables
 
@@ -28,8 +29,8 @@ This Terraform module provisions:
 module "lambda_function" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name        = "${var.project_name}Lambda"
+  source_dir  = "${path.module}/src"
 
   tags = var.tags
 }
@@ -39,8 +40,8 @@ module "lambda_function" {
 module "lambda_function" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name        = "${var.project_name}Lambda"
+  source_dir  = "${path.module}/src"
   policy_statements = [
     {
       "Effect" : "Deny",
@@ -59,8 +60,8 @@ module "lambda_function" {
 module "lambda_function" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name        = "${var.project_name}Lambda"
+  source_dir  = "${path.module}/src"
   vpc_config = {
     subnet_ids         = data.aws_subnet_ids.private.ids,
     security_group_ids = [aws_security_group.this.id]
@@ -74,8 +75,8 @@ module "lambda_function" {
 module "lambda_function" {
   source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function?ref="
 
-  name       = "${var.project_name}Lambda"
-  source_dir = "${path.module}/src"
+  name        = "${var.project_name}Lambda"
+  source_dir  = "${path.module}/src"
   environment = {
     variables = {
       TEST = "test"
