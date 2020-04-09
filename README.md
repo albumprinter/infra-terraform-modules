@@ -13,6 +13,7 @@ The directories in this repository are organized in the following way:
 
 ### AWS
 
+- [**api_gateway_cors**](modules/aws/api_gateway_cors)
 - [**api_gateway_custom_authorizer**](modules/aws/api_gateway_custom_authorizer)
 - [**api_gateway_method_to_lambda**](modules/aws/api_gateway_method_to_lambda)
 - [**api_gateway_rest_api**](modules/aws/api_gateway_rest_api)

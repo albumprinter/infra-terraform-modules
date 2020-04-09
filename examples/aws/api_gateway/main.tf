@@ -7,23 +7,20 @@ module "api" {
   tags = var.tags
 }
 
-module "post_method" {
-  source = "../../../modules/aws/api_gateway_method_to_lambda"
-
-  rest_api        = module.api.aws_api_gateway_rest_api
-  resource        = module.api.aws_api_gateway_resource
-  http_method     = "POST"
-  lambda_function = module.lambda_function.aws_lambda_function
-}
-
-module "get_method_with_cors" {
+module "get_method" {
   source = "../../../modules/aws/api_gateway_method_to_lambda"
 
   rest_api        = module.api.aws_api_gateway_rest_api
   resource        = module.api.aws_api_gateway_resource
   http_method     = "GET"
   lambda_function = module.lambda_function.aws_lambda_function
-  enable_cors     = true
+}
+
+module "cors" {
+  source = "../../../modules/aws/api_gateway_cors"
+
+  rest_api = module.api.aws_api_gateway_rest_api
+  resource = module.api.aws_api_gateway_resource
 }
 
 module "lambda_function" {
@@ -37,9 +34,8 @@ module "lambda_function" {
 
 resource "aws_api_gateway_deployment" "api" {
   depends_on = [
-    module.post_method.aws_api_gateway_integration,
-    module.get_method_with_cors.aws_api_gateway_integration,
-    module.get_method_with_cors.aws_api_gateway_integration_cors
+    module.get_method.aws_api_gateway_integration,
+    module.cors.aws_api_gateway_integration
   ]
 
   rest_api_id = module.api.aws_api_gateway_rest_api.id

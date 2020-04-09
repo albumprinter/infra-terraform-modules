@@ -32,7 +32,3 @@ variable "request_models" {
   type        = map
   default     = null
 }
-variable "enable_cors" {
-  description = "Whether CORS should be enabled or not"
-  default     = false
-}

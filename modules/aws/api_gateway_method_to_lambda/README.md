@@ -5,10 +5,6 @@ This Terraform module provisions:
 - API Gateway Method
 - API Gateway Integration
 - AWS Lambda Permission
-- API Gateway Method (if `enable_cors` is set to `true`)
-- API Gateway Method Response (if `enable_cors` is set to `true`)
-- API Gateway Integration (if `enable_cors` is set to `true`)
-- API Gateway Integration Response (if `enable_cors` is set to `true`)
 
 ## Module Input Variables
 
@@ -21,7 +17,6 @@ This Terraform module provisions:
 - `request_validator_id` - Request Validator ID that should be used to validate calls to this method
 - `request_parameters` - Request parameters supported by this method
 - `request_models` - Request models supported by this method
-- `enable_cors` - Whether CORS should be enabled or not
 
 ## Usage
 
@@ -44,7 +39,6 @@ module "get_with_cors" {
   resource        = module.api.aws_api_gateway_resource
   http_method     = "GET"
   lambda_function = module.lambda_function.aws_lambda_function
-  enable_cors     = true
 }
 ```
 
@@ -66,7 +60,3 @@ module "get_with_authorizer" {
 - `aws_api_gateway_method`
 - `aws_api_gateway_integration`
 - `aws_lambda_permission`
-- `aws_api_gateway_method_cors` (if `enable_cors` is set to `true`)
-- `aws_api_gateway_method_response_cors` (if `enable_cors` is set to `true`)
-- `aws_api_gateway_integration_cors` (if `enable_cors` is set to `true`)
-- `aws_api_gateway_integration_response_cors` (if `enable_cors` is set to `true`)
