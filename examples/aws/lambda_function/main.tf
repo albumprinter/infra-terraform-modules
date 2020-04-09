@@ -9,23 +9,23 @@ module "lambda_function" {
   iam_role_policy_statements = var.iam_role_policy_statements
 }
 
-module "lambda_function_vpc" {
-  source = "../../../modules/aws/lambda_function"
+# module "lambda_function_vpc" {
+#   source = "../../../modules/aws/lambda_function"
 
-  function_name    = "infra-tf-modules-examples-lambda-function-vpc"
-  function_runtime = var.function_runtime_dotnetcore
+#   function_name    = "infra-tf-modules-examples-lambda-function-vpc"
+#   function_runtime = var.function_runtime_dotnetcore
 
-  tags = var.tags
+#   tags = var.tags
 
-  iam_role_policy_statements = var.iam_role_policy_statements
+#   iam_role_policy_statements = var.iam_role_policy_statements
 
-  function_vpc_config = [
-    {
-      subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.security_group.id]
-    }
-  ]
-}
+#   function_vpc_config = [
+#     {
+#       subnet_ids         = data.aws_subnet_ids.private.ids,
+#       security_group_ids = [module.security_group.security_group.id]
+#     }
+#   ]
+# }
 
 module "lambda_function_sns" {
   source = "../../../modules/aws/lambda_function"
@@ -38,23 +38,23 @@ module "lambda_function_sns" {
   function_dead_letter_target_type = "SNS"
 }
 
-module "lambda_function_sns_vpc" {
-  source = "../../../modules/aws/lambda_function"
+# module "lambda_function_sns_vpc" {
+#   source = "../../../modules/aws/lambda_function"
 
-  function_name    = "infra-tf-modules-examples-lambda-function-sns-vpc"
-  function_runtime = var.function_runtime_nodejs
+#   function_name    = "infra-tf-modules-examples-lambda-function-sns-vpc"
+#   function_runtime = var.function_runtime_nodejs
 
-  tags = var.tags
+#   tags = var.tags
 
-  function_dead_letter_target_type = "SNS"
+#   function_dead_letter_target_type = "SNS"
 
-  function_vpc_config = [
-    {
-      subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.security_group.id]
-    }
-  ]
-}
+#   function_vpc_config = [
+#     {
+#       subnet_ids         = data.aws_subnet_ids.private.ids,
+#       security_group_ids = [module.security_group.security_group.id]
+#     }
+#   ]
+# }
 
 module "lambda_function_scheduled" {
   source = "../../../modules/aws/lambda_function"
@@ -67,23 +67,23 @@ module "lambda_function_scheduled" {
   event_rule_schedule_expression = "cron(0 2 * * ? *)"
 }
 
-module "lambda_function_scheduled_vpc" {
-  source = "../../../modules/aws/lambda_function"
+# module "lambda_function_scheduled_vpc" {
+#   source = "../../../modules/aws/lambda_function"
 
-  function_name    = "infra-tf-modules-examples-lambda-function-scheduled-vpc"
-  function_runtime = var.function_runtime_python
+#   function_name    = "infra-tf-modules-examples-lambda-function-scheduled-vpc"
+#   function_runtime = var.function_runtime_python
 
-  tags = var.tags
+#   tags = var.tags
 
-  event_rule_schedule_expression = "cron(0 2 * * ? *)"
+#   event_rule_schedule_expression = "cron(0 2 * * ? *)"
 
-  function_vpc_config = [
-    {
-      subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.security_group.id]
-    }
-  ]
-}
+#   function_vpc_config = [
+#     {
+#       subnet_ids         = data.aws_subnet_ids.private.ids,
+#       security_group_ids = [module.security_group.security_group.id]
+#     }
+#   ]
+# }
 
 module "lambda_function_event_pattern" {
   source = "../../../modules/aws/lambda_function"
@@ -102,29 +102,29 @@ module "lambda_function_event_pattern" {
 PATTERN
 }
 
-module "lambda_function_event_pattern_vpc" {
-  source = "../../../modules/aws/lambda_function"
+# module "lambda_function_event_pattern_vpc" {
+#   source = "../../../modules/aws/lambda_function"
 
-  function_name    = "infra-tf-modules-examples-lambda-function-event-pattern-vpc"
-  function_runtime = var.function_runtime_python
+#   function_name    = "infra-tf-modules-examples-lambda-function-event-pattern-vpc"
+#   function_runtime = var.function_runtime_python
 
-  tags = var.tags
+#   tags = var.tags
 
-  event_rule_event_pattern = <<PATTERN
-{
-  "detail-type": [
-    "AWS Console Sign In via CloudTrail"
-  ]
-}
-PATTERN
+#   event_rule_event_pattern = <<PATTERN
+# {
+#   "detail-type": [
+#     "AWS Console Sign In via CloudTrail"
+#   ]
+# }
+# PATTERN
 
-  function_vpc_config = [
-    {
-      subnet_ids         = data.aws_subnet_ids.private.ids,
-      security_group_ids = [module.security_group.security_group.id]
-    }
-  ]
-}
+#   function_vpc_config = [
+#     {
+#       subnet_ids         = data.aws_subnet_ids.private.ids,
+#       security_group_ids = [module.security_group.security_group.id]
+#     }
+#   ]
+# }
 
 module "lambda_function_api_gateway" {
   source = "../../../modules/aws/lambda_function"

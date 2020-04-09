@@ -1,5 +1,5 @@
 output "lambda_function" {
-  value = var.provision == true ? aws_lambda_function.function[0] : null
+  value = var.provision == true && length(aws_lambda_function.function) > 0 ? aws_lambda_function.function[0] : null
 }
 output "iam_role" {
   value = module.role.iam_role
