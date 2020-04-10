@@ -41,7 +41,7 @@ resource "aws_api_gateway_integration_response" "this" {
   rest_api_id       = var.rest_api.id
   resource_id       = var.resource.id
   http_method       = aws_api_gateway_method.this.http_method
-  status_code       = aws_api_gateway_method_response.http_200.status_code
+  status_code       = aws_api_gateway_method_response.this.status_code
   selection_pattern = "2\\d{2}"
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
