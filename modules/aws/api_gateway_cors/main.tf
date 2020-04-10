@@ -30,9 +30,9 @@ resource "aws_api_gateway_method_response" "http_400" {
     "application/json" = "Error"
   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = false,
-    "method.response.header.Access-Control-Allow-Methods" = false,
-    "method.response.header.Access-Control-Allow-Origin"  = false
+    "method.response.header.Access-Control-Allow-Headers" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true
   }
   depends_on = [aws_api_gateway_method.this]
 }
@@ -46,9 +46,9 @@ resource "aws_api_gateway_method_response" "http_500" {
     "application/json" = "Error"
   }
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Headers" = false,
-    "method.response.header.Access-Control-Allow-Methods" = false,
-    "method.response.header.Access-Control-Allow-Origin"  = false
+    "method.response.header.Access-Control-Allow-Headers" = true,
+    "method.response.header.Access-Control-Allow-Methods" = true,
+    "method.response.header.Access-Control-Allow-Origin"  = true
   }
   depends_on = [aws_api_gateway_method.this]
 }
