@@ -1,6 +1,7 @@
 locals {
+  project_name = "InfraTerraformModules"
   tags = {
-    Domain        = "ci-cd-platform"
+    Domain        = "cicd"
     "Cost Center" = "303100"
     Environment   = "test"
   }

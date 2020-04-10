@@ -6,26 +6,28 @@ An **opinionated** set of **Terraform 0.12** compatible modules for standardized
 
 The directories in this repository are organized in the following way:
 
-* [**Examples**](examples): contains examples on how to use all available modules. These examples are also used to validate changes.
-* [**Modules**](modules): contains all available modules and documentation on how to use each of them.
+- [**Examples**](examples): contains examples on how to use all available modules. These examples are also used to validate changes.
+- [**Modules**](modules): contains all available modules and documentation on how to use each of them.
 
 ## Available Modules
 
 ### AWS
 
-* [**API Gateway**](modules/aws/api_gateway)
-* [**CloudWatch Log Group**](modules/aws/cloudwatch_log_group)
-* [**CloudWatch Event Rule**](modules/aws/event_rule)
-* [**CloudWatch Metric Alarm**](modules/aws/cloudwatch_metric_alarm)
-* [**CodeBuild Project**](modules/aws/codebuild_project)
-* [**Config Rule**](modules/aws/config_config_rule)
-* [**ECR Repository**](modules/aws/ecr_repository)
-* [**ECS Task Definition**](modules/aws/ecs_task)
-* [**Glue Crawler**](modules/aws/glue_crawler)
-* [**IAM Role**](modules/aws/iam_role)
-* [**Lambda Function**](modules/aws/lambda_function)
-* [**Route 53 Hosted Zone**](modules/aws/route53_hosted_zone)
-* [**Security Group**](modules/aws/security_group)
-* [**Step Function State Machine**](modules/aws/sfn_state_machine)
-* [**SNS Topic**](modules/aws/sns_topic)
-* [**SQS Queue**](modules/aws/sqs_queue)
+- [**api_gateway_cors**](modules/aws/api_gateway_cors)
+- [**api_gateway_custom_authorizer**](modules/aws/api_gateway_custom_authorizer)
+- [**api_gateway_method_to_lambda**](modules/aws/api_gateway_method_to_lambda)
+- [**api_gateway_rest_api**](modules/aws/api_gateway_rest_api)
+- [**config_custom_rule**](modules/aws/config_custom_rule)
+- [**ecr_repository**](modules/aws/ecr_repository)
+- [**ecs_fargate_task**](modules/aws/ecs_fargate_task)
+- [**iam_role_with_policy**](modules/aws/iam_role_with_policy)
+- [**lambda_function**](modules/aws/lambda_function)
+- [**lambda_function_event_rule**](modules/aws/lambda_function_event_rule)
+- [**lambda_function_sns**](modules/aws/lambda_function_sns)
+- [**sfn_state_machine**](modules/aws/sfn_state_machine)
+
+## Versions 0.2.x (deprecated)
+
+From version `0.2.x` to `0.3.x`, the set of available modules was modified and breaking changes were introduced in the modules that remained.
+
+For now, modules compatible with `0.2.x` versions were moved to [modules/aws_deprecated](modules/aws_deprecated) for bug fixes.

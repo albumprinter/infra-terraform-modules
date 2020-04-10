@@ -1,41 +1,42 @@
-# Module: Step Function State Machine
+## Module Resources
 
-This module provisions a Step Function State Machine along with a IAM Role.
+This Terraform module provisions:
 
-## Examples
+- Step Functions State Machine
+- IAM Role
+- IAM Policy
 
-#### Minimal configuration
+## Module Input Variables
 
-```
-module "state_machine" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sfn_state_machine"
+- `name` - Name that should be used for the Step Functions State Machine and related resources
+- `definition` - State machine defition that should be used by Step Functions
+- `tags` - Tags that should be applied to all resources in this module
+- `policy_statements` - IAM Policy Statements that should be applied to the Step Functions State Machine
 
-  sfn_state_machine_name       = "my-state-machine"
-  sfn_state_machine_definition = "..."
+## Usage
 
-  tags = {
-    Environment   = "..."
-    Domain        = "..."
-    "Cost Center" = "..."
-  }
+```hcl
+module "sfn" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sfn_state_machine?ref="
+
+  name       = "${var.project_name}Lambda"
+  definition = "..."
+  policy_statements = [
+    {
+      "Effect" : "Deny",
+      "Action" : [
+        "s3:ListBucket"
+      ],
+      "Resource" : ["*"]
+    }
+  ]
+
+  tags = var.tags
 }
 ```
 
-## Required parameters
+# Outputs
 
-The following parameters are considered required.
-
-- [sfn_state_machine_name](https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html#name)
-- [sfn_state_machine_definition](https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html#definition)
-- **tags**: Following the [albelli tagging standard](https://wiki.albelli.net/wiki/Albelli_AWS_Tagging_standards), the following parameters are required and will be applied to all taggable resources.
-
-## Optional Parameters
-
-All parameters supported by Terraform are also available for use and can be combine in any way **accepted by AWS**.
-
-For more details, please check the [optional parameters documentation](docs/optional_parameters.md)
-
-## Outputs
-
-- **sfn_state_machine**: contains all attributes available in Terraform for Step Function State Machine resources
-- **iam_role**: contains all attributes available in Terraform for IAM Role resources
+- `sfn_state_machine`
+- `aws_iam_role`
+- `aws_iam_policy`
