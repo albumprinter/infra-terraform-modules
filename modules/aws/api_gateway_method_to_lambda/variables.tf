@@ -18,8 +18,8 @@ variable "authorizer" {
 variable "lambda_function" {
   description = "The Lambda function that should be integrated with this method"
 }
-variable "request_validator_id" {
-  description = "Request Validator ID that should be used to validate calls to this method"
+variable "request_validator" {
+  description = "Request Validator that should be used to validate calls to this method"
   default     = null
 }
 variable "request_parameters" {

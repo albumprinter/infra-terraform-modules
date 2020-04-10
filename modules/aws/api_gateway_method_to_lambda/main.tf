@@ -4,7 +4,7 @@ resource "aws_api_gateway_method" "this" {
   http_method          = var.http_method
   authorization        = var.authorization
   authorizer_id        = local.authorizer_id
-  request_validator_id = var.request_validator_id
+  request_validator_id = var.request_validator != null ? var.request_validator.id : null
   request_parameters   = var.request_parameters
   request_models       = var.request_models
 }
