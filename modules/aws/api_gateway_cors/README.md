@@ -3,9 +3,9 @@
 This Terraform module provisions:
 
 - API Gateway Method
-- API Gateway Method Response (HTTP_200, HTTP_400, HTTP_500)
+- API Gateway Method Response
 - API Gateway Integration
-- API Gateway Integration Response (HTTP_200, HTTP_400, HTTP_500)
+- API Gateway Integration Response
 
 ## Module Input Variables
 
@@ -26,10 +26,6 @@ module "get" {
 # Outputs
 
 - `aws_api_gateway_method`
-- `aws_api_gateway_method_response_http_200`
-- `aws_api_gateway_method_response_http_400`
-- `aws_api_gateway_method_response_http_500`
+- `aws_api_gateway_method_response`
 - `aws_api_gateway_integration`
-- `aws_api_gateway_integration_response_http_200`
-- `aws_api_gateway_integration_response_http_400`
-- `aws_api_gateway_integration_response_http_500`
+- `aws_api_gateway_integration_response`
