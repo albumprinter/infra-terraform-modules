@@ -70,11 +70,11 @@ EOF
 }
 
 resource "aws_api_gateway_integration_response" "http_200" {
-  rest_api_id = var.rest_api.id
-  resource_id = var.resource.id
-  http_method = aws_api_gateway_method.this.http_method
-  status_code = aws_api_gateway_method_response.http_200.status_code
-  selection_pattern = "2\d{2}"
+  rest_api_id       = var.rest_api.id
+  resource_id       = var.resource.id
+  http_method       = aws_api_gateway_method.this.http_method
+  status_code       = aws_api_gateway_method_response.http_200.status_code
+  selection_pattern = "2\\d{2}"
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT,DELETE'",
@@ -84,11 +84,11 @@ resource "aws_api_gateway_integration_response" "http_200" {
 }
 
 resource "aws_api_gateway_integration_response" "http_400" {
-  rest_api_id = var.rest_api.id
-  resource_id = var.resource.id
-  http_method = aws_api_gateway_method.this.http_method
-  status_code = aws_api_gateway_method_response.http_400.status_code
-  selection_pattern = "4\d{2}"
+  rest_api_id       = var.rest_api.id
+  resource_id       = var.resource.id
+  http_method       = aws_api_gateway_method.this.http_method
+  status_code       = aws_api_gateway_method_response.http_400.status_code
+  selection_pattern = "4\\d{2}"
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT,DELETE'",
@@ -98,11 +98,11 @@ resource "aws_api_gateway_integration_response" "http_400" {
 }
 
 resource "aws_api_gateway_integration_response" "http_500" {
-  rest_api_id = var.rest_api.id
-  resource_id = var.resource.id
-  http_method = aws_api_gateway_method.this.http_method
-  status_code = aws_api_gateway_method_response.http_400.status_code
-  selection_pattern = "5\d{2}"
+  rest_api_id       = var.rest_api.id
+  resource_id       = var.resource.id
+  http_method       = aws_api_gateway_method.this.http_method
+  status_code       = aws_api_gateway_method_response.http_400.status_code
+  selection_pattern = "5\\d{2}"
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS,POST,PUT,DELETE'",
