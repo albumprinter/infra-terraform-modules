@@ -3,6 +3,7 @@
 This Terraform module provisions:
 
 - API Gateway Method
+- API Gateway Method Response (HTTP_400)
 - API Gateway Integration
 - AWS Lambda Permission
 
@@ -58,5 +59,6 @@ module "get_with_authorizer" {
 # Outputs
 
 - `aws_api_gateway_method`
+- `aws_api_gateway_method_response_http_400`
 - `aws_api_gateway_integration`
 - `aws_lambda_permission`

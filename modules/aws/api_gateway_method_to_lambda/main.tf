@@ -9,6 +9,17 @@ resource "aws_api_gateway_method" "this" {
   request_models       = var.request_models
 }
 
+resource "aws_api_gateway_method_response" "http_400" {
+  rest_api_id = var.rest_api.id
+  resource_id = var.resource.id
+  http_method = aws_api_gateway_method.this.http_method
+  status_code = "400"
+  response_models = {
+    "application/json" = "Error"
+  }
+  depends_on = [aws_api_gateway_method.this]
+}
+
 resource "aws_api_gateway_integration" "this" {
   rest_api_id             = var.rest_api.id
   resource_id             = var.resource.id
