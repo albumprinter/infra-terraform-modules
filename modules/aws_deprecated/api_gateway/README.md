@@ -8,7 +8,7 @@ This module provisions a complete REST API using API Gateway.
 
 ```
 module "api_gateway" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/api_gateway"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/api_gateway"
 
   api_gateway_rest_api_name         = "my_api"
   api_gateway_deployment_stage_name = "dev"

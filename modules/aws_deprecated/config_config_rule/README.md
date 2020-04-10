@@ -8,7 +8,7 @@ This module provisions a Config Rule with an optional Lambda function in case of
 
 ```
 module "config_config_rule" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/config_config_rule"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/config_config_rule"
 
   config_rule_name              = "my-rule"
   config_rule_owner             = "AWS"
@@ -47,7 +47,7 @@ To make use of this pattern, just pass the value `"CUSTOM_LAMBDA"` to the parame
 
 ```
 module "config_config_rule" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/config_config_rule"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/config_config_rule"
 
   config_rule_name              = "my-custom-rule"
   config_rule_owner             = "CUSTOM_LAMBDA"

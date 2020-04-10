@@ -8,7 +8,7 @@ This module provisions a SQS Queue with an optional queue policy.
 
 ```
 module "sqs_queue" {
-  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sqs_queue"
+  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/sqs_queue"
 
   tags = {
     Environment   = "..."
@@ -22,7 +22,7 @@ module "sqs_queue" {
 
 ```
 module "sqs_queue" {
-  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sqs_queue"
+  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/sqs_queue"
 
   name = "my_queue"
 

@@ -10,15 +10,15 @@ This module provisions a Glue Crawler along with the following resources:
 
 ```
 module "glue_crawler_s3_target" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/glue_crawler"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/glue_crawler"
 
   glue_crawler_name          = ".."
-  glue_crawler_database_name = "..."  
+  glue_crawler_database_name = "..."
   glue_crawler_s3_target     = [
     {
       path = "s3://..."
     }
-  ]  
+  ]
 
   iam_role_policy_statements = [
     {

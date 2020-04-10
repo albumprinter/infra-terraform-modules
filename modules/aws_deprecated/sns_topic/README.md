@@ -11,7 +11,7 @@ This module provisions a SNS Topic with two optional resources:
 
 ```
 module "sns_topic" {
-  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sns_topic"
+  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/sns_topic"
 
   tags = {
     Environment   = "..."
@@ -25,7 +25,7 @@ module "sns_topic" {
 
 ```
 module "sns_topic" {
-  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sns_topic"
+  source  = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/sns_topic"
 
   sns_topic_subscription_protocol = "lambda"
   sns_topic_subscription_endpoint = "arn:aws:lambda:eu-west-1:*:function:MY_FUNCTION"

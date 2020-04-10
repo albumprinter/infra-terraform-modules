@@ -8,7 +8,7 @@ This module provisions a Security Group with optional ingress and egress rules.
 
 ```
 module "security_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/security_group"
 
   tags = {
     Environment   = "..."
@@ -22,7 +22,7 @@ module "security_group" {
 
 ```
 module "security_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/security_group"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/security_group"
 
   name = "infra_tf_modules_example_lambda_function"
   vpc_id = data.aws_vpc.main.id

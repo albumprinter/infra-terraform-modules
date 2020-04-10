@@ -11,7 +11,7 @@ This module provisions a CodeBuild Project along with the following resources:
 
 ```
 module "codebuild_project" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/codebuild_project"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/codebuild_project"
 
   codebuild_project_name = "infra-tf-modules-examples-codebuild-project"
 
@@ -53,7 +53,7 @@ module "codebuild_project" {
 
 ```
 module "codebuild_project_vpc" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/codebuild_project"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/codebuild_project"
 
   codebuild_project_name = "infra-tf-modules-examples-codebuild-project-vpc"
 
@@ -126,7 +126,9 @@ codebuild_project_artifacts = [
   }
 ]
 ```
+
 - [codebuild_project_source](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#source)
+
   - Note: This attribute should be passed as an array containing one object with the following parameters:
     - [type](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#type-4)
     - [auth](https://www.terraform.io/docs/providers/aws/r/codebuild_project.html#auth)

@@ -8,7 +8,7 @@ This module provisions a CloudWatch Metric Alarm.
 
 ```
 module "basic_cw_alarm" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/cloudwatch_metric_alarm"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/cloudwatch_metric_alarm"
 
   alarm_name          = "infra-tf-modules-examples-basic-alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -31,7 +31,7 @@ module "basic_cw_alarm" {
 
 ```
 module "query_cw_alarm" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/cloudwatch_metric_alarm"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/cloudwatch_metric_alarm"
 
   alarm_name          = "infra-tf-modules-examples-basic-alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"

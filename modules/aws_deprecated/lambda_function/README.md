@@ -13,7 +13,7 @@ This module provisions a Lambda function along with the following resources:
 
 ```
 module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/lambda_function"
 
   function_name    = "example"
   function_runtime = var.function_runtime
@@ -30,7 +30,7 @@ module "lambda_function" {
 
 ```
 module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/lambda_function"
 
   function_name    = "example"
   function_handler = var.function_handler
@@ -51,7 +51,7 @@ module "lambda_function" {
 
 ```
 module "lambda_function" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/lambda_function"
 
   function_name    = "example"
   function_handler = var.function_handler
@@ -82,7 +82,7 @@ module "lambda_function" {
 
 ```
 module "lambda_function_vpc" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_vpc"
   function_handler = var.function_handler
@@ -106,7 +106,7 @@ module "lambda_function_vpc" {
 
 ```
 module "lambda_function_sns" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/lambda_function"
 
   function_name    = "infra_tf_modules_example_lambda_function_sns"
   function_handler = var.function_handler

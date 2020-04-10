@@ -11,7 +11,7 @@ This module provisions a ECR Repository along with the following optional resour
 
 ```
 module "ecr_repository" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/ecr_repository"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/ecr_repository"
 
   name = "my_ecr_repository"
 
@@ -27,7 +27,7 @@ module "ecr_repository" {
 
 ```
 module "ecr_repository" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/ecr_repository"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/ecr_repository"
 
   name = "my_shared_ecr_repository"
   aws_organization_id = "o-123456"
@@ -44,7 +44,7 @@ module "ecr_repository" {
 
 ```
 module "ecr_repository" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/ecr_repository"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/ecr_repository"
 
   name = "my_lifecycled_ecr_repository"
   max_number_of_images = 10

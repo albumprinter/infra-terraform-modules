@@ -8,7 +8,7 @@ This module provisions a Route 53 Hosted Zone along with any necessary records.
 
 ```
 module "hosted_zone_no_records" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/route53_zone"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/route53_zone"
 
   zone_name = "infra.modules.test"
 
@@ -24,7 +24,7 @@ module "hosted_zone_no_records" {
 
 ```
 module "hosted_zone" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/route53_zone"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/route53_zone"
 
   zone_name = "infra.modules.test"
   records = [

@@ -12,7 +12,7 @@ This module provisions a ECS Task Definition along with the following resources:
 
 ```
 module "ecs_task" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/ecs_task"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/ecs_task"
 
   task_family                = "infra_tf_modules_example_ecs_task"
   task_container_definitions = <<EOF
@@ -46,7 +46,7 @@ module "ecs_task" {
 
 ```
 module "ecs_task_placement_constraints" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/ecs_task"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/ecs_task"
 
   task_family                = "infra_tf_modules_example_ecs_task_placement_constraints"
   task_container_definitions = <<EOF

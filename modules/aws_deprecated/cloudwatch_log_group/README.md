@@ -8,7 +8,7 @@ This module provisions a CloudWatch Log Group.
 
 ```
 module "log_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/cloudwatch_log_group"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/cloudwatch_log_group"
 
   tags = {
     Environment   = "..."
@@ -22,7 +22,7 @@ module "log_group" {
 
 ```
 module "log_group" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/cloudwatch_log_group"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/cloudwatch_log_group"
 
   name = "/aws/lambda/${var.function_name}"
 

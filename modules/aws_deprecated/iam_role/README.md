@@ -8,7 +8,7 @@ This module provisions an IAM Role along with an optional IAM policy.
 
 ```
 module "role" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/iam_role"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/iam_role"
 
   assume_role_principal = "lambda.amazonaws.com"
 
@@ -24,7 +24,7 @@ module "role" {
 
 ```
 module "role" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/iam_role"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/iam_role"
 
   assume_role_principal = "lambda.amazonaws.com"
   policy_statements = [

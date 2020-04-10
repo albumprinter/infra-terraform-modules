@@ -8,7 +8,7 @@ This module provisions a CloudWatch Event Rule along with it's target.
 
 ```
 module "event_rule" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/event_rule"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/event_rule"
 
   event_rule_event_pattern = <<PATTERN
 {
@@ -31,7 +31,7 @@ PATTERN
 
 ```
 module "event_rule" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/event_rule"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/event_rule"
 
   event_rule_schedule_expression = "cron(0 2 * * ? *)"
   event_target_arn               = aws_lambda_function.function.arn
@@ -48,7 +48,7 @@ module "event_rule" {
 
 ```
 module "event_rule" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/event_rule"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/event_rule"
 
   event_rule_event_pattern = "cron(0 2 * * ? *)"
   event_target_arn         = aws_lambda_function.function.arn

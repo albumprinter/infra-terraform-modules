@@ -8,7 +8,7 @@ This module provisions a Step Function State Machine along with a IAM Role.
 
 ```
 module "state_machine" {
-  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/sfn_state_machine"
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws_deprecated/sfn_state_machine"
 
   sfn_state_machine_name       = "my-state-machine"
   sfn_state_machine_definition = "..."
