@@ -24,6 +24,20 @@ module "lambda_function" {
   environment       = var.environment
   vpc_config        = var.vpc_config
   retention_in_days = var.retention_in_days
-  policy_statements = var.policy_statements
-  tags              = var.tags
+  policy_statements = concat(var.policy_statements,
+    [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "sqs:ReceiveMessage",
+          "sqs:DeleteMessage",
+          "sqs:GetQueueAttributes"
+        ],
+        "Resource" : [
+          aws_sqs_queue.this.arn
+        ]
+      }
+    ]
+  )
+  tags = var.tags
 }
