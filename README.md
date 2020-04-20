@@ -24,6 +24,7 @@ The directories in this repository are organized in the following way:
 - [**lambda_function**](modules/aws/lambda_function)
 - [**lambda_function_event_rule**](modules/aws/lambda_function_event_rule)
 - [**lambda_function_sns**](modules/aws/lambda_function_sns)
+- [**lambda_function_sqs**](modules/aws/lambda_function_sqs)
 - [**sfn_state_machine**](modules/aws/sfn_state_machine)
 
 ## Versions 0.2.x (deprecated)

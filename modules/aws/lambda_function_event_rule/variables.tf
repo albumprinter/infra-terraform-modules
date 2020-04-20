@@ -24,7 +24,7 @@ variable "memory_size" {
 }
 variable "timeout" {
   description = "Timeout for the Lambda function"
-  default     = null
+  default     = 30
 }
 variable "environment" {
   description = "Environment configuration for the Lambda function"

@@ -47,3 +47,11 @@ variable "policy_statements" {
   description = "IAM Policy Statements that should be applied to the Lambda function"
   default     = []
 }
+variable "delay_seconds" {
+  description = "The time in seconds that the delivery of all messages in the queue will be delayed"
+  default     = null
+}
+variable "batch_size" {
+  description = "The largest number of records that Lambda will retrieve from the queue at the time of invocation"
+  default     = null
+}
