@@ -55,3 +55,7 @@ variable "batch_size" {
   description = "The largest number of records that Lambda will retrieve from the queue at the time of invocation"
   default     = null
 }
+variable "sqs_queue_policy" {
+  description = "Policy that should be applied to the SQS queue"
+  default     = null
+}

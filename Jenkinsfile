@@ -7,11 +7,21 @@ pipeline {
     booleanParam(name: 'FORCE_DESTROY', defaultValue: false, description: 'Forces the destruction of the provisioned infrastructure')
     
   }
+  options { 
+    disableConcurrentBuilds()
+    disableResume()
+    timeout(time: 1, unit: 'HOURS')
+  }
   stages {
     stage('Apply') {
+      when {
+        expression {
+          return !params.FORCE_DESTROY
+        }
+      }
       steps {
         script {
-          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, destroy: params.FORCE_DESTROY, rootDir: 'examples/aws')
+          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, rootDir: 'examples/aws')
         }        
       }
     }
