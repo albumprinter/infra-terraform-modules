@@ -25,6 +25,7 @@ This Terraform module provisions:
 - `policy_statements` - IAM Policy Statements that should be applied to the Lambda function
 - `delay_seconds` - The time in seconds that the delivery of all messages in the queue will be delayed
 - `batch_size` - The largest number of records that Lambda will retrieve from the queue at the time of invocation
+- `sqs_queue_policy` - Policy that should be applied to the SQS queue
 
 ## Usage
 
@@ -34,6 +35,20 @@ module "lambda_function_sqs" {
 
   name       = "${var.project_name}Lambda"
   source_dir = "${path.module}/src"
+
+  tags = var.tags
+}
+```
+
+```hcl
+module "lambda_function_sqs" {
+  source = "git::https://github.com/albumprinter/infra-terraform-modules.git//modules/aws/lambda_function_sqs?ref="
+
+  name       = "${var.project_name}Lambda"
+  source_dir = "${path.module}/src"
+  sqs_queue_policy = templatefile("${path.module}/templates/queue_policy.json", {
+    bucket_arn = aws_s3_bucket.this.arn
+  })
 
   tags = var.tags
 }
