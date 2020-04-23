@@ -83,6 +83,16 @@ module "get_method_custom_authorizer" {
   authorizer      = module.authorizer.aws_api_gateway_authorizer
 }
 
+module "get_method_api_key" {
+  source = "../../../modules/aws/api_gateway_method_to_lambda"
+
+  rest_api         = module.api_authorizer.aws_api_gateway_rest_api
+  resource         = module.api_authorizer.aws_api_gateway_resource
+  http_method      = "POST"
+  lambda_function  = module.lambda_function.aws_lambda_function
+  api_key_required = true
+}
+
 resource "aws_api_gateway_deployment" "api_authorizer" {
   depends_on = [
     module.get_method_custom_authorizer.aws_api_gateway_integration

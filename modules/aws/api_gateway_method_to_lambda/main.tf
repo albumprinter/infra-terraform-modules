@@ -4,9 +4,21 @@ resource "aws_api_gateway_method" "this" {
   http_method          = var.http_method
   authorization        = var.authorization
   authorizer_id        = local.authorizer_id
+  api_key_required     = var.api_key_required
   request_validator_id = var.request_validator != null ? var.request_validator.id : null
   request_parameters   = var.request_parameters
   request_models       = var.request_models
+}
+
+resource "aws_api_gateway_method_response" "this" {
+  rest_api_id = var.rest_api.id
+  resource_id = var.resource.id
+  http_method = aws_api_gateway_method.this.http_method
+  status_code = var.status_code
+  response_models = {
+    "application/json" = var.response_model_name
+  }
+  depends_on = [aws_api_gateway_method.this]
 }
 
 resource "aws_api_gateway_method_response" "http_400" {
