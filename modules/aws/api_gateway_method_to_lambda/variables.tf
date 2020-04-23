@@ -32,3 +32,15 @@ variable "request_models" {
   type        = map
   default     = null
 }
+variable "status_code" {
+  description = "Success status code that be used by the method response"
+  default     = "200"
+}
+variable "response_model_name" {
+  description = "Name of the Model that should be used by the method respose"
+  default     = "Empty"
+}
+variable "api_key_required" {
+  description = "Whether an API Key is required to access the method or not"
+  default     = null
+}
