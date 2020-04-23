@@ -49,7 +49,7 @@ variable "policy_statements" {
 }
 variable "is_enabled" {
   description = "Whether the CloudWatch Event Rule should be enabled or not"
-  default     = true
+  default     = null
 }
 variable "event_pattern" {
   description = "Event pattern that should be used to trigger the CloudWatch Event Rule"

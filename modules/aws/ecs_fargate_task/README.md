@@ -12,10 +12,10 @@ This Terraform module provisions:
 - `family` - Name that should be used for the ECS task Definition and related resources
 - `container_definitions` - List of container definition that should be used by the ECS task
 - `task_role` - The IAM Role that should be used by the ECS task
-- `cpu` - CPU units that will be used by the ECS task
-- `memory` - The amount (in MiB) of memory that can be used by the ECS task
+- `cpu` - CPU units that will be used by the ECS task (Default: `256`)
+- `memory` - The amount (in MiB) of memory that can be used by the ECS task (Default: `512`)
 - `tags` - Tags that should be applied to all resources in this module
-- `retention_in_days` - Retention period for log messages in days
+- `retention_in_days` - Retention period for log messages in days (Default: `30`)
 
 ## Usage
 
