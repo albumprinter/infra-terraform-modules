@@ -47,6 +47,22 @@ variable "policy_statements" {
   description = "IAM Policy Statements that should be applied to the Lambda function"
   default     = []
 }
+variable "error_actions_enabled" {
+  description = "Whether error alarm actions should be enabled or not"
+  default     = "true"
+}
+variable "error_insufficient_data_actions" {
+  description = "Actions that should be performed in case the error alarm is in the insufficient data state"
+  default     = []
+}
+variable "error_alarm_actions" {
+  description = "Actions that should be performed in case the error alarm is in the alarm state"
+  default     = []
+}
+variable "error_ok_actions" {
+  description = "Actions that should be performed in case the error alarm is in the ok state"
+  default     = []
+}
 variable "is_enabled" {
   description = "Whether the CloudWatch Event Rule should be enabled or not"
   default     = null

@@ -48,6 +48,26 @@ module "lambda_function_environment" {
       TEST = "test"
     }
   }
+  error_actions_enabled = "false"
+
+  tags = var.tags
+}
+
+resource "aws_sns_topic" "lambda_errors" {
+  name = "${var.project_name}LambdaErrors"
+}
+
+module "lambda_function_alarm" {
+  source = "../../../modules/aws/lambda_function"
+
+  name       = "${var.project_name}LambdaEnvironment"
+  source_dir = "${path.module}/src"
+  environment = {
+    variables = {
+      TEST = "test"
+    }
+  }
+  error_alarm_actions = [aws_sns_topic.lambda_errors.arn]
 
   tags = var.tags
 }

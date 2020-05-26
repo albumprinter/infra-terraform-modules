@@ -40,5 +40,9 @@ module "lambda_function" {
       }
     ]
   )
-  tags = var.tags
+  error_actions_enabled           = var.error_actions_enabled
+  error_insufficient_data_actions = var.error_insufficient_data_actions
+  error_alarm_actions             = var.error_alarm_actions
+  error_ok_actions                = var.error_ok_actions
+  tags                            = var.tags
 }
