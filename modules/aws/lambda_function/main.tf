@@ -66,3 +66,22 @@ module "iam_role" {
 
   tags = var.tags
 }
+
+resource "aws_cloudwatch_metric_alarm" "errors" {
+  alarm_name                = "${var.name}Errors"
+  comparison_operator       = "GreaterThanThreshold"
+  evaluation_periods        = "1"
+  metric_name               = "Errors"
+  namespace                 = "AWS/Lambda"
+  period                    = "60"
+  statistic                 = "Maximum"
+  threshold                 = "0"
+  alarm_description         = "Monitors errors in Lambda Function ${var.name}"
+  actions_enabled           = var.error_actions_enabled
+  insufficient_data_actions = var.error_insufficient_data_actions
+  alarm_actions             = var.error_alarm_actions
+  ok_actions                = var.error_ok_actions
+  dimensions = {
+    FunctionName = var.name
+  }
+}

@@ -23,6 +23,10 @@ This Terraform module provisions:
 - `tags` - Tags that should be applied to all resources in this module
 - `retention_in_days` - Retention period for log messages in days (Default: `30`)
 - `policy_statements` - IAM Policy Statements that should be applied to the Lambda function
+- `error_actions_enabled` - Whether error alarm actions should be enabled or not (Default: `true`)
+- `error_insufficient_data_actions` - Actions that should be performed in case the error alarm is in the insufficient data state (Default: `[]`)
+- `error_alarm_actions` - Actions that should be performed in case the error alarm is in the alarm state (Default: `[]`)
+- `error_ok_actions` - Actions that should be performed in case the error alarm is in the ok state (Default: `[]`)
 - `is_enabled` - Whether the CloudWatch Event Rule should be enabled or not
 - `event_pattern` - Event pattern that should be used to trigger the CloudWatch Event Rule
 - `schedule_expression` - Scheduled expression that should be used to trigger the CloudWatch Event Rule
@@ -69,3 +73,4 @@ module "schedule_expression" {
 - `aws_cloudwatch_event_rule`
 - `aws_cloudwatch_event_target`
 - `aws_lambda_permission`
+- `aws_cloudwatch_metric_alarm_errors`

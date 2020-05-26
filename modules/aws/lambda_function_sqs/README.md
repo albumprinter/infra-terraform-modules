@@ -23,6 +23,10 @@ This Terraform module provisions:
 - `tags` - Tags that should be applied to all resources in this module
 - `retention_in_days` - Retention period for log messages in days (Default: `30`)
 - `policy_statements` - IAM Policy Statements that should be applied to the Lambda function
+- `error_actions_enabled` - Whether error alarm actions should be enabled or not (Default: `true`)
+- `error_insufficient_data_actions` - Actions that should be performed in case the error alarm is in the insufficient data state (Default: `[]`)
+- `error_alarm_actions` - Actions that should be performed in case the error alarm is in the alarm state (Default: `[]`)
+- `error_ok_actions` - Actions that should be performed in case the error alarm is in the ok state (Default: `[]`)
 - `delay_seconds` - The time in seconds that the delivery of all messages in the queue will be delayed
 - `batch_size` - The largest number of records that Lambda will retrieve from the queue at the time of invocation
 - `sqs_queue_policy` - Policy that should be applied to the SQS queue
@@ -63,3 +67,4 @@ module "lambda_function_sqs" {
 - `aws_iam_policy`
 - `aws_sqs_queue`
 - `aws_lambda_event_source_mapping`
+- `aws_cloudwatch_metric_alarm_errors`

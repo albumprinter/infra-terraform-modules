@@ -22,3 +22,6 @@ output "aws_iam_role" {
 output "aws_iam_policy" {
   value = module.lambda_function.aws_iam_policy
 }
+output "aws_cloudwatch_metric_alarm_errors" {
+  value = module.lambda_function.aws_cloudwatch_metric_alarm_errors
+}
