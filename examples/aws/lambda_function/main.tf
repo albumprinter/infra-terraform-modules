@@ -60,7 +60,7 @@ resource "aws_sns_topic" "lambda_errors" {
 module "lambda_function_alarm" {
   source = "../../../modules/aws/lambda_function"
 
-  name       = "${var.project_name}LambdaEnvironment"
+  name       = "${var.project_name}LambdaErrorAlarm"
   source_dir = "${path.module}/src"
   environment = {
     variables = {
