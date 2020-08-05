@@ -60,7 +60,9 @@ module "iam_role" {
   name               = var.name
   assume_role_policy = templatefile("${path.module}/templates/assume_role_policy.json", {})
   policy = templatefile("${path.module}/templates/policy.tpl", {
-    policy_statements = concat(var.policy_statements, length(local.vpc_config) == 0 ? [] : [
+    policy_statements = concat(
+      var.policy_statements, 
+      length(local.vpc_config) == 0 ? [] : [
       {
         "Effect" : "Allow",
         "Action" : [
@@ -69,6 +71,15 @@ module "iam_role" {
           "ec2:DeleteNetworkInterface"
         ],
         "Resource" : ["*"]
+      }
+    ],
+    length(local.dead_letter_config) == 0 ? [] : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "sqs:SendMessage"
+        ],
+        "Resource" : [local.dead_letter_config[0]["target_arn"]]
       }
     ])
   })
