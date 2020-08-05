@@ -1,4 +1,6 @@
 data "archive_file" "this" {
+  count       = var.source_dir != "" ? 1 : 0
+
   type        = "zip"
   source_dir  = var.source_dir
   output_path = local.output_path
@@ -11,9 +13,16 @@ resource "aws_lambda_function" "this" {
   runtime          = var.runtime
   layers           = var.layers
   memory_size      = var.memory_size
-  filename         = data.archive_file.this.output_path
-  source_code_hash = data.archive_file.this.output_base64sha256
+  filename         = local.filename
   timeout          = var.timeout
+
+  dynamic "dead_letter_config" {
+    for_each = local.dead_letter_config
+
+    content {
+      target_arn = dead_letter_config.value.target_arn
+    }
+  }
 
   dynamic "environment" {
     for_each = local.environment
@@ -51,7 +60,9 @@ module "iam_role" {
   name               = var.name
   assume_role_policy = templatefile("${path.module}/templates/assume_role_policy.json", {})
   policy = templatefile("${path.module}/templates/policy.tpl", {
-    policy_statements = concat(var.policy_statements, length(local.vpc_config) == 0 ? [] : [
+    policy_statements = concat(
+      var.policy_statements, 
+      length(local.vpc_config) == 0 ? [] : [
       {
         "Effect" : "Allow",
         "Action" : [
@@ -60,6 +71,15 @@ module "iam_role" {
           "ec2:DeleteNetworkInterface"
         ],
         "Resource" : ["*"]
+      }
+    ],
+    length(local.dead_letter_config) == 0 ? [] : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "sqs:SendMessage"
+        ],
+        "Resource" : [var.dead_letter_config.target_arn]
       }
     ])
   })

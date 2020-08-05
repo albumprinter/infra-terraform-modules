@@ -1,3 +1,12 @@
+data "archive_file" "source_code" {
+  type        = "zip"
+  output_path = "lambda.zip"
+  source {
+    content  = "1"
+    filename = "source_code.txt"
+  }
+}
+
 module "lambda_function" {
   source = "../../../modules/aws/lambda_function"
 
@@ -11,7 +20,7 @@ module "lambda_function_policy_statements" {
   source = "../../../modules/aws/lambda_function"
 
   name       = "${var.project_name}LambdaPolicyStatements"
-  source_dir = "${path.module}/src"
+  filename   = data.archive_file.source_code.output_path
   policy_statements = [
     {
       "Effect" : "Deny",
@@ -68,6 +77,23 @@ module "lambda_function_alarm" {
     }
   }
   error_alarm_actions = [aws_sns_topic.lambda_errors.arn]
+
+  tags = var.tags
+}
+
+resource "aws_sqs_queue" "dead_letter" {
+  name = "${var.project_name}DeadLetter"
+}
+
+module "lambda_function_dead_letter" {
+  source = "../../../modules/aws/lambda_function"
+
+  name       = "${var.project_name}DeadLetter"
+  filename   = data.archive_file.source_code.output_path
+
+  dead_letter_config = {
+    target_arn = aws_sqs_queue.dead_letter.arn
+  }
 
   tags = var.tags
 }

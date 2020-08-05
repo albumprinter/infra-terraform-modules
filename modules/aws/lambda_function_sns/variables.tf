@@ -4,7 +4,10 @@ variable "name" {
 variable "source_dir" {
   description = "Local directory containing the source code for the Lambda Function"
 }
-
+variable "filename" {
+  description = "ZIP file containing the source code for the Lambda Function"
+  default     = ""
+}
 variable "handler" {
   description = "The entrypoint that should be called when the Lambda function is invoked"
   default     = "lambda_function.lambda_handler"
@@ -33,6 +36,11 @@ variable "environment" {
 }
 variable "vpc_config" {
   description = "VPC Config for the Lambda function"
+  type        = map
+  default     = null
+}
+variable "dead_letter_config" {
+  description = "Dead letter configuration for the Lambda function"
   type        = map
   default     = null
 }

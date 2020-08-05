@@ -21,6 +21,7 @@ module "lambda_function" {
   source = "../lambda_function"
 
   source_dir                      = var.source_dir
+  filename                        = var.filename
   name                            = var.name
   handler                         = var.handler
   runtime                         = var.runtime
