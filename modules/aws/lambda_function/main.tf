@@ -1,4 +1,6 @@
 data "archive_file" "this" {
+  count       = var.source_dir != "" ? 1 : 0
+
   type        = "zip"
   source_dir  = var.source_dir
   output_path = local.output_path
@@ -11,9 +13,16 @@ resource "aws_lambda_function" "this" {
   runtime          = var.runtime
   layers           = var.layers
   memory_size      = var.memory_size
-  filename         = data.archive_file.this.output_path
-  source_code_hash = data.archive_file.this.output_base64sha256
+  filename         = local.filename
   timeout          = var.timeout
+
+  dynamic "dead_letter_config" {
+    for_each = local.dead_letter_config
+
+    content {
+      target_arn = dead_letter_config.value.target_arn
+    }
+  }
 
   dynamic "environment" {
     for_each = local.environment
