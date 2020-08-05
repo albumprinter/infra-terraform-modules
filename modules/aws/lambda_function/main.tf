@@ -79,7 +79,7 @@ module "iam_role" {
         "Action" : [
           "sqs:SendMessage"
         ],
-        "Resource" : [local.dead_letter_config[0]["target_arn"]]
+        "Resource" : [var.dead_letter_config.target_arn]
       }
     ])
   })
