@@ -15,6 +15,7 @@ resource "aws_lambda_function" "this" {
   memory_size      = var.memory_size
   filename         = local.filename
   timeout          = var.timeout
+  publish          = var.publish
 
   dynamic "dead_letter_config" {
     for_each = local.dead_letter_config
