@@ -72,3 +72,8 @@ variable "error_ok_actions" {
   description = "Actions that should be performed in case the error alarm is in the ok state"
   default     = []
 }
+
+variable "publish" {
+  description = "Whether to publish creation/change as new Lambda Function Version."
+  default     = false
+}
