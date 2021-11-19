@@ -1,5 +1,5 @@
 variable "queue_name" {
-  type = "string"
+  type = string
 }
 
 variable "message_retention_seconds" {
@@ -21,5 +21,5 @@ variable "max_receives_count" {
 variable "policy" {}
 
 variable "tags" {
-  type = "map"
+  type = map
 }
