@@ -54,7 +54,7 @@ variable "retention_in_days" {
 }
 variable "policy_statements" {
   description = "IAM Policy Statements that should be applied to the Lambda function"
-  type        = list(map(string))
+  type        = list
   default     = []
 }
 variable "error_actions_enabled" {
