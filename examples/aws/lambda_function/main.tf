@@ -34,18 +34,18 @@ module "lambda_function_policy_statements" {
   tags = var.tags
 }
 
-# module "lambda_function_vpc" {
-# source = "../../../modules/aws/lambda_function"
-# 
-# name       = "${var.project_name}LambdaVpc"
-# source_dir = "${path.module}/src"
-# vpc_config = {
-# subnet_ids         = data.aws_subnet_ids.private.ids,
-# security_group_ids = [aws_security_group.this.id]
-# }
-# 
-# tags = var.tags
-# }
+module "lambda_function_vpc" {
+  source = "../../../modules/aws/lambda_function"
+ 
+  name       = "${var.project_name}LambdaVpc"
+  source_dir = "${path.module}/src"
+  vpc_config = {
+    subnet_ids         = data.aws_subnet_ids.private.ids,
+    security_group_ids = [aws_security_group.this.id]
+  }
+ 
+  tags = var.tags
+}
 
 module "lambda_function_environment" {
   source = "../../../modules/aws/lambda_function"

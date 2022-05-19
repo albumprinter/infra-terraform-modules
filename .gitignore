@@ -7,3 +7,5 @@
 .idea/*
 *remotestate.tf
 .builds/
+*.zip
+examples/aws/.terraform.lock.hcl
