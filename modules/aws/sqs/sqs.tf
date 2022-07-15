@@ -17,6 +17,7 @@ resource "aws_sqs_queue_policy" "sqs_sns_policy" {
 resource "aws_sqs_queue" "sqs_error_queue" {
   name                      = "${var.queue_name}-ERROR"
   message_retention_seconds = 1209600
+  sqs_managed_sse_enabled   = true
 }
 
 output "sqs_queue_url" {

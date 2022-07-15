@@ -83,6 +83,7 @@ module "lambda_function_alarm" {
 
 resource "aws_sqs_queue" "dead_letter" {
   name = "${var.project_name}DeadLetter"
+  sqs_managed_sse_enabled = true
 }
 
 module "lambda_function_dead_letter" {

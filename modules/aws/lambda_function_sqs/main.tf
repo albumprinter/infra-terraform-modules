@@ -3,6 +3,7 @@ resource "aws_sqs_queue" "this" {
   delay_seconds              = var.delay_seconds
   policy                     = var.sqs_queue_policy
   visibility_timeout_seconds = var.timeout
+  sqs_managed_sse_enabled    = true
 
   tags = var.tags
 }
