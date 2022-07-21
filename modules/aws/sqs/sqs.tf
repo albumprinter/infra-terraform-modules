@@ -4,7 +4,8 @@ resource "aws_sqs_queue" "sqs_queue" {
   receive_wait_time_seconds  = "${var.receive_wait_time_seconds}"
   visibility_timeout_seconds = "${var.visibility_timeout_seconds}"
   redrive_policy             = "{\"deadLetterTargetArn\":\"${aws_sqs_queue.sqs_error_queue.arn}\",\"maxReceiveCount\":${var.max_receives_count}}"
-
+  sqs_managed_sse_enabled    = true
+  
   tags = "${var.tags}"
 }
 
