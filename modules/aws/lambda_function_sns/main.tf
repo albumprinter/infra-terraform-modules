@@ -1,6 +1,7 @@
 resource "aws_sns_topic" "this" {
-  name = var.name
-  tags = var.tags
+  name              = var.name
+  tags              = var.tags
+  kms_master_key_id = "alias/aws/sns"
 }
 
 resource "aws_sns_topic_subscription" "this" {
