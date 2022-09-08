@@ -7,6 +7,23 @@ data "archive_file" "source_code" {
   }
 }
 
+data "aws_vpc" "shared_vpc" {
+  tags = {
+    Name = "sandbox_vpc"
+  }
+}
+
+data "aws_subnets" "private" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.shared_vpc.id]
+  }
+  tags = {
+    Name = "private-*"
+  }
+}
+
+
 module "lambda_function" {
   source = "../../../modules/aws/lambda_function"
 
@@ -40,7 +57,7 @@ module "lambda_function_vpc" {
   name       = "${var.project_name}LambdaVpc"
   source_dir = "${path.module}/src"
   vpc_config = {
-    subnet_ids         = data.aws_subnet_ids.private.ids,
+    subnet_ids         = data.aws_subnets.private.ids,
     security_group_ids = [aws_security_group.this.id]
   }
  
