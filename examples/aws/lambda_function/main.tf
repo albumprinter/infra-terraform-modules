@@ -23,6 +23,21 @@ data "aws_subnets" "private" {
   }
 }
 
+resource "aws_security_group" "this" {
+  name   = "LambdaExample"
+  vpc_id = data.aws_vpc.shared_vpc.id
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = var.tags
+}
+
+
 
 module "lambda_function" {
   source = "../../../modules/aws/lambda_function"
