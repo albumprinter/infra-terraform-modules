@@ -25,14 +25,16 @@ resource "aws_lambda_function" "this" {
       target_arn = dead_letter_config.value.target_arn
     }
   }
-
-  dynamic "environment" {
-    for_each = local.environment
-
-    content {
-      variables = environment.value.variables
-    }
+  environment = {
+    variables = local.environment
   }
+  # dynamic "environment" {
+  #   for_each = local.environment
+
+  #   content {
+  #     variables = environment.value.variables
+  #   }
+  # }
 
   dynamic "vpc_config" {
     for_each = local.vpc_config
