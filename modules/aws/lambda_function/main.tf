@@ -30,7 +30,7 @@ resource "aws_lambda_function" "this" {
     for_each = local.environment
 
     content {
-      variables = environment.value.variables
+      variables = environment.value
     }
   }
 
