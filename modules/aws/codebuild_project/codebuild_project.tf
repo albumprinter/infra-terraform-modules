@@ -78,7 +78,6 @@ resource "aws_codebuild_project" "project" {
   dynamic "source" {
     for_each = [for element in var.codebuild_project_source : {
       type                = element.type
-      auth                = lookup(element, "auth", [])
       buildspec           = lookup(element, "buildspec", null)
       git_clone_depth     = lookup(element, "git_clone_depth", null)
       insecure_ssl        = lookup(element, "insecure_ssl", null)
@@ -200,7 +199,6 @@ resource "aws_codebuild_project" "project" {
     for_each = [for element in var.codebuild_project_secondary_sources : {
       type                = element.type
       source_identifier   = element.source_identifier
-      auth                = lookup(element, "auth", [])
       buildspec           = lookup(element, "buildspec", null)
       git_clone_depth     = lookup(element, "git_clone_depth", null)
       insecure_ssl        = lookup(element, "insecure_ssl", null)
