@@ -210,17 +210,6 @@ resource "aws_codebuild_project" "project" {
     content {
       type              = secondary_sources.value.type
       source_identifier = secondary_sources.value.source_identifier
-      dynamic "auth" {
-        for_each = [for element in secondary_sources.value.auth : {
-          type     = element.type
-          resource = lookup(element, "resource", null)
-        }]
-
-        content {
-          type     = auth.value.type
-          resource = auth.value.resource
-        }
-      }
       buildspec           = secondary_sources.value.buildspec
       git_clone_depth     = secondary_sources.value.git_clone_depth
       insecure_ssl        = secondary_sources.value.insecure_ssl
