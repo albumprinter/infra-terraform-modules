@@ -15,7 +15,7 @@ variable "handler" {
 }
 variable "runtime" {
   description = "Runtime that should be used for the Lambda function"
-  default     = "python3.7"
+  default     = "python3.9"
 }
 variable "layers" {
   description = "List of Lambda layers that should be attached to the Lambda function"
