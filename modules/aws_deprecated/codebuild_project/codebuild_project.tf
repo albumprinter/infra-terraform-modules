@@ -78,7 +78,6 @@ resource "aws_codebuild_project" "project" {
   dynamic "source" {
     for_each = [for element in var.codebuild_project_source : {
       type                = element.type
-      auth                = lookup(element, "auth", [])
       buildspec           = lookup(element, "buildspec", null)
       git_clone_depth     = lookup(element, "git_clone_depth", null)
       insecure_ssl        = lookup(element, "insecure_ssl", null)
@@ -88,17 +87,6 @@ resource "aws_codebuild_project" "project" {
 
     content {
       type = source.value.type
-      dynamic "auth" {
-        for_each = [for element in source.value.auth : {
-          type     = element.type
-          resource = lookup(element, "resource", null)
-        }]
-
-        content {
-          type     = auth.value.type
-          resource = auth.value.resource
-        }
-      }
       buildspec           = source.value.buildspec
       git_clone_depth     = source.value.git_clone_depth
       insecure_ssl        = source.value.insecure_ssl
@@ -211,7 +199,6 @@ resource "aws_codebuild_project" "project" {
     for_each = [for element in var.codebuild_project_secondary_sources : {
       type                = element.type
       source_identifier   = element.source_identifier
-      auth                = lookup(element, "auth", [])
       buildspec           = lookup(element, "buildspec", null)
       git_clone_depth     = lookup(element, "git_clone_depth", null)
       insecure_ssl        = lookup(element, "insecure_ssl", null)
@@ -221,17 +208,6 @@ resource "aws_codebuild_project" "project" {
     content {
       type              = secondary_sources.value.type
       source_identifier = secondary_sources.value.source_identifier
-      dynamic "auth" {
-        for_each = [for element in secondary_sources.value.auth : {
-          type     = element.type
-          resource = lookup(element, "resource", null)
-        }]
-
-        content {
-          type     = auth.value.type
-          resource = auth.value.resource
-        }
-      }
       buildspec           = secondary_sources.value.buildspec
       git_clone_depth     = secondary_sources.value.git_clone_depth
       insecure_ssl        = secondary_sources.value.insecure_ssl
