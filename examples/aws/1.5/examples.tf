@@ -1,16 +1,15 @@
-provider "aws" {
-  region  = "eu-west-1"  
-  
+terraform {
+  required_version = ">= 1.5.2"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+    }
+  }
 }
 
-terraform {
-  required_version = "1.5"
-
-  required_providers {
-    aws    = ">= 3.53.0"
-   # local  = ">= 2.1"
-   # random = ">= 3.1"
-  }
+# Providers
+provider "aws" {
+  region = "eu-west-1"
 }
 
 
