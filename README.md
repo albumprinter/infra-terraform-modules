@@ -37,7 +37,7 @@ For now, modules compatible with `0.2.x` versions were moved to [modules/aws_dep
 
 For managing easily different Terraform releases, it's suggested to install the command [tfenv](https://github.com/tfutils/tfenv)
 
-Base on the TF release to test, 1.5 in that case, in the repository create a directory 1.5 under `./example/aws`, as in the tree below.
+Based on the TF release to test, 1.5 in that case, in the repository create a directory 1.5 under `./example/aws`, as in the tree below.
 
 In that directory copy the module to test and the files `example.tf` and `locals.tf` 
 
@@ -51,7 +51,7 @@ In that directory copy the module to test and the files `example.tf` and `locals
     │       │   ├── examples.tf
     │       │   ├── locals.tf
 
-To call properly the source, update the `main.tf` file, inside the module under test, accordingly to the new path. 
+To properly call the source, update the `main.tf` file, inside the module under test, according to the new path. 
 
 Update the above  `examples.tf` file with the proper `terraform release` and the `hashicorp/aws provider`:
 
