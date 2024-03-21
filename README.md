@@ -32,3 +32,49 @@ The directories in this repository are organized in the following way:
 From version `0.2.x` to `0.3.x`, the set of available modules was modified and breaking changes were introduced in the modules that remained.
 
 For now, modules compatible with `0.2.x` versions were moved to [modules/aws_deprecated](modules/aws_deprecated) for bug fixes.
+
+## How to test new Terraform release
+
+For managing easily different Terraform releases, it's suggested to install the command [tfenv](https://github.com/tfutils/tfenv)
+
+Base on the TF release to test, 1.5 in that case, in the repository create a directory 1.5 under `./example/aws`, as in the tree below.
+
+In that directory copy the module to test and the files `example.tf` and `locals.tf` 
+
+    /infra-terraform-modules
+    ├── examples
+    │   └── aws
+    │       ├── 1.5
+    │       │   ├── module_to_test
+    │       │   │   ├── ...
+    │       │   │   ├── ...
+    │       │   ├── examples.tf
+    │       │   ├── locals.tf
+
+To call properly the source, update the `main.tf` file, inside the module under test, accordingly to the new path. 
+
+Update the above  `examples.tf` file with the proper `terraform release` and the `hashicorp/aws provider`:
+
+```hcl
+terraform {
+  required_version = ">= 1.5.2"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+    }
+  }
+}
+
+# Providers
+provider "aws" {
+  region = "eu-west-1"
+}
+```
+
+It's likely, during the test, to face some issues due to some resources already created.<br />
+To avoid that you can try to update the `local.tf` file updating the `project_name` variable:
+
+
+```hcl
+   project_name = "InfraTerraformModules1_5"
+```
