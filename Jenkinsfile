@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'terraform-1.0'
+    label 'terraform-1.5'
   }
   parameters {    
     string(name: 'ACCOUNT_ID', defaultValue: '055974010211', description: 'eops-sandbox')
