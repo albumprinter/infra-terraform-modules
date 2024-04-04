@@ -13,8 +13,8 @@ provider "aws" {
 }
 
 
-# module "lambda_function_event_rule" {
-#   source       = "./lambda_function_event_rule"
+# module "ecs_fargate_task" {
+#   source       = "./ecs_fargate_task"
 #   project_name = local.project_name
 #   tags         = local.tags
 # }
