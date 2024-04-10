@@ -1,4 +1,4 @@
-module "lambda_sns" {
+module "lambda_function_sns" {
   source = "../../../../modules/aws/lambda_function_sns"
 
   name       = "${var.project_name}LambdaSns"

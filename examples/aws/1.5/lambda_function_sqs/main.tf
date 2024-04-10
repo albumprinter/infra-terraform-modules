@@ -1,4 +1,4 @@
-module "lambda_sqs" {
+module "lambda_function_sqs" {
   source = "../../../../modules/aws/lambda_function_sqs"
 
   name       = "${var.project_name}LambdaSqs"
@@ -7,7 +7,7 @@ module "lambda_sqs" {
   tags = var.tags
 }
 
-module "lambda_sqs_policy" {
+module "lambda_function_sqs_policy" {
   source = "../../../../modules/aws/lambda_function_sqs"
 
   name             = "${var.project_name}LambdaSqsPolicy"
