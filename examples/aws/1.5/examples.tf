@@ -12,6 +12,11 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+module "config_custom_rule" {
+  source       = "./config_custom_rule"
+  project_name = local.project_name
+  tags         = local.tags
+}
 
 # module "ecs_fargate_task" {
 #   source       = "./ecs_fargate_task"
@@ -31,11 +36,11 @@ provider "aws" {
 #   tags         = local.tags
 # }
 
-module "lambda_function_sns" {
- source       = "./lambda_function_sns"
- project_name = local.project_name
- tags         = local.tags
-}
+# module "lambda_function_sns" {
+#  source       = "./lambda_function_sns"
+#  project_name = local.project_name
+#  tags         = local.tags
+# }
 
 # module "lambda_function_sqs" {
 #   source       = "./lambda_function_sqs"
