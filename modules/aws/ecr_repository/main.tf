@@ -1,10 +1,10 @@
 resource "aws_ecr_repository" "this" {
-  name = var.name
-  tags = var.tags
+  name =  "${var.name}"
+  tags = "${var.tags}"
 }
 
 resource "aws_ecr_repository_policy" "this" {
-  repository = aws_ecr_repository.repo.name
+  repository = aws_ecr_repository.this.name
   policy     = <<EOF
 {
   "Version": "2008-10-17",
@@ -31,7 +31,7 @@ EOF
 }
 
 resource "aws_ecr_lifecycle_policy" "this" {
-  repository = aws_ecr_repository.repo.name
+  repository = aws_ecr_repository.this.name
   policy     = <<EOF
 {
     "rules": [
