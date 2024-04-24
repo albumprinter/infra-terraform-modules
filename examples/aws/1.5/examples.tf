@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.5.2"
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
@@ -13,27 +13,28 @@ provider "aws" {
 }
 
 variable "run_vpc_example" {
-  type = string
+  type    = string
   default = true
 }
 
 module "ecr_repository" {
-  source       = "./ecr_repository"
-  project_name = local.project_name
+  source          = "./ecr_repository"
+  project_name    = local.project_name
   organization_id = local.organization_id
-  tags         = local.tags
+  tags            = local.tags
 }
 
 module "ecs_fargate_task" {
-   source       = "./ecs_fargate_task"
-   project_name = local.project_name
-   tags         = local.tags
+  source       = "./ecs_fargate_task"
+  project_name = local.project_name
+  tags         = local.tags
 }
 
 module "lambda_function" {
-   source       = "./lambda_function"
-   project_name = local.project_name
-   tags         = local.tags
+  source          = "./lambda_function"
+  project_name    = local.project_name
+  tags            = local.tags
+  run_vpc_example = var.run_vpc_example
 }
 
 module "lambda_function_event_rule" {
@@ -43,22 +44,22 @@ module "lambda_function_event_rule" {
 }
 
 module "lambda_function_sns" {
- source       = "./lambda_function_sns"
- project_name = local.project_name
- tags         = local.tags
+  source       = "./lambda_function_sns"
+  project_name = local.project_name
+  tags         = local.tags
 }
 
 module "lambda_function_sqs" {
-   source       = "./lambda_function_sqs"
-   project_name = local.project_name
-   tags         = local.tags
- }
+  source       = "./lambda_function_sqs"
+  project_name = local.project_name
+  tags         = local.tags
+}
 
 
 module "sfn_state_machine" {
-   source       = "./sfn_state_machine"
-   project_name = local.project_name
-   tags         = local.tags
+  source       = "./sfn_state_machine"
+  project_name = local.project_name
+  tags         = local.tags
 }
 
 module "sqs" {
