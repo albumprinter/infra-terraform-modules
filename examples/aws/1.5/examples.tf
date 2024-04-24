@@ -12,11 +12,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-module "config_custom_rule" {
-  source       = "./config_custom_rule"
-  project_name = local.project_name
-  tags         = local.tags
-}
 
 module "ecr_repository" {
   source       = "./ecr_repository"
