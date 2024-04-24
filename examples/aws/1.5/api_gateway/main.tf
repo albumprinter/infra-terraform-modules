@@ -1,5 +1,5 @@
 module "api" {
-  source = "../../../modules/aws/api_gateway_rest_api"
+  source = "../../../../modules/aws/api_gateway_rest_api"
 
   name      = "${var.project_name}ApiGateway"
   path_part = "test"
@@ -8,7 +8,7 @@ module "api" {
 }
 
 module "get_method" {
-  source = "../../../modules/aws/api_gateway_method_to_lambda"
+  source = "../../../../modules/aws/api_gateway_method_to_lambda"
 
   rest_api        = module.api.aws_api_gateway_rest_api
   resource        = module.api.aws_api_gateway_resource
@@ -17,14 +17,14 @@ module "get_method" {
 }
 
 module "cors" {
-  source = "../../../modules/aws/api_gateway_cors"
+  source = "../../../../modules/aws/api_gateway_cors"
 
   rest_api = module.api.aws_api_gateway_rest_api
   resource = module.api.aws_api_gateway_resource
 }
 
 module "lambda_function" {
-  source = "../../../modules/aws/lambda_function"
+  source = "../../../../modules/aws/lambda_function"
 
   name       = "${var.project_name}LambdaApiGateway"
   source_dir = "${path.module}/src/lambda_function"
@@ -45,7 +45,7 @@ resource "aws_api_gateway_deployment" "api" {
 # Custom Authorizer
 
 module "api_authorizer" {
-  source = "../../../modules/aws/api_gateway_rest_api"
+  source = "../../../../modules/aws/api_gateway_rest_api"
 
   name      = "${var.project_name}ApiGatewayAuthorizer"
   path_part = "test"
@@ -54,7 +54,7 @@ module "api_authorizer" {
 }
 
 module "lambda_function_authorizer" {
-  source = "../../../modules/aws/lambda_function"
+  source = "../../../../modules/aws/lambda_function"
 
   name       = "${var.project_name}LambdaApiGatewayAuthorizer"
   source_dir = "${path.module}/src/authorizer"
@@ -63,7 +63,7 @@ module "lambda_function_authorizer" {
 }
 
 module "authorizer" {
-  source = "../../../modules/aws/api_gateway_custom_authorizer"
+  source = "../../../../modules/aws/api_gateway_custom_authorizer"
 
   name       = "${var.project_name}ApiGatewayAuthorizer"
   rest_api   = module.api_authorizer.aws_api_gateway_rest_api
@@ -73,7 +73,7 @@ module "authorizer" {
 }
 
 module "get_method_custom_authorizer" {
-  source = "../../../modules/aws/api_gateway_method_to_lambda"
+  source = "../../../../modules/aws/api_gateway_method_to_lambda"
 
   rest_api        = module.api_authorizer.aws_api_gateway_rest_api
   resource        = module.api_authorizer.aws_api_gateway_resource
@@ -84,7 +84,7 @@ module "get_method_custom_authorizer" {
 }
 
 module "get_method_api_key" {
-  source = "../../../modules/aws/api_gateway_method_to_lambda"
+  source = "../../../../modules/aws/api_gateway_method_to_lambda"
 
   rest_api         = module.api_authorizer.aws_api_gateway_rest_api
   resource         = module.api_authorizer.aws_api_gateway_resource
