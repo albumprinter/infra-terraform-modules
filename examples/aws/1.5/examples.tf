@@ -68,3 +68,8 @@ module "sqs" {
   tags         = local.tags
 }
 
+module "api_gateway" {
+  source       = "./api_gateway"
+  project_name = local.project_name
+  tags         = local.tags
+}
