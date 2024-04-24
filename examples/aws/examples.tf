@@ -20,12 +20,6 @@ module "api_gateway" {
   tags         = local.tags
 }
 
-module "config_custom_rule" {
-  source       = "./config_custom_rule"
-  project_name = local.project_name
-  tags         = local.tags
-}
-
 module "ecs_fargate_task" {
   source       = "./ecs_fargate_task"
   project_name = local.project_name
