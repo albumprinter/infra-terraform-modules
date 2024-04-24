@@ -75,7 +75,7 @@ module "lambda_function_vpc" {
   source_dir = "${path.module}/src"
   vpc_config = {
     subnet_ids         = data.aws_subnets.private.ids,
-    security_group_ids = [aws_security_group.this.id]
+    security_group_ids = [aws_security_group.this[0].id]
   }
  
   tags = var.tags
