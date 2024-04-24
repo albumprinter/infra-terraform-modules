@@ -24,6 +24,7 @@ data "aws_subnets" "private" {
 }
 
 resource "aws_security_group" "this" {
+  count = var.run_vpc_example ? 1 : 0
   name   = "LambdaExample_1.5"
   vpc_id = data.aws_vpc.shared_vpc.id
 
