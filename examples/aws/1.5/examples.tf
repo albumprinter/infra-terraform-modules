@@ -12,6 +12,10 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+variable "run_vpc_example" {
+  type = string
+  default = true
+}
 
 module "ecr_repository" {
   source       = "./ecr_repository"

@@ -21,14 +21,14 @@ pipeline {
       }
       steps {
         script {
-          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, rootDir: 'examples/aws/1.5')
+          terraform(accountId: params.ACCOUNT_ID, extraArgs: '-var="run_vpc_example=false"', autoApprove: true, rootDir: 'examples/aws/1.5')
         }        
       }
     }
     stage('Destroy') {
       steps {
         script {
-          terraform(accountId: params.ACCOUNT_ID, autoApprove: true, destroy: true, rootDir: 'examples/aws/1.5')
+          terraform(accountId: params.ACCOUNT_ID, extraArgs: '-var="run_vpc_example=false"', autoApprove: true, destroy: true, rootDir: 'examples/aws/1.5')
         }        
       }
     }

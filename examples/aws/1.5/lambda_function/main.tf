@@ -67,6 +67,7 @@ module "lambda_function_policy_statements" {
 }
 
 module "lambda_function_vpc" {
+  count = var.run_vpc_example ? 1 : 0
   source = "../../../../modules/aws/lambda_function"
  
   name       = "${var.project_name}LambdaVpc"
