@@ -17,6 +17,7 @@ resource "aws_lambda_function" "this" {
   timeout          = var.timeout
   publish          = var.publish
   source_code_hash = filebase64sha256(local.filename)
+  reserved_concurrent_executions = var.reserved_concurrent_executions
 
   dynamic "dead_letter_config" {
     for_each = local.dead_letter_config
