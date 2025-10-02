@@ -81,3 +81,7 @@ variable "publish" {
   description = "Whether to publish creation/change as new Lambda Function Version."
   default     = false
 }
+variable "create_cloudwatch_alert" {
+  description = "Whether to create a CloudWatch alert for Lambda function errors"
+  default     = true
+}

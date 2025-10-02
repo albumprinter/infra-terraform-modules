@@ -29,6 +29,8 @@ This Terraform module provisions:
 - `error_insufficient_data_actions` - Actions that should be performed in case the error alarm is in the insufficient data state (Default: `[]`)
 - `error_alarm_actions` - Actions that should be performed in case the error alarm is in the alarm state (Default: `[]`)
 - `error_ok_actions` - Actions that should be performed in case the error alarm is in the ok state (Default: `[]`)
+- `reserved_concurrent_executions` - The amount of reserved concurrent executions for the Lambda function (Default: `-1`, which means no limit)
+- `create_cloudwatch_alert` - Whether a CloudWatch alert for Lambda errors should be created or not (Default: `true`)
 
 ## Usage
 

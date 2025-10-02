@@ -37,5 +37,6 @@ module "lambda_function" {
   error_alarm_actions             = var.error_alarm_actions
   error_ok_actions                = var.error_ok_actions
   reserved_concurrent_executions  = var.reserved_concurrent_executions
+  create_cloudwatch_alert         = var.create_cloudwatch_alert
   tags                            = var.tags
 }

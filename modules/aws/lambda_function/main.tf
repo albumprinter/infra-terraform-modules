@@ -91,6 +91,7 @@ module "iam_role" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "errors" {
+  count                     = var.create_cloudwatch_alert ? 1 : 0
   alarm_name                = "${var.name}Errors"
   comparison_operator       = "GreaterThanThreshold"
   evaluation_periods        = "1"
