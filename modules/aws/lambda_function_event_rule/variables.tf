@@ -83,3 +83,7 @@ variable "schedule_expression" {
   description = "Scheduled expression that should be used to trigger the CloudWatch Event Rule"
   default     = null
 }
+variable "create_cloudwatch_alert" {
+  description = "Whether to create a CloudWatch alert for Lambda function errors"
+  default     = true
+}

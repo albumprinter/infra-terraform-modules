@@ -83,3 +83,7 @@ variable "sqs_queue_policy" {
   description = "Policy that should be applied to the SQS queue"
   default     = null
 }
+variable "create_cloudwatch_alert" {
+  description = "Whether to create a CloudWatch alert for Lambda function errors"
+  default     = true
+}
