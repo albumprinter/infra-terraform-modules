@@ -14,5 +14,5 @@ output "aws_iam_policy" {
   value = module.iam_role.aws_iam_role_policy
 }
 output "aws_cloudwatch_metric_alarm_errors" {
-  value = aws_cloudwatch_metric_alarm.errors
+  value = try(aws_cloudwatch_metric_alarm.errors, null)
 }
