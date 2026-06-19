@@ -39,7 +39,12 @@ resource "aws_api_gateway_deployment" "api" {
   ]
 
   rest_api_id = module.api.aws_api_gateway_rest_api.id
-  stage_name  = "test"
+}
+
+resource "aws_api_gateway_stage" "api" {
+  deployment_id = aws_api_gateway_deployment.api.id
+  rest_api_id   = module.api.aws_api_gateway_rest_api.id
+  stage_name    = "test"
 }
 
 # Custom Authorizer
@@ -99,5 +104,10 @@ resource "aws_api_gateway_deployment" "api_authorizer" {
   ]
 
   rest_api_id = module.api_authorizer.aws_api_gateway_rest_api.id
-  stage_name  = "test"
+}
+
+resource "aws_api_gateway_stage" "api_authorizer" {
+  deployment_id = aws_api_gateway_deployment.api_authorizer.id
+  rest_api_id   = module.api_authorizer.aws_api_gateway_rest_api.id
+  stage_name    = "test"
 }
