@@ -9,6 +9,8 @@ This Terraform module provisions:
 - IAM Role
 - IAM Policy
 
+The Lambda invoke permission is scoped to the CloudWatch Event Rule created by this module.
+
 ## Module Input Variables
 
 - `name` - Name that should be used for the Lambda function and related resources

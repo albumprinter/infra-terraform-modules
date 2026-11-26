@@ -8,6 +8,8 @@ This Terraform module provisions:
 - API Gateway Integration
 - AWS Lambda Permission
 
+The Lambda invoke permission is scoped to this API's configured HTTP method and resource path across its stages.
+
 ## Module Input Variables
 
 - `rest_api` - REST API that the method should be associated to

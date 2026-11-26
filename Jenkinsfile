@@ -14,6 +14,12 @@ pipeline {
     timeout(time: 1, unit: 'HOURS')
   }
   stages {
+    stage('Contract tests') {
+      steps {
+        sh 'python3 -m pip install --user -r tests/requirements.txt'
+        sh 'PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v'
+      }
+    }
     stage('Apply') {
       when {
         expression {

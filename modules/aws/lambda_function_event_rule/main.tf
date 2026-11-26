@@ -15,6 +15,7 @@ resource "aws_lambda_permission" "event_rule_lambda_permission" {
   action        = "lambda:InvokeFunction"
   function_name = module.lambda_function.aws_lambda_function.function_name
   principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.this.arn
 }
 
 module "lambda_function" {
@@ -30,12 +31,15 @@ module "lambda_function" {
   timeout                         = var.timeout
   environment                     = var.environment
   vpc_config                      = var.vpc_config
+  dead_letter_config              = var.dead_letter_config
   retention_in_days               = var.retention_in_days
   policy_statements               = var.policy_statements
   error_actions_enabled           = var.error_actions_enabled
   error_insufficient_data_actions = var.error_insufficient_data_actions
   error_alarm_actions             = var.error_alarm_actions
   error_ok_actions                = var.error_ok_actions
+  reserved_concurrent_executions  = var.reserved_concurrent_executions
+  publish                         = var.publish
   create_cloudwatch_alert         = var.create_cloudwatch_alert
   tags                            = var.tags
 }
