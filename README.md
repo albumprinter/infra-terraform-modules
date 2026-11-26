@@ -33,6 +33,10 @@ From version `0.2.x` to `0.3.x`, the set of available modules was modified and b
 
 For now, modules compatible with `0.2.x` versions were moved to [modules/aws_deprecated](modules/aws_deprecated) for bug fixes.
 
+## How to test module contracts
+
+Run `python3 -m pip install -r tests/requirements.txt` followed by `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`. Jenkins runs these contract tests before applying the AWS examples.
+
 ## How to test new Terraform release
 
 For managing easily different Terraform releases, it's suggested to install the command [tfenv](https://github.com/tfutils/tfenv)

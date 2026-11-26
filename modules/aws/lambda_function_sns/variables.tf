@@ -75,6 +75,10 @@ variable "reserved_concurrent_executions" {
   description = "Reserved concurrent executions for the Lambda function"
   default     = -1
 }
+variable "publish" {
+  description = "Whether to publish creation/change as new Lambda Function Version."
+  default     = false
+}
 variable "create_cloudwatch_alert" {
   description = "Whether to create a CloudWatch alert for Lambda function errors"
   default     = true
